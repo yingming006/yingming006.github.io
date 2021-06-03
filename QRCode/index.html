@@ -1,25 +1,56 @@
 <!DOCTYPE html
 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html lang="en">
 
 <head>
 	<title>Cross-Browser QRCode generator for Javascript</title>
+	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="qrcode.js"></script>
+	<link rel="stylesheet" href="bootstrap.min.css">
 </head>
 
 <body>
-	<div>
-		<div style="text-align: center; margin-top:100;">
-			<input type="text" id="inputValue" value="https://yingming006.cn"
-				style="height: 40px;line-height: 40px;outline: 0;padding: 0 15px;width: 60%;">
-			<div id="qrcode" style="margin-top:50"></div>
+
+	<header class="p-3 bg-dark text-white">
+		<div class="container">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+					<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+						<use xlink:href="#bootstrap" />
+					</svg>
+					<span class="fs-4">Tools</span>
+				</a>
+
+			</div>
 		</div>
+	</header>
+	<div class="container">
+		<main>
+			<div class="row g-5">
+				<div class="col-md-7 col-lg-12">
+					<h4 class="mb-3">二维码生成工具</h4>
+					<div class="row g-3">
+						<div class="col-12">
+							<label for="inputValue" class="form-label">地址 </label>
+							<input type="text" class="form-control" id="inputValue" placeholder="输入URL">
+						</div>
+					</div>
+					<!-- <label for="exampleColorInput" class="form-label">Color picker</label>
+					<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c"
+						title="Choose your color"> -->
+					<div id="qrcode" class="" style="margin-top:50"></div>
+				</div>
+			</div>
+		</main>
 	</div>
 
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="qrcode.js"></script>
+	<script type="text/javascript" src="bootstrap.bundle.min.js"></script>
 </body>
+
 <script type="text/javascript">
 	var qrcode = new QRCode(document.getElementById("qrcode"), {
 		width: 400,
