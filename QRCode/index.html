@@ -7,51 +7,52 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<link rel="stylesheet" href="bootstrap.min.css">
+	<link href="bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-
-	<header class="p-3 bg-dark text-white">
-		<div class="container">
-			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-					<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-						<use xlink:href="#bootstrap" />
-					</svg>
-					<span class="fs-4">Tools</span>
-				</a>
-
+<body class="d-flex h-100 text-center text-white bg-dark">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+		<header class="mb-auto">
+			<div>
+				<h3 class="float-md-start mb-0">Tools</h3>
+				<!-- <nav class="nav nav-masthead justify-content-center float-md-end">
+			<a class="nav-link active" aria-current="page" href="#">Home</a>
+			<a class="nav-link" href="#">Features</a>
+			<a class="nav-link" href="#">Contact</a>
+		  </nav> -->
 			</div>
-		</div>
-	</header>
-	<div class="container">
+		</header>
+
 		<main>
 			<div class="row g-5">
 				<div class="col-md-7 col-lg-12">
 					<h4 class="mb-3">二维码生成工具</h4>
 					<div class="row g-3">
 						<div class="col-12">
-							<label for="inputValue" class="form-label">地址 </label>
+							<!-- <label for="inputValue" class="form-label">地址 </label> -->
 							<input type="text" class="form-control" id="inputValue" placeholder="输入URL">
 						</div>
 					</div>
-					<!-- <label for="exampleColorInput" class="form-label">Color picker</label>
-					<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c"
-						title="Choose your color"> -->
 					<div class="row g-3">
-						<div id="qrcode" class="" style="margin-top:50"></div>
+						<div class="col-12">
+							<div id="qrcode"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</main>
-	</div>
 
+		<!-- <footer class="mt-auto text-white-50">
+			<p>Cover template for <span class="exturl" data-url="aHR0cHM6Ly9nZXRib290c3RyYXAuY29tLw==">Bootstrap<i class="fa fa-external-link-alt"></i></span>, by <a
+					href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+		</footer> -->
+	</div>
 
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="qrcode.js"></script>
 	<script type="text/javascript" src="bootstrap.bundle.min.js"></script>
 </body>
+
 
 <script type="text/javascript">
 	var qrcode = new QRCode(document.getElementById("qrcode"), {
