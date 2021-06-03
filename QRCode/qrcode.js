@@ -278,6 +278,7 @@ var QRCode;
 			this._elImage.style.display = "block";
 			this._elImage.style.display = "inline-block";
 			this._elImage.style.margin = "auto";
+			this._elImage.class = "card-img-top";
 			this._elCanvas.style.display = "none";
 			this._elA.href = this._elImage.src;			
 			this._elA.src = this._elImage.src;
