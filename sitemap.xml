@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yingming006.cn/TTRSS-log/</loc>
+    
+    <lastmod>2021-06-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yingming006.cn/QRCode/index.html</loc>
     
     <lastmod>2021-06-03</lastmod>
@@ -235,7 +242,7 @@
 
   <url>
     <loc>https://yingming006.cn/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -243,84 +250,91 @@
   
   <url>
     <loc>https://yingming006.cn/tags/idea/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/rss/</loc>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/Hexo/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/mysql/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/win10/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/git/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/java/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/maven/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/java-collection/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/wsl/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/algorithm/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/sql/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://yingming006.cn/tags/https/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -329,7 +343,7 @@
   
   <url>
     <loc>https://yingming006.cn/categories/tech/</loc>
-    <lastmod>2021-06-03</lastmod>
+    <lastmod>2021-06-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

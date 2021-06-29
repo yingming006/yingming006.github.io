@@ -40,6 +40,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>自建 Tiny Tiny RSS 记录</title>
+    <url>/TTRSS-log/</url>
+    <content><![CDATA[<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>首先</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>rss</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>备份 Hexo 博客(精简版)</title>
     <url>/backup-hexo/</url>
     <content><![CDATA[<blockquote>
@@ -288,7 +300,7 @@
       </categories>
   </entry>
   <entry>
-    <title>crawling-MOOC-courses-in-java</title>
+    <title>爬取慕课实战课程-Java</title>
     <url>/crawling-MOOC-courses-in-java/</url>
     <content><![CDATA[<p>今天偶然间看到一篇关于 Java 爬虫入门的博客，想到以前就学过一点爬虫，于是乎就在博客的基础上写了一个 demo，用来爬取慕课网的实战课程。</p>
 <p>首先需要发送 HTTP 请求到网页，用到了 HttpURLConnection 类，具体如下：</p>
@@ -490,24 +502,22 @@
 
 </li>
 </ul>
-<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><ul>
-<li><p>安装程序所需依赖，导入GPG密钥，将Docker APT存储库添加到系统中</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p><span class="exturl" data-url="aHR0cDovL2dldC5kYW9jbG91ZC5pby8jaW5zdGFsbC1kb2NrZXI=">DaoCloud<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
 
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
-
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker --version</span><br></pre></td></tr></table></figure>
 
-<h3 id="Docker-Composer"><a href="#Docker-Composer" class="headerlink" title="Docker Composer"></a>Docker Composer</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.23.1/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>卸载</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>卸载Docker后,/var/lib/docker/目录下会保留原Docker的镜像,网络,存储卷等文件. 如果需要全新安装Docker,需要删除/var/lib/docker/目录</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -fr /var/lib/docker/</span><br></pre></td></tr></table></figure>
+
+<h3 id="Docker-Composer"><a href="#Docker-Composer" class="headerlink" title="Docker Composer"></a>Docker Composer</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
 
