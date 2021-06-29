@@ -49,6 +49,8 @@
 <h3 id="部署-TTRSS"><a href="#部署-TTRSS" class="headerlink" title="部署 TTRSS"></a>部署 TTRSS</h3><ol>
 <li>下载 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0hlbnJ5UVcvQXdlc29tZS1UVFJTUy9ibG9iL21haW4vZG9ja2VyLWNvbXBvc2UueW1s">docker-compose.yml<i class="fa fa-external-link-alt"></i></span> 至任意目录。</li>
 </ol>
+<a id="more"></a>
+
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
