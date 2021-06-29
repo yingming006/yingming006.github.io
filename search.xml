@@ -42,8 +42,46 @@
   <entry>
     <title>自建 Tiny Tiny RSS 记录</title>
     <url>/TTRSS-log/</url>
-    <content><![CDATA[<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>首先</p>
-]]></content>
+    <content><![CDATA[<h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><ul>
+<li>Ubuntu 20.04 LTS</li>
+<li><a href="https://yingming006.cn/install-software-in-ubuntu/#Docker-Composer">Docker-Compose</a></li>
+</ul>
+<h3 id="部署-TTRSS"><a href="#部署-TTRSS" class="headerlink" title="部署 TTRSS"></a>部署 TTRSS</h3><ol>
+<li>下载 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0hlbnJ5UVcvQXdlc29tZS1UVFJTUy9ibG9iL21haW4vZG9ja2VyLWNvbXBvc2UueW1s">docker-compose.yml<i class="fa fa-external-link-alt"></i></span> 至任意目录。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更改 <code>docker-compose.yml</code> 的配置：</li>
+</ol>
+<ul>
+<li>SELF_URL_PATH：<span class="exturl" data-url="aHR0cHM6Ly90dHJzcy55aW5nbWluZzAwNi5jbi8=">https://ttrss.yingming006.cn<i class="fa fa-external-link-alt"></i></span><br>TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</li>
+</ul>
+<ol start="3">
+<li>部署启动</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-HTTPS"><a href="#配置-HTTPS" class="headerlink" title="配置 HTTPS"></a>配置 HTTPS</h3><p>可以参考：<a href="https://yingming006.cn/support-https-with-let-s-encrypt/">启用 HTTPS</a></p>
+<h3 id="TTRSS-网站配置"><a href="#TTRSS-网站配置" class="headerlink" title="TTRSS 网站配置"></a>TTRSS 网站配置</h3><p>登录 TTRSS，打开偏好设置，根据自己的需求进行配置</p>
+<p>推荐打开的配置：</p>
+<ul>
+<li>启用 API</li>
+</ul>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGo/ttrss-open-api.png"></p>
+<ul>
+<li>插件<ul>
+<li>fever：开启后可以使用 <code>Fever API</code> 来获取RSS，需要在 <code>Fever Emulation</code> 中设置密码，此密码用于 <code>Fever API</code> 登录</li>
+<li>mercury_fulltext：全文获取</li>
+</ul>
+</li>
+</ul>
+<h3 id="Mercury-全文获取"><a href="#Mercury-全文获取" class="headerlink" title="Mercury 全文获取"></a>Mercury 全文获取</h3><ol>
+<li>偏好设置中启用 <code>mercury-fulltext</code> 插件</li>
+<li>偏好设置-信息源-Mercury Fulltext settins 中设置地址<br><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGomercury-fulltext.png"></li>
+<li>编辑信息源中，插件 tab 下启用 <code>Get fulltext via Mercury Parser</code><br><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGoopen-mercury-fulltext.png"></li>
+</ol>
+<h3 id="部署-RSSHub"><a href="#部署-RSSHub" class="headerlink" title="部署 RSSHub"></a>部署 RSSHub</h3>]]></content>
       <categories>
         <category>tech</category>
       </categories>
@@ -366,22 +404,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
-    <url>/fix-win10-cannot-open-postman/</url>
-    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
-<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
-<p>先打开任务管理器，结束 Postman 进程</p>
-<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
-<p>完成后再打开就可以了</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>win10</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 常用命令</title>
     <url>/git-commond/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--global] user.name <span class="string">&quot;[name]&quot;</span></span><br><span class="line">$ git config [--global] user.email <span class="string">&quot;[email address]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有的已经做出的配置</span></span><br><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
@@ -410,6 +432,22 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
+    <url>/fix-win10-cannot-open-postman/</url>
+    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
+<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
+<p>先打开任务管理器，结束 Postman 进程</p>
+<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
+<p>完成后再打开就可以了</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>win10</tag>
       </tags>
   </entry>
   <entry>
@@ -515,7 +553,7 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rm -fr /var/lib/docker/</span><br></pre></td></tr></table></figure>
 
-<h3 id="Docker-Composer"><a href="#Docker-Composer" class="headerlink" title="Docker Composer"></a>Docker Composer</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<h3 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` &gt; /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
 
