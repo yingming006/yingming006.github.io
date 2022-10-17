@@ -1,0 +1,81 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+	<title>Cross-Browser QRCode generator for Javascript</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<link href="bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+		<header class="mb-auto">
+			<div>
+				<h3 class="float-md-start mb-0">Tools</h3>
+				<!-- <nav class="nav nav-masthead justify-content-center float-md-end">
+			<a class="nav-link active" aria-current="page" href="#">Home</a>
+			<a class="nav-link" href="#">Features</a>
+			<a class="nav-link" href="#">Contact</a>
+		  </nav> -->
+			</div>
+		</header>
+
+		<main>
+			<div class="row g-5">
+				<div class="col-md-7 col-lg-12">
+					<h4 class="mb-3">二维码生成工具</h4>
+					<div class="row g-3">
+						<div class="col-12">
+							<!-- <label for="inputValue" class="form-label">地址 </label> -->
+							<input type="text" class="form-control" id="inputValue" placeholder="输入URL">
+						</div>
+					</div>
+					<div class="row g-3">
+						<div class="col-12">
+							<div id="qrcode"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- <footer class="mt-auto text-white-50">
+			<p>Cover template for <span class="exturl" data-url="aHR0cHM6Ly9nZXRib290c3RyYXAuY29tLw==">Bootstrap<i class="fa fa-external-link-alt"></i></span>, by <span class="exturl" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS9tZG8=">@mdo<i class="fa fa-external-link-alt"></i></span>.</p>
+		</footer> -->
+	</div>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="qrcode.js"></script>
+	<script type="text/javascript" src="bootstrap.bundle.min.js"></script>
+</body>
+
+
+<script type="text/javascript">
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width: 400,
+		height: 400
+	});
+
+	function makeCode() {
+		var elText = document.getElementById("inputValue");
+
+		if (!elText.value) {
+			elText.focus();
+			document.getElementById("qrcode").lastElementChild.style.display = "none";
+			return;
+		}
+
+		qrcode.makeCode(elText.value);
+	}
+
+	makeCode();
+
+	$("#inputValue").
+		on("input", function () {
+			makeCode();
+		});
+
+</script>
