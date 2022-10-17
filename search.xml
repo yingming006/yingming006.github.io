@@ -255,6 +255,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
   </entry>
   <entry>
     <title>爬取慕课实战课程-Java</title>
@@ -281,6 +284,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
     <title>解决 MySQL-Error:Your password does not satisfy the current policy requirements</title>
@@ -335,7 +341,7 @@
         <category>tech</category>
       </categories>
       <tags>
-        <tag>win10</tag>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -449,6 +455,9 @@
       <categories>
         <category>daily</category>
       </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
   </entry>
   <entry>
     <title>IDEA 无法使用 HTTP Client 的解决过程</title>
@@ -601,6 +610,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java 开发手册</title>
@@ -610,6 +622,12 @@
 </ul>
 <div class="pdf-container" data-target="/pdf/Java开发手册嵩山版.pdf" data-height="800px"></div>
 ]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
     <title>用 Java 实现 LRU算法</title>
@@ -625,6 +643,12 @@
 </ul>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> lru;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by yingming006 on 2019-09-18 08:47.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LRU</span>&lt;K, V&gt; <span class="keyword">implements</span> <span class="title class_">Iterable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node head;</span><br><span class="line">    <span class="keyword">private</span> Node tail;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;K, Node&gt; map;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        Node pre;</span><br><span class="line">        Node next;</span><br><span class="line">        K k;</span><br><span class="line">        V v;</span><br><span class="line"></span><br><span class="line">        Node(K k, V v) &#123;</span><br><span class="line">            <span class="built_in">this</span>.k = k;</span><br><span class="line">            <span class="built_in">this</span>.v = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LRU</span><span class="params">(<span class="type">int</span> maxSize)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.maxSize = maxSize;</span><br><span class="line">        <span class="built_in">this</span>.map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(maxSize * <span class="number">4</span> / <span class="number">3</span> + <span class="number">1</span>); <span class="comment">// HashMap 的初始化</span></span><br><span class="line"></span><br><span class="line">        head = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        tail = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.pre = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> V <span class="title function_">get</span><span class="params">(K key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">        unlink(node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node.v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(K key, V value)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">            unlink(node);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(key, value);</span><br><span class="line">        map.put(key, node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (map.size() &gt; maxSize) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">toRemove</span> <span class="operator">=</span> removeTail();</span><br><span class="line">            map.remove(toRemove.k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">unlink</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> node.next;</span><br><span class="line"></span><br><span class="line">        pre.next = next;</span><br><span class="line">        next.pre = pre;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">appendHead</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        node.next = next;</span><br><span class="line">        next.pre = node;</span><br><span class="line">        node.pre = head;</span><br><span class="line">        head.next = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node <span class="title function_">removeTail</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> tail.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        tail.pre = pre;</span><br><span class="line">        pre.next = tail;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;K&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Iterator</span>&lt;K&gt;() &#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="type">Node</span> <span class="variable">cur</span> <span class="operator">=</span> head.next;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> cur != tail;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> K <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> cur;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">                <span class="keyword">return</span> node.k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
     <title>Maven 简介和 pom.xml 文件简析</title>
@@ -1097,6 +1121,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>遍历列表(List)时删除元素</title>
@@ -1187,6 +1214,9 @@
 <li>VS Code 中自动补全使用的是 <code>Tab</code> 键。</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
       <tags>
         <tag>wsl</tag>
       </tags>
@@ -1325,6 +1355,12 @@
 <p>输的时候，说什么都像是借口。<br>—— 前 SKT 教练 KKoma 在 2015 年 msi 失利后对队员所说。</p>
 <p>让你枯燥乏味的东西，是你不了解不知道的地方。</p>
 ]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ubuntu的软件源配置和管理工具</title>
@@ -1350,6 +1386,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
   </entry>
   <entry>
     <title>排序算法-Java实现</title>
@@ -1548,6 +1587,12 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>tool</tag>
+      </tags>
   </entry>
   <entry>
     <title>自建 Tiny Tiny RSS 记录</title>
@@ -1721,6 +1766,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>api</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1733,6 +1781,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/2.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/3.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/4.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/5.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/6.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/7.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/8.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/9.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/10.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1745,6 +1799,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/102.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/103.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/104.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/105.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/106.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/107.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/108.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/109.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/110.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1757,6 +1817,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/112.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/113.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/114.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/115.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/116.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/117.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/118.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/119.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/120.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1769,6 +1835,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/122.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1781,6 +1853,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/12.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/13.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/14.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/15.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/16.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/17.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/18.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/19.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/20.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1793,6 +1871,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/32.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/33.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/34.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/35.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/36.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/37.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/38.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/39.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/40.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1805,6 +1889,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/42.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/43.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/44.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/45.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/46.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/47.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/48.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/49.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/50.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1817,6 +1907,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/52.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/53.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/54.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/55.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/56.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/57.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/58.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/59.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/60.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1829,6 +1925,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/62.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/63.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/64.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/65.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/66.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/67.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/68.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/69.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/70.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1841,6 +1943,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/72.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/73.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/74.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/75.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/76.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/77.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/78.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/79.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/80.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1853,6 +1961,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/82.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/83.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/84.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/85.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/86.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/87.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/88.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/89.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/90.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸</title>
@@ -1865,6 +1979,12 @@
 .main-inner { width: 100%; }
 </style>
 <div class="group-picture"><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/92.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/93.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/94.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/95.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/96.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/97.jpg"></div></div><div class="group-picture-row"><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/98.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/99.jpg"></div><div class="group-picture-column"><img data-src="https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/100.jpg"></div></div></div>]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>wallpaper</tag>
+      </tags>
   </entry>
   <entry>
     <title>WIN10系统重装与常用软件安装</title>
@@ -1939,6 +2059,9 @@
       <categories>
         <category>tech</category>
       </categories>
+      <tags>
+        <tag>windows</tag>
+      </tags>
   </entry>
   <entry>
     <title>WSL2 访问 Windows 代理</title>
