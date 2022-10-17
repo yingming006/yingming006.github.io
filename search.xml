@@ -1,187 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GANSS高斯GS87D双模机械键盘</title>
-    <url>/GS87D/</url>
-    <content><![CDATA[<h3 id="蓝牙-x2F-有限模式切换"><a href="#蓝牙-x2F-有限模式切换" class="headerlink" title="蓝牙&#x2F;有限模式切换"></a>蓝牙&#x2F;有限模式切换</h3><p>按下 <code>Fn</code>+<code>P</code> 右上角键盘灯闪烁 3 次, 有线模式和蓝牙模式互相切换。</p>
-<h3 id="连接蓝牙"><a href="#连接蓝牙" class="headerlink" title="连接蓝牙"></a>连接蓝牙</h3><p>长按 <code>Fn</code>+<code>P</code> 直至 <code>P</code> 键快速闪烁, 键盘进入对码状态, 此时能够在电脑&#x2F;手机蓝牙界面搜索到 <code>GS87-D Keyboard</code></p>
-<h3 id="切换蓝牙设备"><a href="#切换蓝牙设备" class="headerlink" title="切换蓝牙设备"></a>切换蓝牙设备</h3><p>按下 <code>Fn</code>+<code>Q/W/E</code>, 右上角键盘灯闪烁 2 次, 切换到 设备1&#x2F;设备2&#x2F;设备3</p>
-<span id="more"></span>
-
-<h3 id="功能键"><a href="#功能键" class="headerlink" title="功能键"></a>功能键</h3><table>
-<thead>
-<tr>
-<th>功能键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Fn</code>+<code>Space</code></td>
-<td>长按 3 秒恢复出厂设置</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>Caps</code></td>
-<td><code>Caps</code> 和 <code>Ctrl</code> 键对调</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>Alt</code></td>
-<td><code>Alt</code> 和 <code>Win</code> 键对调</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F1</code></td>
-<td>个人电脑</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F2</code></td>
-<td>浏览器</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F3</code></td>
-<td>E-mail</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F4</code></td>
-<td>音乐播放器</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F5</code></td>
-<td>上一曲</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F6</code></td>
-<td>下一曲</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F7</code></td>
-<td>播放&#x2F;暂停</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F8</code></td>
-<td>中止</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F9</code></td>
-<td>音量增大</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F10</code></td>
-<td>音量减少</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F11</code></td>
-<td>打开&#x2F;关闭静音</td>
-</tr>
-<tr>
-<td><code>Fn</code>+<code>F12</code></td>
-<td>计算器</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>daily</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>IDEA 无法使用 HTTP Client 的解决过程</title>
-    <url>/IDEA-cannot-use-HTTP-Client-solution-process/</url>
-    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img data-src="https://img-blog.csdnimg.cn/img_convert/cb3a4fc6f56a7257109a386f759c37b4.png" alt="image-20201103111841176"></p>
-<p>点击 <code>Run All Requsets in File</code> &#x3D;&gt; <code>Run with no environment</code> 时，控制台报错如图。</p>
-<span id="more"></span>
-
-<h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>首先在浏览器中测试 GET 请求，请求正常响应，如图</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/a2809879cb44173da7951891ce90dc9f.png" alt="image-20201103112218103"></p>
-<p>然后又在 Postman 中测试也没有问题</p>
-<p>这时想到，应该是 IDEA 的问题了，首先想到的就是插件出了问题，但是 IDEA HTTP Client 没有用到插件，所以说应该不是插件的问题。</p>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>最终经过一番查找，是 IDEA 的代理出了问题，准确说是 IDEA 的代理没有忽略本地地址，导致 IDEA 访问不到本地，所以在 IDEA 代理中设置一下就解决了，配置如图：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/e1e52a8264971abb5d04d2373c547117.png" alt="image-20201103112903111"></p>
-<p>或者是直接关闭代理也可以解决。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正确的使用搜索引擎可以提高问题排查效率。</p>
-<p>尽可能准确的使用关键字查询。</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>idea</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java 开发手册</title>
-    <url>/Java-Development-Manual/</url>
-    <content><![CDATA[<ul>
-<li>Java 开发手册嵩山版 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FsaWJhYmEvcDNj">地址<i class="fa fa-external-link-alt"></i></span><span id="more"></span></li>
-</ul>
-<div class="pdf-container" data-target="/pdf/Java开发手册嵩山版.pdf" data-height="800px"></div>
-]]></content>
-  </entry>
-  <entry>
-    <title>用 Java 实现 LRU算法</title>
-    <url>/LRU-in-java/</url>
-    <content><![CDATA[<h2 id="LRU-简介"><a href="#LRU-简介" class="headerlink" title="LRU 简介"></a>LRU 简介</h2><p>LRU（Least Recently Used）,即最近最少使用。LRU是一种算法，常被应用于操作系统的内存页面置换算法（其他还有FIFO，LFU等）和缓存。</p>
-<p>LRU算法的设计原则是：如果一个数据在最近一段时间没有被访问到，那么在将来它被访问的可能性也很小。也就是说，当限定的空间已存满数据时，应当把最久没有被访问到的数据淘汰。</p>
-<span id="more"></span>
-
-<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>LRU 常用的实现思路是使用 双向链表 + HashMap 的数据结构。链表可以维护数据的有序性，方便数据的插入删除。而HashMap可以使查找删除操作时间复杂度为O（1）。</p>
-<ul>
-<li>访问某个节点时，将其从原来的位置删除，并重新插入到链表头部。这样就能保证链表尾部存储的就是最近最久未使用的节点，当节点数量大于缓存最大空间时就淘汰链表尾部的节点。</li>
-<li>为了使删除操作时间复杂度为 O(1)，就不能采用遍历的方式找到某个节点。HashMap 存储着 Key 到节点的映射，通过 Key 就能以 O(1) 的时间得到节点，然后再以 O(1) 的时间将其从双向队列中删除。</li>
-</ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> lru;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by yingming006 on 2019-09-18 08:47.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LRU</span>&lt;K, V&gt; <span class="keyword">implements</span> <span class="title class_">Iterable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node head;</span><br><span class="line">    <span class="keyword">private</span> Node tail;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;K, Node&gt; map;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        Node pre;</span><br><span class="line">        Node next;</span><br><span class="line">        K k;</span><br><span class="line">        V v;</span><br><span class="line"></span><br><span class="line">        Node(K k, V v) &#123;</span><br><span class="line">            <span class="built_in">this</span>.k = k;</span><br><span class="line">            <span class="built_in">this</span>.v = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LRU</span><span class="params">(<span class="type">int</span> maxSize)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.maxSize = maxSize;</span><br><span class="line">        <span class="built_in">this</span>.map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(maxSize * <span class="number">4</span> / <span class="number">3</span> + <span class="number">1</span>); <span class="comment">// HashMap 的初始化</span></span><br><span class="line"></span><br><span class="line">        head = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        tail = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.pre = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> V <span class="title function_">get</span><span class="params">(K key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">        unlink(node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node.v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(K key, V value)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">            unlink(node);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(key, value);</span><br><span class="line">        map.put(key, node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (map.size() &gt; maxSize) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">toRemove</span> <span class="operator">=</span> removeTail();</span><br><span class="line">            map.remove(toRemove.k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">unlink</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> node.next;</span><br><span class="line"></span><br><span class="line">        pre.next = next;</span><br><span class="line">        next.pre = pre;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">appendHead</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        node.next = next;</span><br><span class="line">        next.pre = node;</span><br><span class="line">        node.pre = head;</span><br><span class="line">        head.next = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node <span class="title function_">removeTail</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> tail.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        tail.pre = pre;</span><br><span class="line">        pre.next = tail;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;K&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Iterator</span>&lt;K&gt;() &#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="type">Node</span> <span class="variable">cur</span> <span class="operator">=</span> head.next;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> cur != tail;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> K <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> cur;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">                <span class="keyword">return</span> node.k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>自建 Tiny Tiny RSS 记录</title>
-    <url>/TTRSS-log/</url>
-    <content><![CDATA[<h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><ul>
-<li>Ubuntu 20.04 LTS</li>
-<li><a href="https://yingming006.cn/install-software-in-ubuntu/#Docker-Composer">Docker-Compose</a></li>
-</ul>
-<h3 id="部署-TTRSS"><a href="#部署-TTRSS" class="headerlink" title="部署 TTRSS"></a>部署 TTRSS</h3><ol>
-<li>下载 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0hlbnJ5UVcvQXdlc29tZS1UVFJTUy9ibG9iL21haW4vZG9ja2VyLWNvbXBvc2UueW1s">docker-compose.yml<i class="fa fa-external-link-alt"></i></span> 至任意目录。</li>
-</ol>
-<span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>更改 <code>docker-compose.yml</code> 的配置：</li>
-</ol>
-<ul>
-<li>SELF_URL_PATH：<span class="exturl" data-url="aHR0cHM6Ly90dHJzcy55aW5nbWluZzAwNi5jbi8=">https://ttrss.yingming006.cn<i class="fa fa-external-link-alt"></i></span><br>TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</li>
-</ul>
-<ol start="3">
-<li>部署启动</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker-compose up -d</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置-HTTPS"><a href="#配置-HTTPS" class="headerlink" title="配置 HTTPS"></a>配置 HTTPS</h3><p>可以参考：<a href="https://yingming006.cn/support-https-with-let-s-encrypt/">启用 HTTPS</a></p>
-<h3 id="TTRSS-网站配置"><a href="#TTRSS-网站配置" class="headerlink" title="TTRSS 网站配置"></a>TTRSS 网站配置</h3><p>登录 TTRSS，打开偏好设置，根据自己的需求进行配置</p>
-<p>推荐打开的配置：</p>
-<ul>
-<li>启用 API</li>
-</ul>
-<p><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGo/ttrss-open-api.png"></p>
-<ul>
-<li>插件<ul>
-<li>fever：开启后可以使用 <code>Fever API</code> 来获取RSS，需要在 <code>Fever Emulation</code> 中设置密码，此密码用于 <code>Fever API</code> 登录</li>
-<li>mercury_fulltext：全文获取</li>
-</ul>
-</li>
-</ul>
-<h3 id="Mercury-全文获取"><a href="#Mercury-全文获取" class="headerlink" title="Mercury 全文获取"></a>Mercury 全文获取</h3><ol>
-<li>偏好设置中启用 <code>mercury-fulltext</code> 插件</li>
-<li>偏好设置-信息源-Mercury Fulltext settins 中设置地址<br>  <img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGomercury-fulltext.png"></li>
-<li>编辑信息源中，插件 tab 下启用 <code>Get fulltext via Mercury Parser</code><br>  <img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGoopen-mercury-fulltext.png"></li>
-</ol>
-<h3 id="部署-RSSHub"><a href="#部署-RSSHub" class="headerlink" title="部署 RSSHub"></a>部署 RSSHub</h3>]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>rss</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>备份 Hexo 博客(精简版)</title>
     <url>/backup-hexo/</url>
     <content><![CDATA[<blockquote>
@@ -384,7 +203,14 @@
 <h4 id="百度收录"><a href="#百度收录" class="headerlink" title="百度收录"></a>百度收录</h4><h5 id="1-添加资源-1"><a href="#1-添加资源-1" class="headerlink" title="1. 添加资源"></a>1. 添加资源</h5><p>打开<span class="exturl" data-url="aHR0cHM6Ly96aXl1YW4uYmFpZHUuY29tL3NpdGU=">Baidu Webmaster<i class="fa fa-external-link-alt"></i></span>，登录，点击<code>添加网站</code>，按步骤选择，在验证网址时选择<code>HTML 标签验证</code>，复制 <code>meta</code> 标签中的 <code>content</code> 值，添加到<code>Next Config</code> 中的<code>baidu_site_verification</code> 即可。</p>
 <h5 id="2-提交-sitemap-xml-1"><a href="#2-提交-sitemap-xml-1" class="headerlink" title="2.提交 sitemap.xml"></a>2.提交 sitemap.xml</h5><p>在网站左侧点击<code>链接提交</code>，选择<code>sitmap</code>提交，输入站点地图网址 <code>https://your-blog-url/sitemap.xml</code>即可。</p>
 <h3 id="Other-Webmaster"><a href="#Other-Webmaster" class="headerlink" title="Other Webmaster"></a>Other Webmaster</h3><p><span class="exturl" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZy9kb2NzL3RoZW1lLXNldHRpbmdzL3Nlby5odG1sI1dlYm1hc3Rlci1Ub29scw==">https://theme-next.js.org/docs/theme-settings/seo.html#Webmaster-Tools<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h2><h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><h3 id="统计与分析"><a href="#统计与分析" class="headerlink" title="统计与分析"></a>统计与分析</h3><h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3>]]></content>
+<h2 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h2><h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><h4 id="waline"><a href="#waline" class="headerlink" title="waline"></a>waline</h4><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dhbGluZWpzL3dhbGluZS90cmVlL21haW4vcGFja2FnZXMvaGV4by1uZXh0">https://github.com/walinejs/waline/tree/main/packages/hexo-next<i class="fa fa-external-link-alt"></i></span></p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install @waline/hexo-next</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p><span class="exturl" data-url="aHR0cHM6Ly93YWxpbmUuanMub3JnL2d1aWRlL2dldC1zdGFydGVkLmh0bWw=">https://waline.js.org/guide/get-started.html<i class="fa fa-external-link-alt"></i></span></p>
+<p>需要用到 <code>LeanCloud</code> 和 <code>Vercel</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Waline Config File</span></span><br><span class="line"><span class="comment"># For more information:</span></span><br><span class="line"><span class="comment"># - https://waline.js.org</span></span><br><span class="line"><span class="comment"># - https://waline.js.org/reference/component.html</span></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="comment"># New! Whether enable this plugin</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Waline server address url, you should set this to your own link</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">https://waline.vercel.app</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Waline library CDN url, you can set this to your preferred CDN</span></span><br><span class="line">  <span class="comment"># libUrl: https://unpkg.com/@waline/client@v2/dist/waline.js</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Waline CSS styles CDN url, you can set this to your preferred CDN</span></span><br><span class="line">  <span class="attr">cssUrl:</span> <span class="string">https://unpkg.com/@waline/client@v2/dist/waline.css</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Custom locales</span></span><br><span class="line">  <span class="comment"># locale:</span></span><br><span class="line">  <span class="comment">#   placeholder: Welcome to comment # Comment box placeholder</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># If false, comment count will only be displayed in post page, not in home page</span></span><br><span class="line">  <span class="attr">commentCount:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Pageviews count, <span class="doctag">Note:</span> You should not enable both `waline.pageview` and `leancloud_visitors`.</span></span><br><span class="line">  <span class="attr">pageview:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Custom emoji</span></span><br><span class="line">  <span class="comment"># emoji:</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/weibo</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/alus</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/bilibili</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/qq</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/tieba</span></span><br><span class="line">  <span class="comment">#   - https://unpkg.com/@waline/emojis@1.1.0/tw-emoji</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Comment information, valid meta are nick, mail and link</span></span><br><span class="line">  <span class="comment"># meta:</span></span><br><span class="line">  <span class="comment">#   - nick</span></span><br><span class="line">  <span class="comment">#   - mail</span></span><br><span class="line">  <span class="comment">#   - link</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Set required meta field, e.g.: [nick] | [nick, mail]</span></span><br><span class="line">  <span class="attr">requiredMeta:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Language, available values: en-US, zh-CN, zh-TW, pt-BR, ru-RU, jp-JP</span></span><br><span class="line">  <span class="comment"># lang: zh-CN</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Word limit, no limit when setting to 0</span></span><br><span class="line">  <span class="comment"># wordLimit: 0</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Whether enable login, can choose from &#x27;enable&#x27;, &#x27;disable&#x27; and &#x27;force&#x27;</span></span><br><span class="line">  <span class="comment"># login: enable</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># comment per page</span></span><br><span class="line">  <span class="comment"># pageSize: 10</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="统计与分析"><a href="#统计与分析" class="headerlink" title="统计与分析"></a>统计与分析</h3><h3 id="本地搜索"><a href="#本地搜索" class="headerlink" title="本地搜索"></a>本地搜索</h3>]]></content>
       <categories>
         <category>tech</category>
       </categories>
@@ -432,7 +258,7 @@
   </entry>
   <entry>
     <title>爬取慕课实战课程-Java</title>
-    <url>/crawling-MOOC-courses-in-java/</url>
+    <url>/crawling-mooc-courses-in-java/</url>
     <content><![CDATA[<p>今天偶然间看到一篇关于 Java 爬虫入门的博客，想到以前就学过一点爬虫，于是乎就在博客的基础上写了一个 demo，用来爬取慕课网的实战课程。</p>
 <p>首先需要发送 HTTP 请求到网页，用到了 HttpURLConnection 类，具体如下：</p>
 <span id="more"></span>
@@ -541,6 +367,111 @@
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GANSS高斯GS87D双模机械键盘</title>
+    <url>/gs87d/</url>
+    <content><![CDATA[<h3 id="蓝牙-x2F-有限模式切换"><a href="#蓝牙-x2F-有限模式切换" class="headerlink" title="蓝牙&#x2F;有限模式切换"></a>蓝牙&#x2F;有限模式切换</h3><p>按下 <code>Fn</code>+<code>P</code> 右上角键盘灯闪烁 3 次, 有线模式和蓝牙模式互相切换。</p>
+<h3 id="连接蓝牙"><a href="#连接蓝牙" class="headerlink" title="连接蓝牙"></a>连接蓝牙</h3><p>长按 <code>Fn</code>+<code>P</code> 直至 <code>P</code> 键快速闪烁, 键盘进入对码状态, 此时能够在电脑&#x2F;手机蓝牙界面搜索到 <code>GS87-D Keyboard</code></p>
+<h3 id="切换蓝牙设备"><a href="#切换蓝牙设备" class="headerlink" title="切换蓝牙设备"></a>切换蓝牙设备</h3><p>按下 <code>Fn</code>+<code>Q/W/E</code>, 右上角键盘灯闪烁 2 次, 切换到 设备1&#x2F;设备2&#x2F;设备3</p>
+<span id="more"></span>
+
+<h3 id="功能键"><a href="#功能键" class="headerlink" title="功能键"></a>功能键</h3><table>
+<thead>
+<tr>
+<th>功能键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Fn</code>+<code>Space</code></td>
+<td>长按 3 秒恢复出厂设置</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>Caps</code></td>
+<td><code>Caps</code> 和 <code>Ctrl</code> 键对调</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>Alt</code></td>
+<td><code>Alt</code> 和 <code>Win</code> 键对调</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F1</code></td>
+<td>个人电脑</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F2</code></td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F3</code></td>
+<td>E-mail</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F4</code></td>
+<td>音乐播放器</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F5</code></td>
+<td>上一曲</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F6</code></td>
+<td>下一曲</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F7</code></td>
+<td>播放&#x2F;暂停</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F8</code></td>
+<td>中止</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F9</code></td>
+<td>音量增大</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F10</code></td>
+<td>音量减少</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F11</code></td>
+<td>打开&#x2F;关闭静音</td>
+</tr>
+<tr>
+<td><code>Fn</code>+<code>F12</code></td>
+<td>计算器</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>IDEA 无法使用 HTTP Client 的解决过程</title>
+    <url>/idea-cannot-use-http-client-solution-process/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img data-src="https://img-blog.csdnimg.cn/img_convert/cb3a4fc6f56a7257109a386f759c37b4.png" alt="image-20201103111841176"></p>
+<p>点击 <code>Run All Requsets in File</code> &#x3D;&gt; <code>Run with no environment</code> 时，控制台报错如图。</p>
+<span id="more"></span>
+
+<h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>首先在浏览器中测试 GET 请求，请求正常响应，如图</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/a2809879cb44173da7951891ce90dc9f.png" alt="image-20201103112218103"></p>
+<p>然后又在 Postman 中测试也没有问题</p>
+<p>这时想到，应该是 IDEA 的问题了，首先想到的就是插件出了问题，但是 IDEA HTTP Client 没有用到插件，所以说应该不是插件的问题。</p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>最终经过一番查找，是 IDEA 的代理出了问题，准确说是 IDEA 的代理没有忽略本地地址，导致 IDEA 访问不到本地，所以在 IDEA 代理中设置一下就解决了，配置如图：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/e1e52a8264971abb5d04d2373c547117.png" alt="image-20201103112903111"></p>
+<p>或者是直接关闭代理也可以解决。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正确的使用搜索引擎可以提高问题排查效率。</p>
+<p>尽可能准确的使用关键字查询。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
       </tags>
   </entry>
   <entry>
@@ -672,53 +603,28 @@
       </categories>
   </entry>
   <entry>
-    <title>【转】Java transient 关键字使用小记</title>
-    <url>/java-transient/</url>
-    <content><![CDATA[<p>原文地址：<span class="exturl" data-url="aHR0cHM6Ly9ub3RlLnlvdWRhby5jb20v">https://www.cnblogs.com/lanxuezaipiao/p/3369962.html<i class="fa fa-external-link-alt"></i></span></p>
-<h2 id="1-transient的作用及使用方法"><a href="#1-transient的作用及使用方法" class="headerlink" title="1. transient的作用及使用方法"></a>1. transient的作用及使用方法</h2><p>我们都知道一个对象只要实现了Serilizable接口，这个对象就可以被序列化，java的这种序列化模式为开发者提供了很多便利，我们可以不必关系具体序列化的过程，只要这个类实现了Serilizable接口，这个类的所有属性和方法都会自动序列化。</p>
-<p>然而在实际开发过程中，我们常常会遇到这样的问题，这个类的有些属性需要序列化，而其他属性不需要被序列化，打个比方，如果一个用户有一些敏感信息（如密码，银行卡号等），为了安全起见，不希望在网络操作（主要涉及到序列化操作，本地序列化缓存也适用）中被传输，这些信息对应的变量就可以加上transient关键字。换句话说，这个字段的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
-<p>总之，java 的transient关键字为我们提供了便利，你只需要实现Serilizable接口，将不需要序列化的属性前添加关键字transient，序列化对象的时候，这个属性就不会序列化到指定的目的地中。</p>
+    <title>Java 开发手册</title>
+    <url>/java-development-manual/</url>
+    <content><![CDATA[<ul>
+<li>Java 开发手册嵩山版 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FsaWJhYmEvcDNj">地址<i class="fa fa-external-link-alt"></i></span><span id="more"></span></li>
+</ul>
+<div class="pdf-container" data-target="/pdf/Java开发手册嵩山版.pdf" data-height="800px"></div>
+]]></content>
+  </entry>
+  <entry>
+    <title>用 Java 实现 LRU算法</title>
+    <url>/lru-in-java/</url>
+    <content><![CDATA[<h2 id="LRU-简介"><a href="#LRU-简介" class="headerlink" title="LRU 简介"></a>LRU 简介</h2><p>LRU（Least Recently Used）,即最近最少使用。LRU是一种算法，常被应用于操作系统的内存页面置换算法（其他还有FIFO，LFU等）和缓存。</p>
+<p>LRU算法的设计原则是：如果一个数据在最近一段时间没有被访问到，那么在将来它被访问的可能性也很小。也就是说，当限定的空间已存满数据时，应当把最久没有被访问到的数据淘汰。</p>
 <span id="more"></span>
 
-<p>示例 code 如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 使用transient关键字不序列化某个变量</span></span><br><span class="line"><span class="comment"> *        注意读取的时候，读取数据的顺序一定要和存放数据的顺序保持一致</span></span><br><span class="line"><span class="comment"> *        </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Alexia</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>  2013-10-15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransientTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setUsername(<span class="string">&quot;Alexia&quot;</span>);</span><br><span class="line">        user.setPasswd(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;read before Serializable: &quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;username: &quot;</span> + user.getUsername());</span><br><span class="line">        System.err.println(<span class="string">&quot;password: &quot;</span> + user.getPasswd());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ObjectOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(</span><br><span class="line">                    <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/user.txt&quot;</span>));</span><br><span class="line">            os.writeObject(user); <span class="comment">// 将User对象写进文件</span></span><br><span class="line">            os.flush();</span><br><span class="line">            os.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ObjectInputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(</span><br><span class="line">                    <span class="string">&quot;C:/user.txt&quot;</span>));</span><br><span class="line">            user = (User) is.readObject(); <span class="comment">// 从流中读取User的数据</span></span><br><span class="line">            is.close();</span><br><span class="line">            </span><br><span class="line">            System.out.println(<span class="string">&quot;\nread after Serializable: &quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;username: &quot;</span> + user.getUsername());</span><br><span class="line">            System.err.println(<span class="string">&quot;password: &quot;</span> + user.getPasswd());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">8294180014912103005L</span>;  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> String passwd;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUsername</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUsername</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPasswd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> passwd;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPasswd</span><span class="params">(String passwd)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.passwd = passwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出为：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">read before Serializable: </span><br><span class="line">username: Alexia</span><br><span class="line">password: <span class="number">123456</span></span><br><span class="line"></span><br><span class="line">read after Serializable: </span><br><span class="line">username: Alexia</span><br><span class="line">password: <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-
-<p>密码字段为null，说明反序列化时根本没有从文件中获取到信息。</p>
-<h2 id="2-transient使用小结"><a href="#2-transient使用小结" class="headerlink" title="2. transient使用小结"></a>2. transient使用小结</h2><ol>
-<li><p>一旦变量被transient修饰，变量将不再是对象持久化的一部分，该变量内容在序列化后无法获得访问。</p>
-</li>
-<li><p>transient关键字只能修饰变量，而不能修饰方法和类。注意，本地变量是不能被transient关键字修饰的。变量如果是用户自定义类变量，则该类需要实现Serializable接口。</p>
-</li>
-<li><p>被transient关键字修饰的变量不再能被序列化，一个静态变量不管是否被transient修饰，均不能被序列化。</p>
-</li>
-</ol>
-<p>第三点可能有些人很迷惑，因为发现在User类中的username字段前加上static关键字后，程序运行结果依然不变，即static类型的username也读出来为“Alexia”了，这不与第三点说的矛盾吗？实际上是这样的：第三点确实没错（一个静态变量不管是否被transient修饰，均不能被序列化），反序列化后类中static型变量username的值为当前JVM中对应static变量的值，这个值是JVM中的不是反序列化得出的，不相信？好吧，下面我来证明：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 使用transient关键字不序列化某个变量</span></span><br><span class="line"><span class="comment"> *        注意读取的时候，读取数据的顺序一定要和存放数据的顺序保持一致</span></span><br><span class="line"><span class="comment"> *        </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Alexia</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>  2013-10-15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TransientTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setUsername(<span class="string">&quot;Alexia&quot;</span>);</span><br><span class="line">        user.setPasswd(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;read before Serializable: &quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;username: &quot;</span> + user.getUsername());</span><br><span class="line">        System.err.println(<span class="string">&quot;password: &quot;</span> + user.getPasswd());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">ObjectOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(</span><br><span class="line">                    <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/user.txt&quot;</span>));</span><br><span class="line">            os.writeObject(user); <span class="comment">// 将User对象写进文件</span></span><br><span class="line">            os.flush();</span><br><span class="line">            os.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 在反序列化之前改变username的值</span></span><br><span class="line">            User.username = <span class="string">&quot;jmwang&quot;</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="type">ObjectInputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(</span><br><span class="line">                    <span class="string">&quot;C:/user.txt&quot;</span>));</span><br><span class="line">            user = (User) is.readObject(); <span class="comment">// 从流中读取User的数据</span></span><br><span class="line">            is.close();</span><br><span class="line">            </span><br><span class="line">            System.out.println(<span class="string">&quot;\nread after Serializable: &quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;username: &quot;</span> + user.getUsername());</span><br><span class="line">            System.err.println(<span class="string">&quot;password: &quot;</span> + user.getPasswd());</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">8294180014912103005L</span>;  </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String username;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> String passwd;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUsername</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUsername</span><span class="params">(String username)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPasswd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> passwd;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPasswd</span><span class="params">(String passwd)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.passwd = passwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果为：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">read before Serializable: </span><br><span class="line">username: Alexia</span><br><span class="line">password: <span class="number">123456</span></span><br><span class="line"></span><br><span class="line">read after Serializable: </span><br><span class="line">username: jmwang</span><br><span class="line">password: <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-
-<p>这说明反序列化后类中static型变量username的值为当前JVM中对应static变量的值，为修改后jmwang，而不是序列化时的值Alexia。</p>
-<h2 id="3-transient使用细节——被transient关键字修饰的变量真的不能被序列化吗？"><a href="#3-transient使用细节——被transient关键字修饰的变量真的不能被序列化吗？" class="headerlink" title="3. transient使用细节——被transient关键字修饰的变量真的不能被序列化吗？"></a>3. transient使用细节——被transient关键字修饰的变量真的不能被序列化吗？</h2><p>思考下面的例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.Externalizable;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInput;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutput;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@descripiton</span> Externalizable接口的使用</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Alexia</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2013-10-15</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExternalizableTest</span> <span class="keyword">implements</span> <span class="title class_">Externalizable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> <span class="string">&quot;是的，我将会被序列化，不管我是否被transient关键字修饰&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">writeExternal</span><span class="params">(ObjectOutput out)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        out.writeObject(content);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readExternal</span><span class="params">(ObjectInput in)</span> <span class="keyword">throws</span> IOException,</span><br><span class="line">            ClassNotFoundException &#123;</span><br><span class="line">        content = (String) in.readObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">ExternalizableTest</span> <span class="variable">et</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ExternalizableTest</span>();</span><br><span class="line">        <span class="type">ObjectOutput</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;test&quot;</span>)));</span><br><span class="line">        out.writeObject(et);</span><br><span class="line"></span><br><span class="line">        <span class="type">ObjectInput</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(</span><br><span class="line">                <span class="string">&quot;test&quot;</span>)));</span><br><span class="line">        et = (ExternalizableTest) in.readObject();</span><br><span class="line">        System.out.println(et.content);</span><br><span class="line"></span><br><span class="line">        out.close();</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>content变量会被序列化吗？好吧，我把答案都输出来了，是的，运行结果就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">是的，我将会被序列化，不管我是否被transient关键字修饰</span><br></pre></td></tr></table></figure>
-
-<p>这是为什么呢，不是说类的变量被transient关键字修饰以后将不能序列化了吗？</p>
-<p>我们知道在Java中，对象的序列化可以通过实现两种接口来实现，若实现的是Serializable接口，则所有的序列化将会自动进行，若实现的是Externalizable接口，则没有任何东西可以自动序列化，需要在writeExternal方法中进行手工指定所要序列化的变量，这与是否被transient修饰无关。因此第二个例子输出的是变量content初始化的内容，而不是null。</p>
-<hr>
-<p>因为在学习总结 Java 集合的内容，发现其中有很多内部数组使用 transient 修饰的，所有就找到了这篇文章，在此转载一下。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>LRU 常用的实现思路是使用 双向链表 + HashMap 的数据结构。链表可以维护数据的有序性，方便数据的插入删除。而HashMap可以使查找删除操作时间复杂度为O（1）。</p>
+<ul>
+<li>访问某个节点时，将其从原来的位置删除，并重新插入到链表头部。这样就能保证链表尾部存储的就是最近最久未使用的节点，当节点数量大于缓存最大空间时就淘汰链表尾部的节点。</li>
+<li>为了使删除操作时间复杂度为 O(1)，就不能采用遍历的方式找到某个节点。HashMap 存储着 Key 到节点的映射，通过 Key 就能以 O(1) 的时间得到节点，然后再以 O(1) 的时间将其从双向队列中删除。</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> lru;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by yingming006 on 2019-09-18 08:47.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LRU</span>&lt;K, V&gt; <span class="keyword">implements</span> <span class="title class_">Iterable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node head;</span><br><span class="line">    <span class="keyword">private</span> Node tail;</span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;K, Node&gt; map;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        Node pre;</span><br><span class="line">        Node next;</span><br><span class="line">        K k;</span><br><span class="line">        V v;</span><br><span class="line"></span><br><span class="line">        Node(K k, V v) &#123;</span><br><span class="line">            <span class="built_in">this</span>.k = k;</span><br><span class="line">            <span class="built_in">this</span>.v = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LRU</span><span class="params">(<span class="type">int</span> maxSize)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.maxSize = maxSize;</span><br><span class="line">        <span class="built_in">this</span>.map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(maxSize * <span class="number">4</span> / <span class="number">3</span> + <span class="number">1</span>); <span class="comment">// HashMap 的初始化</span></span><br><span class="line"></span><br><span class="line">        head = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        tail = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.pre = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> V <span class="title function_">get</span><span class="params">(K key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!map.containsKey(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">        unlink(node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node.v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(K key, V value)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (map.containsKey(key)) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">            unlink(node);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(key, value);</span><br><span class="line">        map.put(key, node);</span><br><span class="line">        appendHead(node);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (map.size() &gt; maxSize) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">toRemove</span> <span class="operator">=</span> removeTail();</span><br><span class="line">            map.remove(toRemove.k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">unlink</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> node.next;</span><br><span class="line"></span><br><span class="line">        pre.next = next;</span><br><span class="line">        next.pre = pre;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">appendHead</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        node.next = next;</span><br><span class="line">        next.pre = node;</span><br><span class="line">        node.pre = head;</span><br><span class="line">        head.next = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Node <span class="title function_">removeTail</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> tail.pre;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">pre</span> <span class="operator">=</span> node.pre;</span><br><span class="line">        tail.pre = pre;</span><br><span class="line">        pre.next = tail;</span><br><span class="line"></span><br><span class="line">        node.next = <span class="literal">null</span>;</span><br><span class="line">        node.pre = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;K&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Iterator</span>&lt;K&gt;() &#123;</span><br><span class="line">            <span class="keyword">private</span> <span class="type">Node</span> <span class="variable">cur</span> <span class="operator">=</span> head.next;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> cur != tail;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> K <span class="title function_">next</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> cur;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">                <span class="keyword">return</span> node.k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
   </entry>
   <entry>
     <title>Maven 简介和 pom.xml 文件简析</title>
@@ -1473,7 +1379,7 @@
   </entry>
   <entry>
     <title>SQL命令:DDL,DQL,DML,DCL和TCL</title>
-    <url>/sql-commond-DDL-DQL-DML-DCL-TCL/</url>
+    <url>/sql-commond-ddl-dql-dml-dcl-tcl/</url>
     <content><![CDATA[<img data-src="https://i.loli.net/2019/11/14/ptPu9y2gIsFjl7U.png" >
 
 <p>SQL 是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统。 SQL使用某些命令（例如，创建，删除，插入等）来执行所需的任务。 </p>
@@ -1642,6 +1548,58 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>自建 Tiny Tiny RSS 记录</title>
+    <url>/ttrss-log/</url>
+    <content><![CDATA[<h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><ul>
+<li>Ubuntu 20.04 LTS</li>
+<li><a href="https://yingming006.cn/install-software-in-ubuntu/#Docker-Composer">Docker-Compose</a></li>
+</ul>
+<h3 id="部署-TTRSS"><a href="#部署-TTRSS" class="headerlink" title="部署 TTRSS"></a>部署 TTRSS</h3><ol>
+<li>下载 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0hlbnJ5UVcvQXdlc29tZS1UVFJTUy9ibG9iL21haW4vZG9ja2VyLWNvbXBvc2UueW1s">docker-compose.yml<i class="fa fa-external-link-alt"></i></span> 至任意目录。</li>
+</ol>
+<span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>更改 <code>docker-compose.yml</code> 的配置：</li>
+</ol>
+<ul>
+<li>SELF_URL_PATH：<span class="exturl" data-url="aHR0cHM6Ly90dHJzcy55aW5nbWluZzAwNi5jbi8=">https://ttrss.yingming006.cn<i class="fa fa-external-link-alt"></i></span><br>TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</li>
+</ul>
+<ol start="3">
+<li>部署启动</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置-HTTPS"><a href="#配置-HTTPS" class="headerlink" title="配置 HTTPS"></a>配置 HTTPS</h3><p>可以参考：<a href="https://yingming006.cn/support-https-with-let-s-encrypt/">启用 HTTPS</a></p>
+<h3 id="TTRSS-网站配置"><a href="#TTRSS-网站配置" class="headerlink" title="TTRSS 网站配置"></a>TTRSS 网站配置</h3><p>登录 TTRSS，打开偏好设置，根据自己的需求进行配置</p>
+<p>推荐打开的配置：</p>
+<ul>
+<li>启用 API</li>
+</ul>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGo/ttrss-open-api.png"></p>
+<ul>
+<li>插件<ul>
+<li>fever：开启后可以使用 <code>Fever API</code> 来获取RSS，需要在 <code>Fever Emulation</code> 中设置密码，此密码用于 <code>Fever API</code> 登录</li>
+<li>mercury_fulltext：全文获取</li>
+</ul>
+</li>
+</ul>
+<h3 id="Mercury-全文获取"><a href="#Mercury-全文获取" class="headerlink" title="Mercury 全文获取"></a>Mercury 全文获取</h3><ol>
+<li>偏好设置中启用 <code>mercury-fulltext</code> 插件</li>
+<li>偏好设置-信息源-Mercury Fulltext settins 中设置地址<br>  <img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGomercury-fulltext.png"></li>
+<li>编辑信息源中，插件 tab 下启用 <code>Get fulltext via Mercury Parser</code><br>  <img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGoopen-mercury-fulltext.png"></li>
+</ol>
+<h3 id="部署-RSSHub"><a href="#部署-RSSHub" class="headerlink" title="部署 RSSHub"></a>部署 RSSHub</h3>]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>rss</tag>
+      </tags>
   </entry>
   <entry>
     <title>壁纸 Api</title>
