@@ -1,0 +1,18 @@
+<script type="text/javascript">
+
+    function changeBackground() {
+        let imgUrl = 'https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/' + (parseInt(Math.floor(Math.random() * 121)) + 1) + '.jpg';
+        document.body.style.backgroundImage = "url(" + imgUrl + ")";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundAttachment = "fixed";
+        document.body.style.backgroundPosition = "center";
+        document.body.ondblclick = function () {
+            changeBackground();
+        }
+    }
+
+    setTimeout(changeBackground, 100);
+
+    setInterval(changeBackground, 1000 * 10);
+</script>
