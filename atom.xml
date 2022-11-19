@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Yingming&#39;s Blog</title>
   
-  <subtitle>积跬步，至千里</subtitle>
+  
   <link href="https://yingming006.cn/atom.xml" rel="self"/>
   
   <link href="https://yingming006.cn/"/>
-  <updated>2022-10-25T08:22:27.000Z</updated>
+  <updated>2022-11-19T15:03:25.000Z</updated>
   <id>https://yingming006.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件备份</title>
+    <link href="https://yingming006.cn/win-and-android-software/"/>
+    <id>https://yingming006.cn/win-and-android-software/</id>
+    <published>2022-11-01T15:03:25.000Z</published>
+    <updated>2022-11-19T15:03:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h4 id="UWP应用"><a href="#UWP应用" class="headerlink" title="UWP应用"></a>UWP应用</h4><ul><li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL25hbmF6aXAvOU44RzdUU0NMMThS">NanaZip(7-zip 替代品)<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9wL3NuaXBhc3RlLzlwMXd4cGtiNjhreA==">Snipaste<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9lYXJ0cnVtcGV0LmFwcC8=">EarTrumpet<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL3N0ZWFtcHAubmV0Lw==">Watt Toolkit「原名 Steam++」<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsLyVFNyU4OCVCMSVFNSVBMyU4MSVFNyVCQSVCOHV3cC85TkJMR0dINUtDQ0Y=">爱壁纸<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL3dpbmRvd3MtdGVybWluYWwvOU4wRFgyMEhLNzAx">Windows Terminal<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL3VidW50dS85UERYR05DRlNDWlY=">Ubuntu<i class="fa fa-external-link-alt"></i></span></li></ul><span id="more"></span><h4 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h4><ul><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudm9pZHRvb2xzLmNvbS96aC1jbi8=">Everything<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFuZGlzb2Z0LmNvbS9ob25leXZpZXcv">Honeyview<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL3d3dy5wb3RwbGF5ZXJjbi5jb20v">PotPlayer<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">Typora<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly91LnRvb2xzLw==">uTools<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0ZuZHJvaWQvY2xhc2hfZm9yX3dpbmRvd3NfcGtn">Clash for Windows<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3pob25neWFuZzIxOS9UcmFmZmljTW9uaXRvcg==">TrafficMonitor<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9nZWVrdW5pbnN0YWxsZXIuY29tLw==">geek Uninstaller<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9pbS5xcS5jb20v">QQ<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9wYy53ZWl4aW4ucXEuY29tLw==">微信<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">迅雷<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL3d3dy5mZmhvbWUuY29tL3dvcmtzL2ZmcmVuYW1lcHJvLzE0MDYuaHRtbA==">菲菲更名宝贝<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">解锁文件IObit Unlocker<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9wYW5kb3dubG9hZC5uZXQv">pandownload<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cudG9kZXNrLmNvbS8=">toDesk<i class="fa fa-external-link-alt"></i></span></li></ul><h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><ul><li><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS8=">Git<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaGVpZGlzcWwuY29tLw==">HeidiSQL<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamV0YnJhaW5zLmNvbS9pZGVhL2Rvd25sb2FkLyNzZWN0aW9uPXdpbmRvd3M=">IDEA<i class="fa fa-external-link-alt"></i></span>  <span class="exturl" data-url="aHR0cDovL2lkZWEuamF2YXRpa3UuY24vP2NvZGU9MTU3Ng==">code<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5qZGsuY24v">JDK<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">VSCode<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cDovL25vZGVqcy5jbi8=">Node.js<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly93aW5zY3AubmV0L2VuZy9kb2NzL2xhbmc6Y2hz">WinSCP<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">postman<i class="fa fa-external-link-alt"></i></span></li></ul><h3 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h3><h4 id="常用软件-1"><a href="#常用软件-1" class="headerlink" title="常用软件"></a>常用软件</h4><p><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvcGhvbmUv">备份地址<i class="fa fa-external-link-alt"></i></span></p><ul><li>QQ</li><li>微信</li><li>钱迹</li><li>QQ邮箱</li><li>喜马拉雅听书</li><li>网易云音乐</li><li>闲鱼</li><li>支付宝</li><li>锤子便签</li><li>高德地图</li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0tyMzI4L0NsYXNoRm9yQW5kcm9pZA==">Clash for Android<i class="fa fa-external-link-alt"></i></span></li><li>京东</li><li>招商银行</li><li>MT管理器</li><li>淘宝</li><li>阿里巴巴</li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dlZG9vci9sZWdhZG8=">阅读<i class="fa fa-external-link-alt"></i></span></li><li>网上国网</li><li>中国移动</li><li>e充电</li><li>邮储银行</li><li>阿里云盘</li><li>酷安</li><li>哔哩哔哩</li><li>李跳跳(公众号：大小姐李跳跳)</li><li>冰箱</li><li>MIUI5G开关</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h2&gt;&lt;h4 id=&quot;UWP应用&quot;&gt;&lt;a href=&quot;#UWP应用&quot; class=&quot;headerlink&quot; title=&quot;UWP应用&quot;&gt;&lt;/a&gt;UWP应用&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://apps.microsoft.com/store/detail/nanazip/9N8G7TSCL18R&quot;&gt;NanaZip(7-zip 替代品)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/zh-cn/p/snipaste/9p1wxpkb68kx&quot;&gt;Snipaste&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://eartrumpet.app/&quot;&gt;EarTrumpet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://steampp.net/&quot;&gt;Watt Toolkit「原名 Steam++」&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://apps.microsoft.com/store/detail/%E7%88%B1%E5%A3%81%E7%BA%B8uwp/9NBLGGH5KCCF&quot;&gt;爱壁纸&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701&quot;&gt;Windows Terminal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV&quot;&gt;Ubuntu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="tech" scheme="https://yingming006.cn/categories/tech/"/>
+    
+    
+    <category term="software" scheme="https://yingming006.cn/tags/software/"/>
+    
+    <category term="win" scheme="https://yingming006.cn/tags/win/"/>
+    
+    <category term="andriod" scheme="https://yingming006.cn/tags/andriod/"/>
+    
+  </entry>
   
   <entry>
     <title>壁纸</title>
@@ -368,17 +401,15 @@
     <link href="https://yingming006.cn/tools/"/>
     <id>https://yingming006.cn/tools/</id>
     <published>2022-03-08T07:10:44.000Z</published>
-    <updated>2022-10-14T08:22:27.000Z</updated>
+    <updated>2022-11-19T08:22:27.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul><li><p><a href="/QRCode">二维码</a></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly9jLnJ1bm9vYi5jb20v">菜鸟工具<i class="fa fa-external-link-alt"></i></span></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly9uY20tYXBpLnlpbmdtaW5nMDA2LmNuLw==">netease cloud music api<i class="fa fa-external-link-alt"></i></span></p></li><li><p><a href="/reference-books">工具书</a></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly93YW50cXVvdGVzLm5ldC8=">WantQuotes据意查句<i class="fa fa-external-link-alt"></i></span></p></li></ul><h3 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h3><ul><li><p><a href="/adarkroom">a dark rome</a></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5ZXIueWluZ21pbmcwMDYuY24v">record player<i class="fa fa-external-link-alt"></i></span></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly95cG0ueWluZ21pbmcwMDYuY24v">yes play music<i class="fa fa-external-link-alt"></i></span></p></li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li><p><a href="/QRCode" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">二维码<i class="fa fa-external-link-alt"></i></a></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly9jLnJ1bm9vYi5jb20v">菜鸟工具<i class="fa fa-external-link-alt"></i></span></p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly93YW50cXVvdGVzLm5ldC8=">WantQuotes据意查句<i class="fa fa-external-link-alt"></i></span></p></li><li><p><a href="/adarkroom" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">a dark rome<i class="fa fa-external-link-alt"></i></a></p><p>文字冒险游戏</p></li><li><p><span class="exturl" data-url="aHR0cHM6Ly9kZXYuYXlvdXRoLnh5ei8=">影视站点推荐<i class="fa fa-external-link-alt"></i></span></p></li><li><p><a href="/dynamic-wallpaper" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">幻灯片播放<i class="fa fa-external-link-alt"></i></a></p></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/QRCode&quot;&gt;二维码&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;span class=&quot;extur</summary>
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/QRCode&quot; rel=&quot;noopener external nofollow noreferrer&quot; target=&quot;_blank&quot; class=&quot;exturl&quot; title=&quot;&quot;&gt;二维码&lt;i class=&quot;fa fa-externa</summary>
       
     
     
@@ -446,34 +477,6 @@
     
     
     <category term="https" scheme="https://yingming006.cn/tags/https/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 VS Code 和 WSL 搭建 C++ 开发环境</title>
-    <link href="https://yingming006.cn/run-cpp-use-vscode-in-wsl/"/>
-    <id>https://yingming006.cn/run-cpp-use-vscode-in-wsl/</id>
-    <published>2021-02-25T03:09:53.000Z</published>
-    <updated>2022-10-17T07:15:25.360Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文整理自 Visual Studio Code 官方说明文档 <span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vZG9jcy9jcHAvY29uZmlnLXdzbA==">Using C++ and WSL in VS Code<i class="fa fa-external-link-alt"></i></span>，对文档内容做了一些简化。</p><blockquote><p>在本教程中，将配置 Visual Studio Code 以在 Linux 的 Windows 子系统（WSL） Ubuntu 上使用 GCC C++编译器（g++） 和 GDB 调试器。GCC 代表 GNU 编译器集合；GDB 是 GNU 调试器。WSL 是 Windows 中的 Linux 环境，它可以直接在计算机硬件上运行，而不是在虚拟机中运行。</p></blockquote><h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><ul><li>安装 WSL，<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC13aW4xMA==">官方文档<i class="fa fa-external-link-alt"></i></span></li><li>安装 VS Code，<span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20vRG93bmxvYWQ=">官方下载地址<i class="fa fa-external-link-alt"></i></span></li></ul><span id="more"></span><h3 id="WSL-配置"><a href="#WSL-配置" class="headerlink" title="WSL 配置"></a>WSL 配置</h3><p>根据官方文档安装之后进入 WSL，首先安装编译和调试工具</p><blockquote><p>需要更换镜像请参阅 <a href="https://yingming006.cn/change-ubuntu-repository-mirror-sources/">更换Ubuntu镜像源</a></p></blockquote><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential gdb</span><br></pre></td></tr></table></figure><p>安装之后确认是否安装成功</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whereis g++</span><br><span class="line">whereis gdb</span><br></pre></td></tr></table></figure><p><img data-src="https://i.loli.net/2021/02/25/nSlRcFQD65pvHCf.png" alt="image-20210225100530080"></p><h3 id="通过-WSL-启动-VS-Code"><a href="#通过-WSL-启动-VS-Code" class="headerlink" title="通过 WSL 启动 VS Code"></a>通过 WSL 启动 VS Code</h3><p>新建一个项目文件夹，进入文件夹中，通过 <code>code .</code> 命令启动 WSL</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> helloworld</span><br><span class="line"><span class="built_in">cd</span> helloworld</span><br><span class="line">code .</span><br></pre></td></tr></table></figure><blockquote><p>在这一步通常会自动进行安装 <span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPW1zLXZzY29kZS1yZW1vdGUucmVtb3RlLXdzbA==">Remote - WSL<i class="fa fa-external-link-alt"></i></span>，也可以在 VS Code 手动安装</p></blockquote><h3 id="配置-VS-Code"><a href="#配置-VS-Code" class="headerlink" title="配置 VS Code"></a>配置 VS Code</h3><p>安装  <span class="exturl" data-url="aHR0cHM6Ly9tYXJrZXRwbGFjZS52aXN1YWxzdHVkaW8uY29tL2l0ZW1zP2l0ZW1OYW1lPW1zLXZzY29kZS5jcHB0b29scw==">Microsoft C&#x2F;C++ extension<i class="fa fa-external-link-alt"></i></span> </p><h3 id="新建-cpp-文件"><a href="#新建-cpp-文件" class="headerlink" title="新建 cpp 文件"></a>新建 cpp 文件</h3><figure class="highlight c++"><figcaption><span>helloworld.cpp</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   vector&lt;string&gt; msg &#123;<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;C++&quot;</span>, <span class="string">&quot;World&quot;</span>, <span class="string">&quot;from&quot;</span>, <span class="string">&quot;VS Code&quot;</span>, <span class="string">&quot;and the C++ extension!&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span> (<span class="type">const</span> string&amp; word : msg)</span><br><span class="line">   &#123;</span><br><span class="line">      cout &lt;&lt; word &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="编译-cpp-文件"><a href="#编译-cpp-文件" class="headerlink" title="编译 cpp 文件"></a>编译 cpp 文件</h3><ol><li><p>在菜单栏中，选择 <code>Terminal</code> &gt; <code>Configure Default Build Task</code>，在弹出下拉栏中选择 <code>g ++ build active file</code></p><p> 之后就会在当前根目录中生成 <code>.vscode/tasks.json</code> 文件</p></li><li><p>使用快捷键 <code>Ctrl + Shift + B</code> 编译文件</p><p> 编译任务开始后，可以在终端界面中看到输出信息</p></li></ol><p><img data-src="https://i.loli.net/2021/02/25/8eUoBvS6LK57FI3.png" alt="image-20210225103331854"></p><ol start="3"><li>在终端执行文件：<code>./helloworld</code></li></ol><h3 id="调试-cpp-文件"><a href="#调试-cpp-文件" class="headerlink" title="调试 cpp 文件"></a>调试 cpp 文件</h3><ol><li><p>在菜单栏中，选择 <code>Run</code> &gt; <code>Add Configuration...</code>，在弹出下拉栏中选择 <code>C++ (GDB/LLDB)</code>，然后选择 <code>g++ build and debug active file</code></p><p> 之后会在当前根目录下生成 <code>.vscode/launch.json</code></p></li><li><p>打开 <code>helloworld.cpp</code>，选择断点，使用快捷键 <code>F5</code> 或者在菜单栏选择 <code>Run</code> &gt; <code>Start Debugging</code></p></li></ol><p>一些注意事项</p><ol><li>VS Code 中自动补全使用的是 <code>Tab</code> 键。</li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本文整理自 Visual Studio Code 官方说明文档 &lt;a href=&quot;https://code.visualstudio.com/docs/cpp/config-wsl&quot;&gt;Using C++ and WSL in VS Code&lt;/a&gt;，对文档内容做了一些简化。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在本教程中，将配置 Visual Studio Code 以在 Linux 的 Windows 子系统（WSL） Ubuntu 上使用 GCC C++编译器（g++） 和 GDB 调试器。GCC 代表 GNU 编译器集合；GDB 是 GNU 调试器。WSL 是 Windows 中的 Linux 环境，它可以直接在计算机硬件上运行，而不是在虚拟机中运行。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;前提条件&quot;&gt;&lt;a href=&quot;#前提条件&quot; class=&quot;headerlink&quot; title=&quot;前提条件&quot;&gt;&lt;/a&gt;前提条件&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;安装 WSL，&lt;a href=&quot;https://docs.microsoft.com/zh-cn/windows/wsl/install-win10&quot;&gt;官方文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;安装 VS Code，&lt;a href=&quot;https://code.visualstudio.com/Download&quot;&gt;官方下载地址&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="tech" scheme="https://yingming006.cn/categories/tech/"/>
-    
-    
-    <category term="wsl" scheme="https://yingming006.cn/tags/wsl/"/>
     
   </entry>
   

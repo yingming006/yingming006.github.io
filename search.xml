@@ -1568,24 +1568,19 @@
   <entry>
     <title>工具</title>
     <url>/tools/</url>
-    <content><![CDATA[<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
-<li><p><a href="/QRCode">二维码</a></p>
+    <content><![CDATA[<ul>
+<li><p><a href="/QRCode" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">二维码<i class="fa fa-external-link-alt"></i></a></p>
 </li>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9jLnJ1bm9vYi5jb20v">菜鸟工具<i class="fa fa-external-link-alt"></i></span></p>
 </li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9uY20tYXBpLnlpbmdtaW5nMDA2LmNuLw==">netease cloud music api<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li><p><a href="/reference-books">工具书</a></p>
-</li>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly93YW50cXVvdGVzLm5ldC8=">WantQuotes据意查句<i class="fa fa-external-link-alt"></i></span></p>
 </li>
-</ul>
-<h3 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h3><ul>
-<li><p><a href="/adarkroom">a dark rome</a></p>
+<li><p><a href="/adarkroom" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">a dark rome<i class="fa fa-external-link-alt"></i></a></p>
+<p>文字冒险游戏</p>
 </li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9wbGF5ZXIueWluZ21pbmcwMDYuY24v">record player<i class="fa fa-external-link-alt"></i></span></p>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9kZXYuYXlvdXRoLnh5ei8=">影视站点推荐<i class="fa fa-external-link-alt"></i></span></p>
 </li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly95cG0ueWluZ21pbmcwMDYuY24v">yes play music<i class="fa fa-external-link-alt"></i></span></p>
+<li><p><a href="/dynamic-wallpaper" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">幻灯片播放<i class="fa fa-external-link-alt"></i></a></p>
 </li>
 </ul>
 ]]></content>
@@ -1986,6 +1981,87 @@
       </categories>
       <tags>
         <tag>wallpaper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件备份</title>
+    <url>/win-and-android-software/</url>
+    <content><![CDATA[<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h4 id="UWP应用"><a href="#UWP应用" class="headerlink" title="UWP应用"></a>UWP应用</h4><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL25hbmF6aXAvOU44RzdUU0NMMThS">NanaZip(7-zip 替代品)<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9wL3NuaXBhc3RlLzlwMXd4cGtiNjhreA==">Snipaste<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9lYXJ0cnVtcGV0LmFwcC8=">EarTrumpet<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3N0ZWFtcHAubmV0Lw==">Watt Toolkit「原名 Steam++」<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsLyVFNyU4OCVCMSVFNSVBMyU4MSVFNyVCQSVCOHV3cC85TkJMR0dINUtDQ0Y=">爱壁纸<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL3dpbmRvd3MtdGVybWluYWwvOU4wRFgyMEhLNzAx">Windows Terminal<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9hcHBzLm1pY3Jvc29mdC5jb20vc3RvcmUvZGV0YWlsL3VidW50dS85UERYR05DRlNDWlY=">Ubuntu<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<span id="more"></span>
+
+<h4 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h4><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudm9pZHRvb2xzLmNvbS96aC1jbi8=">Everything<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFuZGlzb2Z0LmNvbS9ob25leXZpZXcv">Honeyview<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5wb3RwbGF5ZXJjbi5jb20v">PotPlayer<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">Typora<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly91LnRvb2xzLw==">uTools<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0ZuZHJvaWQvY2xhc2hfZm9yX3dpbmRvd3NfcGtn">Clash for Windows<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3pob25neWFuZzIxOS9UcmFmZmljTW9uaXRvcg==">TrafficMonitor<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9nZWVrdW5pbnN0YWxsZXIuY29tLw==">geek Uninstaller<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9pbS5xcS5jb20v">QQ<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wYy53ZWl4aW4ucXEuY29tLw==">微信<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">迅雷<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL3d3dy5mZmhvbWUuY29tL3dvcmtzL2ZmcmVuYW1lcHJvLzE0MDYuaHRtbA==">菲菲更名宝贝<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">解锁文件IObit Unlocker<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9wYW5kb3dubG9hZC5uZXQv">pandownload<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cudG9kZXNrLmNvbS8=">toDesk<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXQtc2NtLmNvbS8=">Git<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaGVpZGlzcWwuY29tLw==">HeidiSQL<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamV0YnJhaW5zLmNvbS9pZGVhL2Rvd25sb2FkLyNzZWN0aW9uPXdpbmRvd3M=">IDEA<i class="fa fa-external-link-alt"></i></span>  <span class="exturl" data-url="aHR0cDovL2lkZWEuamF2YXRpa3UuY24vP2NvZGU9MTU3Ng==">code<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuaW5qZGsuY24v">JDK<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb2RlLnZpc3VhbHN0dWRpby5jb20v">VSCode<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cDovL25vZGVqcy5jbi8=">Node.js<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93aW5zY3AubmV0L2VuZy9kb2NzL2xhbmc6Y2hz">WinSCP<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvd2luLw==">postman<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h3 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h3><h4 id="常用软件-1"><a href="#常用软件-1" class="headerlink" title="常用软件"></a>常用软件</h4><p><span class="exturl" data-url="aHR0cHM6Ly9vbmVkcml2ZS55aW5nbWluZzAwNi5jbi96aC1DTi9hcHAvcGhvbmUv">备份地址<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li>QQ</li>
+<li>微信</li>
+<li>钱迹</li>
+<li>QQ邮箱</li>
+<li>喜马拉雅听书</li>
+<li>网易云音乐</li>
+<li>闲鱼</li>
+<li>支付宝</li>
+<li>锤子便签</li>
+<li>高德地图</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL0tyMzI4L0NsYXNoRm9yQW5kcm9pZA==">Clash for Android<i class="fa fa-external-link-alt"></i></span></li>
+<li>京东</li>
+<li>招商银行</li>
+<li>MT管理器</li>
+<li>淘宝</li>
+<li>阿里巴巴</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dlZG9vci9sZWdhZG8=">阅读<i class="fa fa-external-link-alt"></i></span></li>
+<li>网上国网</li>
+<li>中国移动</li>
+<li>e充电</li>
+<li>邮储银行</li>
+<li>阿里云盘</li>
+<li>酷安</li>
+<li>哔哩哔哩</li>
+<li>李跳跳(公众号：大小姐李跳跳)</li>
+<li>冰箱</li>
+<li>MIUI5G开关</li>
+</ul>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+        <tag>win</tag>
+        <tag>andriod</tag>
       </tags>
   </entry>
   <entry>

@@ -1,0 +1,46 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>html5图片幻灯片播放</title>
+	<style>
+		p {
+			transform: scale(0, 0);
+			animation: fadenum 5s;
+		}
+
+		@keyframes fadenum {
+			0% {
+				transform: scale(1, 1);
+			}
+
+			100% {
+				transform: scale(0, 0);
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div ondblclick="changeBackground()" style="height: 800px; width: 100%;text-align: center;">
+		<p style="font: bold 60px SimSun;transform: scale(0,0);animation: fadenum 5s;">双击切换壁纸</span>
+		<p style="font: bold 60px SimSun;transform: scale(0,0);animation: fadenum 5s;">20s切换一次壁纸</span>
+	</div>
+	<script type="text/javascript">
+
+		function changeBackground() {
+			document.body.style.backgroundImage = "url('https://onedrive.yingming006.cn/api/raw/?path=/wallpaper/" + (parseInt(Math.floor(Math.random() * 122)) + 1) + ".jpg')";
+			document.body.style.backgroundSize = "cover";
+			setTimeout(changeBackground, 1000 * 20);
+		}
+
+		changeBackground();
+	</script>
+</body>
+
+</html>
