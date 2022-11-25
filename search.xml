@@ -1568,15 +1568,22 @@
   <entry>
     <title>工具</title>
     <url>/tools/</url>
-    <content><![CDATA[<ul>
-<li><p><a href="/QRCode" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">二维码<i class="fa fa-external-link-alt"></i></a></p>
+    <content><![CDATA[<style>
+.popular-posts-header,.popular-posts {
+    display:none;
+}
+</style>
+
+<ul>
+<li><p><a href="/qrcode" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">二维码<i class="fa fa-external-link-alt"></i></a></p>
+</li>
+<li><p><a href="/screen-record" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">在线录屏<i class="fa fa-external-link-alt"></i></a></p>
 </li>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9jLnJ1bm9vYi5jb20v">菜鸟工具<i class="fa fa-external-link-alt"></i></span></p>
 </li>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly93YW50cXVvdGVzLm5ldC8=">WantQuotes据意查句<i class="fa fa-external-link-alt"></i></span></p>
 </li>
 <li><p><a href="/adarkroom" rel="noopener external nofollow noreferrer" target="_blank" class="exturl" title="">a dark rome<i class="fa fa-external-link-alt"></i></a></p>
-<p>文字冒险游戏</p>
 </li>
 <li><p><span class="exturl" data-url="aHR0cHM6Ly9kZXYuYXlvdXRoLnh5ei8=">影视站点推荐<i class="fa fa-external-link-alt"></i></span></p>
 </li>

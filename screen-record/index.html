@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="NZyNYgg0OZlLutc4Uc4x8bhzcMc0CPLY1GAcjRfqHoA">
+  <meta name="baidu-site-verification" content="N4cDkjIYCT">
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <title>在线录屏</title>
+
+  <style>
+    .row .row {
+      margin-top: 10px;
+    }
+
+    .nav-bottom {
+      border-bottom: 1px solid gray;
+    }
+  </style>
+</head>
+
+<body class="text-center text-white bg-dark" style="padding-top: 100px;">
+  <div class="container-fluid">
+    <nav class="navbar navbar-dark bg-dark fixed-top nav-bottom">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/" target="_blank">Yingming006's Blog</a>
+        <ul class="nav nav-pills justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="/qrcode">
+              <button class="btn btn-outline-light" type="button">二维码</button>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/screen-record">
+              <button class="btn btn-outline-light active" type="button">在线录制</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row justify-content-md-center">
+      <div class="col-md-7 col-lg-7">
+        <h2 class="mb-3">在线录屏</h2>
+        <div class="row" style="height: calc(70vh);">
+          <video loop autoplay muted></video>
+        </div>
+        <div class="row">
+          <button id="startBtn" type="button" class="btn btn-outline-light btn-lg">录制</button>
+          <button id="stopBtn" type="button" class="btn btn-outline-light btn-lg" hidden>停止</button>
+        </div>
+
+        <div class="row">
+          <!-- <div class="row col"> -->
+          <button id="downBtn" type="button" class="btn btn-outline-light btn-lg">保存 WEBM 视频</button>
+          <!-- </div> -->
+          <!-- <div class="row col">
+            <button id="convertBtn" type="button" class="btn btn-outline-light btn-lg">保存 MP4 视频</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+<script>
+
+  const video = document.querySelector('video');
+  const startBtn = document.querySelector('#startBtn');
+  const stopBtn = document.querySelector('#stopBtn');
+  const downBtn = document.querySelector('#downBtn');
+  const downWebm = document.createElement('a');
+  const convertBtn = document.querySelector('#convertBtn');
+  const worker = null;
+
+  let stream;
+  let recorder;
+  let chunks = [];
+  let blob;
+
+  startBtn.addEventListener("click", async () => {
+    // Prompt the user to share their screen.
+    stream = await navigator.mediaDevices.getDisplayMedia({
+      video: true,
+      audio: true,
+    });
+
+    const mime = MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
+      ? "video/webm;codecs=vp9"
+      : MediaRecorder.isTypeSupported("video/webm;codecs=h265")
+        ? "video/webm;codecs=h265"
+        : MediaRecorder.isTypeSupported("video/webm;codecs=h264")
+          ? "video/webm;codecs=h264"
+          : "video/webm";
+
+    recorder = new MediaRecorder(stream, { mimeType: mime });
+    // Preview the screen locally.
+    video.srcObject = stream;
+
+    // Start recording.
+    recorder.start();
+
+    recorder.addEventListener("dataavailable", (e) => {
+      chunks.push(e.data);
+    });
+
+    recorder.addEventListener("stop", () => {
+      blob = new Blob(chunks, {
+        type: chunks[0].type,
+      });
+      video.srcObject = null;
+
+      let url = URL.createObjectURL(blob);
+
+      video.src = url;
+
+      downWebm.href = url;
+      downWebm.download = "record.webm";
+
+      video.setAttribute("controls", "controls");
+      startBtn.hidden = false;
+      stopBtn.hidden = true;
+      downBtn.hidden = false;
+    });
+
+    startBtn.hidden = true;
+    stopBtn.hidden = false;
+  });
+
+  stopBtn.addEventListener("click", () => {
+
+    // Stop the stream.
+    stream.getTracks().forEach(track => track.stop());
+
+
+    // Stop the recording.
+    if (recorder.state !== "inactive") {
+      recorder.stop();
+    }
+  });
+
+  downBtn.addEventListener("click", () => {
+    downWebm.click();
+  });
+
+
+  function processInWebWorker() {
+    var blob = URL.createObjectURL(new Blob(['importScripts("' + workerPath + '");var now = Date.now;function print(text) {postMessage({"type" : "stdout","data" : text});};onmessage = function(event) {var message = event.data;if (message.type === "command") {var Module = {print: print,printErr: print,files: message.files || [],arguments: message.arguments || [],TOTAL_MEMORY: message.TOTAL_MEMORY || false};postMessage({"type" : "start","data" : Module.arguments.join(" ")});postMessage({"type" : "stdout","data" : "Received command: " +Module.arguments.join(" ") +((Module.TOTAL_MEMORY) ? ".  Processing with " + Module.TOTAL_MEMORY + " bits." : "")});var time = now();var result = ffmpeg_run(Module);var totalTime = now() - time;postMessage({"type" : "stdout","data" : "Finished processing (took " + totalTime + "ms)"});postMessage({"type" : "done","data" : result,"time" : totalTime});}};postMessage({"type" : "ready"});'], {
+      type: 'application/javascript'
+    }));
+
+    var worker = new Worker(blob);
+    URL.revokeObjectURL(blob);
+    return worker;
+  };
+
+  convertBtn.addEventListener("click", () => {
+    convertStreams();
+  });
+
+  function convertStreams() {
+    // covertMP4
+  }
+</script>
+
+</html>
