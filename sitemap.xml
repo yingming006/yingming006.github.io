@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://yingming006.cn/screen-record/index.html</loc>
+    <loc>https://yingming006.cn/git-commit/</loc>
     
-    <lastmod>2022-12-06</lastmod>
+    <lastmod>2022-12-07</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/springboot-2-7-integration-with-swagger-3/</loc>
+    <loc>https://yingming006.cn/screen-record/index.html</loc>
     
-    <lastmod>2022-12-02</lastmod>
+    <lastmod>2022-12-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -474,13 +474,6 @@
   
   <url>
     <loc>https://yingming006.cn/tags/algorithm/</loc>
-    <lastmod>2022-12-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://yingming006.cn/tags/springboot/</loc>
     <lastmod>2022-12-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
