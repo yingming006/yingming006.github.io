@@ -345,94 +345,71 @@
       </tags>
   </entry>
   <entry>
-    <title>git commit 提交规范</title>
-    <url>/git-commit/</url>
-    <content><![CDATA[<h3 id="Google-AnguarJS-规范的要求"><a href="#Google-AnguarJS-规范的要求" class="headerlink" title="Google AnguarJS 规范的要求"></a>Google AnguarJS 规范的要求</h3> <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">type</span>&gt;</span>(<span class="tag">&lt;<span class="name">scope</span>&gt;</span>): <span class="tag">&lt;<span class="name">subject</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>type</code>代表某次提交的类型，比如是修复一个 bug 或是增加一个 feature，具体类型见表;</li>
-<li><code>scope</code>：说明commit影响的范围。scope依据项目而定，例如在业务项目中可以依据菜单或者功能模块划分，如果是组件库开发，则可以依据组件划分。</li>
-<li><code>subject</code>:是commit的简短描述；</li>
-<li><code>body</code>:提交代码的详细描述；</li>
-<li><code>footer</code>:如果代码的提交是不兼容变更或关闭缺陷，则footer必需，否则可以省略。</li>
-</ul>
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th align="center">类型</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">feat</td>
-<td align="center">新增feature</td>
-</tr>
-<tr>
-<td align="center">fix</td>
-<td align="center">修复bug</td>
-</tr>
-<tr>
-<td align="center">docs</td>
-<td align="center">仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等;</td>
-</tr>
-<tr>
-<td align="center">style</td>
-<td align="center">仅仅修改了空格、格式缩进、逗号等等，不改变代码逻辑;</td>
-</tr>
-<tr>
-<td align="center">refactor</td>
-<td align="center">代码重构，没有加新功能或者修复bug</td>
-</tr>
-<tr>
-<td align="center">perf</td>
-<td align="center">优化相关，比如提升性能、体验</td>
-</tr>
-<tr>
-<td align="center">test</td>
-<td align="center">测试用例，包括单元测试、集成测试等</td>
-</tr>
-<tr>
-<td align="center">chore</td>
-<td align="center">改变构建流程、或者增加依赖库、工具等</td>
-</tr>
-<tr>
-<td align="center">revert</td>
-<td align="center">回滚到上一个版本</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 常用命令</title>
     <url>/git-commond/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置提交代码时的用户信息</span></span><br><span class="line">$ git config [--global] user.name <span class="string">&quot;[name]&quot;</span></span><br><span class="line">$ git config [--global] user.email <span class="string">&quot;[email address]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有的已经做出的配置</span></span><br><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h4 id="拉取代码"><a href="#拉取代码" class="headerlink" title="拉取代码"></a>拉取代码</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> xxx.git</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch dev</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git checkout -b dev</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git switch -c dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换本地分支"><a href="#切换本地分支" class="headerlink" title="切换本地分支"></a>切换本地分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout dev</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git switch dev</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在当前目录初始化一个Git代码库</span></span><br><span class="line">$ git init</span><br><span class="line"></span><br><span class="line"><span class="comment"># clone一个项目</span></span><br><span class="line">$ git <span class="built_in">clone</span> [url]</span><br></pre></td></tr></table></figure>
+<h4 id="切换分支并关联远程分支"><a href="#切换分支并关联远程分支" class="headerlink" title="切换分支并关联远程分支"></a>切换分支并关联远程分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git checkout -b dev origin/dev</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git checkout --track origin/dev</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加指定文件到暂存区</span></span><br><span class="line">$ git add [file1] [file2] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加当前目录的所有文件到暂存区</span></span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除工作区文件，并且将这次删除放入暂存区</span></span><br><span class="line">$ git <span class="built_in">rm</span> [file1] [file2] ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止追踪指定文件，但该文件会保留在工作区</span></span><br><span class="line">$ git <span class="built_in">rm</span> --cached [file]</span><br></pre></td></tr></table></figure>
+<h4 id="查看本地所有分支"><a href="#查看本地所有分支" class="headerlink" title="查看本地所有分支"></a>查看本地所有分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 提交暂存区到仓库区</span></span><br><span class="line">$ git commit -m [message]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交暂存区的指定文件到仓库区</span></span><br><span class="line">$ git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
+<h4 id="查看远程所有分支"><a href="#查看远程所有分支" class="headerlink" title="查看远程所有分支"></a>查看远程所有分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 列出所有本地分支</span></span><br><span class="line">$ git branch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有远程分支</span></span><br><span class="line">$ git branch -r</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出所有本地分支和远程分支</span></span><br><span class="line">$ git branch -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，但依然停留在当前分支</span></span><br><span class="line">$ git branch [branch-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建一个分支，并切换到该分支</span></span><br><span class="line">$ git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定分支到当前分支</span></span><br><span class="line">$ git merge [branch]</span><br></pre></td></tr></table></figure>
+<h4 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看历史记录 空格向下翻页 b向上翻页 q推出</span></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">$ git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">$ git <span class="built_in">log</span> [--oneline]</span><br></pre></td></tr></table></figure>
+<h4 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push origin -d dev</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 回退上一个提交版本</span></span><br><span class="line">$ git reset --hard HEAD^</span><br><span class="line"><span class="comment"># 回退上上一个提交版本</span></span><br><span class="line">$ git reset --hard HEAD^^</span><br><span class="line"><span class="comment"># 回退到commit_id 指定的提交版本</span></span><br><span class="line">$ git reset --hard [commit_id]</span><br></pre></td></tr></table></figure>
+<h4 id="将代码从工作区添加暂存区"><a href="#将代码从工作区添加暂存区" class="headerlink" title="将代码从工作区添加暂存区"></a>将代码从工作区添加暂存区</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地库关联Github远程库</span></span><br><span class="line">$ git remote add [shortname][url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送到远程仓库，将本地 master 分支推送到 origin 远程分支</span></span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4 id="查看尚未暂存的更新"><a href="#查看尚未暂存的更新" class="headerlink" title="查看尚未暂存的更新"></a>查看尚未暂存的更新</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 从远程仓库获取最新内容，不会拉取</span></span><br><span class="line">$ git fetch origin master</span><br></pre></td></tr></table></figure>
+<h4 id="添加提交信息（commit-注释写错，执行-git-commit-amend-此时会进入默认-vim-编辑器，修改注释后保存）"><a href="#添加提交信息（commit-注释写错，执行-git-commit-amend-此时会进入默认-vim-编辑器，修改注释后保存）" class="headerlink" title="添加提交信息（commit 注释写错，执行 git commit --amend 此时会进入默认 vim 编辑器，修改注释后保存）"></a>添加提交信息（<code>commit</code> 注释写错，执行 <code>git commit --amend</code> 此时会进入默认 <code>vim</code> 编辑器，修改注释后保存）</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git commit -m <span class="string">&#x27;xxxx&#x27;</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="推送代码到远程分支"><a href="#推送代码到远程分支" class="headerlink" title="推送代码到远程分支"></a>推送代码到远程分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git push origin dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制推送（常在 git rebase 或 git reset 后使用）</span></span><br><span class="line">git push -f origin dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="拉取远程分支代码"><a href="#拉取远程分支代码" class="headerlink" title="拉取远程分支代码"></a>拉取远程分支代码</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git pull origin dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看-git-状态"><a href="#查看-git-状态" class="headerlink" title="查看 git 状态"></a>查看 <code>git</code> 状态</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看可引用的历史版本记录"><a href="#查看可引用的历史版本记录" class="headerlink" title="查看可引用的历史版本记录"></a>查看可引用的历史版本记录</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h4 id="把本地未-push-的分叉提交历史整理成直线"><a href="#把本地未-push-的分叉提交历史整理成直线" class="headerlink" title="把本地未 push 的分叉提交历史整理成直线"></a>把本地未 <code>push</code> 的分叉提交历史整理成直线</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git rebase origin/dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="回到-rebase-执行之前的状态"><a href="#回到-rebase-执行之前的状态" class="headerlink" title="回到 rebase 执行之前的状态"></a>回到 <code>rebase</code> 执行之前的状态</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git rebase --abort</span><br></pre></td></tr></table></figure>
+
+<h4 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 回退指定 commit_id 版本</span></span><br><span class="line">git reset --hard commit_id</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回退上一个版本</span></span><br><span class="line">git reset --soft HEAD^</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">git reset --soft HEAD~1</span><br></pre></td></tr></table></figure>
+
+<h4 id="撤销代码"><a href="#撤销代码" class="headerlink" title="撤销代码"></a>撤销代码</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git revert commit_id</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改分支名"><a href="#修改分支名" class="headerlink" title="修改分支名"></a>修改分支名</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第一步</span></span><br><span class="line">git branch -m oldBranchName newBranchName</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步</span></span><br><span class="line">git push origin :oldBranchName</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三步</span></span><br><span class="line">git push --set-upstream origin newBranchName</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看-git-配置"><a href="#查看-git-配置" class="headerlink" title="查看 git 配置"></a>查看 <code>git</code> 配置</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看全局配置</span></span><br><span class="line">git config --global --list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看用户名</span></span><br><span class="line">git config --global user.name</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加用户名"><a href="#添加用户名" class="headerlink" title="添加用户名"></a>添加用户名</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global --add user.name newName</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除用户名"><a href="#删除用户名" class="headerlink" title="删除用户名"></a>删除用户名</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改用户名"><a href="#修改用户名" class="headerlink" title="修改用户名"></a>修改用户名</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git config --global user.name newName</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-Git-用户名和邮箱"><a href="#配置-Git-用户名和邮箱" class="headerlink" title="配置 Git 用户名和邮箱"></a>配置 <code>Git</code> 用户名和邮箱</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用户名</span></span><br><span class="line">git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮箱</span></span><br><span class="line">git config --global user.email <span class="string">&quot;email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="统计代码行数"><a href="#统计代码行数" class="headerlink" title="统计代码行数"></a>统计代码行数</h4><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git ls-files | xargs <span class="built_in">wc</span> -l</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交规范"><a href="#提交规范" class="headerlink" title="提交规范"></a>提交规范</h2><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NvbnZlbnRpb25hbC1jaGFuZ2Vsb2cvY29udmVudGlvbmFsLWNoYW5nZWxvZy90cmVlL21hc3Rlci9wYWNrYWdlcy9jb252ZW50aW9uYWwtY2hhbmdlbG9nLWFuZ3VsYXI=">相关参考<i class="fa fa-external-link-alt"></i></span></p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">type</span>&gt;</span>(<span class="tag">&lt;<span class="name">scope</span>&gt;</span>): <span class="tag">&lt;<span class="name">subject</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BLANK</span> <span class="attr">LINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>feat: 增加新功能</code><br><code>fix: 修复问题/BUG</code><br><code>style: 代码风格相关无影响运行结果的</code><br><code>perf: 优化/性能提升</code><br><code>refactor: 重构</code><br><code>revert: 撤销修改</code><br><code>test: 测试相关</code><br><code>docs: 文档/注释</code><br><code>chore: 依赖更新/脚手架配置修改等</code><br><code>workflow: 工作流改进</code><br><code>ci: 持续集成</code><br><code>types: 类型定义文件更改</code><br><code>wip: 开发中</code></p>
+<h2 id="CodeReview-常用缩写"><a href="#CodeReview-常用缩写" class="headerlink" title="CodeReview 常用缩写"></a><code>CodeReview</code> 常用缩写</h2><p><code>PR</code>（Pull Request）拉取请求，给其他项目提交代码<br><code>LGTM</code>（Looks Good To Me）代码已经过 review，可以合并<br><code>SGTM</code>（Sounds Good To Me）和上面那句意思差不多，也是已经通过了 review 的意思<br><code>WIP</code>（Work In Progress）如果有个改动很大的 PR，可以在写了一部分的情况下先提交，但需在标题写上 WIP，以告诉项目维护者这个功能还未完成，方便维护者提前 review 部分提交的代码<br><code>PTAL</code>（Please Take A Look）提示别人来看一下<br><code>TBR</code>（To Be Reviewed）提示维护者进行 review<br><code>TL;DR</code>（Too Long; Didn’t Read）太长懒得看<br><code>TBD</code>（To Be Done(or Defined&#x2F;Discussed&#x2F;Decided&#x2F;Determined)） 一般表示还没搞定</p>
 ]]></content>
       <categories>
         <category>tech</category>
