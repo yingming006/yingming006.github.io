@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yingming006.cn/xiaomi9se-grus-install-lineageos-20/</loc>
+    
+    <lastmod>2023-02-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yingming006.cn/git-commond/</loc>
     
     <lastmod>2022-12-08</lastmod>
@@ -450,14 +459,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/wsl/</loc>
+    <loc>https://yingming006.cn/tags/java-collection/</loc>
     <lastmod>2023-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java-collection/</loc>
+    <loc>https://yingming006.cn/tags/wsl/</loc>
     <lastmod>2023-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -528,6 +537,20 @@
   
   <url>
     <loc>https://yingming006.cn/tags/andriod/</loc>
+    <lastmod>2023-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/grus/</loc>
+    <lastmod>2023-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/lineageOS/</loc>
     <lastmod>2023-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
