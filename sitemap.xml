@@ -128,6 +128,15 @@
   </url>
   
   <url>
+    <loc>https://yingming006.cn/about/index.html</loc>
+    
+    <lastmod>2022-10-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yingming006.cn/adarkroom/LICENSE.html</loc>
     
     <lastmod>2022-10-14</lastmod>
@@ -138,15 +147,6 @@
   
   <url>
     <loc>https://yingming006.cn/adarkroom/browserWarning.html</loc>
-    
-    <lastmod>2022-10-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yingming006.cn/about/index.html</loc>
     
     <lastmod>2022-10-14</lastmod>
     
@@ -389,13 +389,6 @@
 
   
   <url>
-    <loc>https://yingming006.cn/tags/Hexo/</loc>
-    <lastmod>2023-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/wallpaper/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -403,7 +396,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java/</loc>
+    <loc>https://yingming006.cn/tags/Hexo/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -417,14 +410,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/note/</loc>
+    <loc>https://yingming006.cn/tags/java/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/git/</loc>
+    <loc>https://yingming006.cn/tags/mysql/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -438,14 +431,21 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/idea/</loc>
+    <loc>https://yingming006.cn/tags/git/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/mysql/</loc>
+    <loc>https://yingming006.cn/tags/note/</loc>
+    <lastmod>2023-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/idea/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -487,13 +487,6 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/tool/</loc>
-    <lastmod>2023-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/sql/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -502,6 +495,13 @@
   
   <url>
     <loc>https://yingming006.cn/tags/https/</loc>
+    <lastmod>2023-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/tool/</loc>
     <lastmod>2023-03-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
