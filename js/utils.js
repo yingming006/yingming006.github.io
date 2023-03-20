@@ -122,19 +122,6 @@ NexT.utils = {
     });
   },
 
-  updateActiveNav: function() {
-    if (!Array.isArray(NexT.utils.sections)) return;
-    let index = NexT.utils.sections.findIndex(element => {
-      return element && element.getBoundingClientRect().top > 10;
-    });
-    if (index === -1) {
-      index = NexT.utils.sections.length - 1;
-    } else if (index > 0) {
-      index--;
-    }
-    this.activateNavByIndex(index);
-  },
-
   registerScrollPercent: function() {
     const backToTop = document.querySelector('.back-to-top');
     const readingProgressBar = document.querySelector('.reading-progress-bar');
@@ -151,7 +138,16 @@ NexT.utils = {
           readingProgressBar.style.setProperty('--progress', scrollPercent.toFixed(2) + '%');
         }
       }
-      this.updateActiveNav();
+      if (!Array.isArray(NexT.utils.sections)) return;
+      let index = NexT.utils.sections.findIndex(element => {
+        return element && element.getBoundingClientRect().top > 10;
+      });
+      if (index === -1) {
+        index = NexT.utils.sections.length - 1;
+      } else if (index > 0) {
+        index--;
+      }
+      this.activateNavByIndex(index);
     }, { passive: true });
 
     backToTop && backToTop.addEventListener('click', () => {
@@ -267,7 +263,7 @@ NexT.utils = {
   },
 
   registerSidebarTOC: function() {
-    this.sections = [...document.querySelectorAll('.post-toc:not(.placeholder-toc) li a.nav-link')].map(element => {
+    this.sections = [...document.querySelectorAll('.post-toc li a.nav-link')].map(element => {
       const target = document.getElementById(decodeURI(element.getAttribute('href')).replace('#', ''));
       // TOC item animation navigate.
       element.addEventListener('click', event => {
@@ -285,7 +281,6 @@ NexT.utils = {
       });
       return target;
     });
-    this.updateActiveNav();
   },
 
   registerPostReward: function() {
@@ -297,35 +292,18 @@ NexT.utils = {
   },
 
   activateNavByIndex: function(index) {
-    const nav = document.querySelector('.post-toc:not(.placeholder-toc) .nav');
-    if (!nav) return;
-
-    const navItemList = nav.querySelectorAll('.nav-item');
-    const target = navItemList[index];
+    const target = document.querySelectorAll('.post-toc li a.nav-link')[index];
     if (!target || target.classList.contains('active-current')) return;
 
-    const singleHeight = navItemList[navItemList.length - 1].offsetHeight;
-
-    nav.querySelectorAll('.active').forEach(navItem => {
-      navItem.classList.remove('active', 'active-current');
+    document.querySelectorAll('.post-toc .active').forEach(element => {
+      element.classList.remove('active', 'active-current');
     });
     target.classList.add('active', 'active-current');
-
-    let activateEle = target.querySelector('.nav-child') || target.parentElement;
-    let navChildHeight = 0;
-
-    while (nav.contains(activateEle)) {
-      if (activateEle.classList.contains('nav-item')) {
-        activateEle.classList.add('active');
-      } else { // .nav-child or .nav
-        // scrollHeight isn't reliable for transitioning child items.
-        // The last nav-item in a list has a margin-bottom of 5px.
-        navChildHeight += (singleHeight * activateEle.childElementCount) + 5;
-        activateEle.style.setProperty('--height', `${navChildHeight}px`);
-      }
-      activateEle = activateEle.parentElement;
+    let parent = target.parentNode;
+    while (!parent.matches('.post-toc')) {
+      if (parent.matches('li')) parent.classList.add('active');
+      parent = parent.parentNode;
     }
-
     // Scrolling to center active TOC element if TOC content is taller then viewport.
     const tocElement = document.querySelector(CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini' ? '.sidebar-panel-container' : '.sidebar');
     if (!document.querySelector('.sidebar-toc-active')) return;
@@ -340,7 +318,7 @@ NexT.utils = {
   updateSidebarPosition: function() {
     if (window.innerWidth < 1200 || CONFIG.scheme === 'Pisces' || CONFIG.scheme === 'Gemini') return;
     // Expand sidebar on post detail page by default, when post has a toc.
-    const hasTOC = document.querySelector('.post-toc:not(.placeholder-toc)');
+    const hasTOC = document.querySelector('.post-toc');
     let display = CONFIG.page.sidebar;
     if (typeof display !== 'boolean') {
       // There's no definition sidebar in the page front-matter.
@@ -352,30 +330,31 @@ NexT.utils = {
   },
 
   activateSidebarPanel: function(index) {
+    const duration = 200;
     const sidebar = document.querySelector('.sidebar-inner');
-    const activeClassNames = ['sidebar-toc-active', 'sidebar-overview-active'];
-    if (sidebar.classList.contains(activeClassNames[index])) return;
+    const panel = document.querySelector('.sidebar-panel-container');
+    const activeClassName = ['sidebar-toc-active', 'sidebar-overview-active'];
 
-    const panelContainer = sidebar.querySelector('.sidebar-panel-container');
-    const tocPanel = panelContainer.firstElementChild;
-    const overviewPanel = panelContainer.lastElementChild;
+    if (sidebar.classList.contains(activeClassName[index])) return;
 
-    let postTOCHeight = tocPanel.scrollHeight;
-    // For TOC activation, try to use the animated TOC height
-    if (index === 0) {
-      const nav = tocPanel.querySelector('.nav');
-      if (nav) {
-        postTOCHeight = parseInt(nav.style.getPropertyValue('--height'), 10);
+    window.anime({
+      duration,
+      targets   : panel,
+      easing    : 'linear',
+      opacity   : 0,
+      translateY: [0, -20],
+      complete  : () => {
+        // Prevent adding TOC to Overview if Overview was selected when close & open sidebar.
+        sidebar.classList.replace(activeClassName[1 - index], activeClassName[index]);
+        window.anime({
+          duration,
+          targets   : panel,
+          easing    : 'linear',
+          opacity   : [0, 1],
+          translateY: [-20, 0]
+        });
       }
-    }
-    const panelHeights = [
-      postTOCHeight,
-      overviewPanel.scrollHeight
-    ];
-    panelContainer.style.setProperty('--inactive-panel-height', `${panelHeights[1 - index]}px`);
-    panelContainer.style.setProperty('--active-panel-height', `${panelHeights[index]}px`);
-
-    sidebar.classList.replace(activeClassNames[1 - index], activeClassNames[index]);
+    });
   },
 
   getScript: function(src, options = {}, legacyCondition) {
