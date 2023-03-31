@@ -30,47 +30,6 @@
       </tags>
   </entry>
   <entry>
-    <title>更换 Ubuntu 镜像源</title>
-    <url>/change-ubuntu-repository-mirror-sources/</url>
-    <content><![CDATA[<ul>
-<li>备份 <code>/etc/apt/sources.list</code> 文件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>修改 <code>/etc/apt/sources.list</code> 文件</li>
-</ul>
-<p>替换为阿里源，将<code>http://archive.ubuntu.com</code>和<code>http://security.ubuntu.com</code>替换成<code>http://mirrors.aliyun.com</code><br>可以参考如下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-<ul>
-<li>更新软件源索引</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h3 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3IvdWJ1bnR1">官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<h3 id="华为源"><a href="#华为源" class="headerlink" title="华为源"></a>华为源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9ob21l">官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://repo.huaweicloud.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://repo.huaweicloud.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<h3 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2hlbHAvdWJ1bnR1Lw==">官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<h3 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3VkLnRlbmNlbnQuY29tL2hlbHAvdWJ1bnR1Lmh0bWw=">官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.cloud.tencent.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.cloud.tencent.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-<h3 id="网易源"><a href="#网易源" class="headerlink" title="网易源"></a>网易源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3VkLnRlbmNlbnQuY29tL2hlbHAvdWJ1bnR1Lmh0bWw=">官方文档<i class="fa fa-external-link-alt"></i></span></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.163.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.163.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于 Hexo + GitHub Pages 搭建个人博客</title>
     <url>/build-a-personal-blog-based-on-hexo-and-github-pages/</url>
     <content><![CDATA[<h2 id="必读文档"><a href="#必读文档" class="headerlink" title="必读文档"></a>必读文档</h2><ul>
@@ -260,6 +219,47 @@
       </tags>
   </entry>
   <entry>
+    <title>更换 Ubuntu 镜像源</title>
+    <url>/change-ubuntu-repository-mirror-sources/</url>
+    <content><![CDATA[<ul>
+<li>备份 <code>/etc/apt/sources.list</code> 文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改 <code>/etc/apt/sources.list</code> 文件</li>
+</ul>
+<p>替换为阿里源，将<code>http://archive.ubuntu.com</code>和<code>http://security.ubuntu.com</code>替换成<code>http://mirrors.aliyun.com</code><br>可以参考如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新软件源索引</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="阿里源"><a href="#阿里源" class="headerlink" title="阿里源"></a>阿里源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYWxpeXVuLmNvbS9taXJyb3IvdWJ1bnR1">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.aliyun.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<h3 id="华为源"><a href="#华为源" class="headerlink" title="华为源"></a>华为源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmh1YXdlaWNsb3VkLmNvbS9ob21l">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://repo.huaweicloud.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://repo.huaweicloud.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<h3 id="清华源"><a href="#清华源" class="headerlink" title="清华源"></a>清华源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLnR1bmEudHNpbmdodWEuZWR1LmNuL2hlbHAvdWJ1bnR1Lw==">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<h3 id="腾讯源"><a href="#腾讯源" class="headerlink" title="腾讯源"></a>腾讯源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3VkLnRlbmNlbnQuY29tL2hlbHAvdWJ1bnR1Lmh0bWw=">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.cloud.tencent.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.cloud.tencent.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<h3 id="网易源"><a href="#网易源" class="headerlink" title="网易源"></a>网易源</h3><p><span class="exturl" data-url="aHR0cHM6Ly9taXJyb3JzLmNsb3VkLnRlbmNlbnQuY29tL2hlbHAvdWJ1bnR1Lmh0bWw=">官方文档<i class="fa fa-external-link-alt"></i></span></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo sed -i &quot;s@http://.*archive.ubuntu.com@http://mirrors.163.com@g&quot; /etc/apt/sources.list</span><br><span class="line">sudo sed -i &quot;s@http://.*security.ubuntu.com@http://mirrors.163.com@g&quot; /etc/apt/sources.list</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>爬取慕课实战课程-Java</title>
     <url>/crawling-mooc-courses-in-java/</url>
     <content><![CDATA[<p>今天偶然间看到一篇关于 Java 爬虫入门的博客，想到以前就学过一点爬虫，于是乎就在博客的基础上写了一个 demo，用来爬取慕课网的实战课程。</p>
@@ -286,22 +286,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
-    <url>/fix-win10-cannot-open-postman/</url>
-    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
-<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
-<p>先打开任务管理器，结束 Postman 进程</p>
-<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
-<p>完成后再打开就可以了</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -342,6 +326,22 @@
       </categories>
       <tags>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
+    <url>/fix-win10-cannot-open-postman/</url>
+    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
+<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
+<p>先打开任务管理器，结束 Postman 进程</p>
+<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
+<p>完成后再打开就可以了</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -503,6 +503,30 @@
       </tags>
   </entry>
   <entry>
+    <title>IDEA 无法使用 HTTP Client 的解决过程</title>
+    <url>/idea-cannot-use-http-client-solution-process/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img data-src="https://img-blog.csdnimg.cn/img_convert/cb3a4fc6f56a7257109a386f759c37b4.png" alt="image-20201103111841176"></p>
+<p>点击 <code>Run All Requsets in File</code> &#x3D;&gt; <code>Run with no environment</code> 时，控制台报错如图。</p>
+<span id="more"></span>
+
+<h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>首先在浏览器中测试 GET 请求，请求正常响应，如图</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/a2809879cb44173da7951891ce90dc9f.png" alt="image-20201103112218103"></p>
+<p>然后又在 Postman 中测试也没有问题</p>
+<p>这时想到，应该是 IDEA 的问题了，首先想到的就是插件出了问题，但是 IDEA HTTP Client 没有用到插件，所以说应该不是插件的问题。</p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>最终经过一番查找，是 IDEA 的代理出了问题，准确说是 IDEA 的代理没有忽略本地地址，导致 IDEA 访问不到本地，所以在 IDEA 代理中设置一下就解决了，配置如图：</p>
+<p><img data-src="https://img-blog.csdnimg.cn/img_convert/e1e52a8264971abb5d04d2373c547117.png" alt="image-20201103112903111"></p>
+<p>或者是直接关闭代理也可以解决。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正确的使用搜索引擎可以提高问题排查效率。</p>
+<p>尽可能准确的使用关键字查询。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Ubuntu系统中安装常用软件</title>
     <url>/install-software-in-ubuntu/</url>
     <content><![CDATA[<blockquote>
@@ -631,30 +655,6 @@
       </categories>
       <tags>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDEA 无法使用 HTTP Client 的解决过程</title>
-    <url>/idea-cannot-use-http-client-solution-process/</url>
-    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img data-src="https://img-blog.csdnimg.cn/img_convert/cb3a4fc6f56a7257109a386f759c37b4.png" alt="image-20201103111841176"></p>
-<p>点击 <code>Run All Requsets in File</code> &#x3D;&gt; <code>Run with no environment</code> 时，控制台报错如图。</p>
-<span id="more"></span>
-
-<h2 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h2><p>首先在浏览器中测试 GET 请求，请求正常响应，如图</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/a2809879cb44173da7951891ce90dc9f.png" alt="image-20201103112218103"></p>
-<p>然后又在 Postman 中测试也没有问题</p>
-<p>这时想到，应该是 IDEA 的问题了，首先想到的就是插件出了问题，但是 IDEA HTTP Client 没有用到插件，所以说应该不是插件的问题。</p>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>最终经过一番查找，是 IDEA 的代理出了问题，准确说是 IDEA 的代理没有忽略本地地址，导致 IDEA 访问不到本地，所以在 IDEA 代理中设置一下就解决了，配置如图：</p>
-<p><img data-src="https://img-blog.csdnimg.cn/img_convert/e1e52a8264971abb5d04d2373c547117.png" alt="image-20201103112903111"></p>
-<p>或者是直接关闭代理也可以解决。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正确的使用搜索引擎可以提高问题排查效率。</p>
-<p>尽可能准确的使用关键字查询。</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>idea</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,80 +1080,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL用户管理-创建、授权、查看、删除</title>
-    <url>/mysql-user-manage-create-grant-select-drop/</url>
-    <content><![CDATA[<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><ul>
-<li><p>服务器版本：WSL 2 Ubuntu 18.04</p>
-</li>
-<li><p>MySQL版本：5.7.28-0ubuntu0.18.04.4 (Ubuntu)</p>
-</li>
-</ul>
-<p>在开始之前，请确保服务器已安装 MySQL，并拥有 root 权限。</p>
-<span id="more"></span>
-
-<h3 id="创建一个新的用户账号"><a href="#创建一个新的用户账号" class="headerlink" title="创建一个新的用户账号"></a>创建一个新的用户账号</h3><p>MySQL 中的用户账号是由用户名和主机名组成，例如<code>&#39;root&#39;@&#39;localhost&#39;</code>。</p>
-<p>运行以下命令即可创建一个用户名为<code>database_user</code>，密码为<code>user_password</code>的用户：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE USER &#x27;`database_user`&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;`user_password`&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>上述命令中，主机名为<code>localhost</code>，表示只能从本地主机（即运行该 MySQL Server 的服务器），如果要授予该用户来自其他主机的访问权限，只需将<code>localhost</code>改为远程登录 IP 或者 <code>%</code>，<code>%</code>表示通配符，意味着该用户能够从任何主机进行远程连接。 </p>
-<p>如果不确定用户是否存在，可以使用以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE USER IF NOT EXISTS &#x27;`database_user`&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;`user_password`&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改MySQL用户密码"><a href="#修改MySQL用户密码" class="headerlink" title="修改MySQL用户密码"></a>修改MySQL用户密码</h3><p>其实不同的 MySQL 版本修改用户密码的命令是不一样的。</p>
-<p>在终端执行<code> mysql --version</code>可以查看 MySQL 版本。</p>
-<p>如果是  MySQL 5.7.6 + 或者  MariaDB 10.1.20 +，需要使用以下命令来更改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER USER &#x27;database_user&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;new_password&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>如果是  MySQL 5.7.5 - 或者  MariaDB 10.1.20 -，则需要使用以下命令来更改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SET PASSWORD FOR &#x27;database_user&#x27;@&#x27;localhost&#x27; = PASSWORD(&#x27;new_password&#x27;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看所有MySQL用户账号"><a href="#查看所有MySQL用户账号" class="headerlink" title="查看所有MySQL用户账号"></a>查看所有MySQL用户账号</h3><p>MySQL 中用户账户的全部信息都保存在<code>mysql.user</code>表中。</p>
-<p>使用以下命名查看<code>mysql.user</code>表结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; DESC mysql.user;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到结构如下：</p>
-<img data-src="https://i.loli.net/2019/12/18/AWn9bm2tR48vLoT.png" >
-
-<p>查看用户账号信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT user, host FROM mysql.user;</span><br></pre></td></tr></table></figure>
-
-<p>结果和以下内容相似：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+------------------+-----------+</span><br><span class="line">| user             | host      |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| database_user    | %         |</span><br><span class="line">| database_user    | localhost |</span><br><span class="line">| debian-sys-maint | localhost |</span><br><span class="line">| mysql.session    | localhost |</span><br><span class="line">| mysql.sys        | localhost |</span><br><span class="line">| root             | localhost |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除MySQL用户账号"><a href="#删除MySQL用户账号" class="headerlink" title="删除MySQL用户账号"></a>删除MySQL用户账号</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; DROP USER IF EXISTS &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="给MySQL用户授权"><a href="#给MySQL用户授权" class="headerlink" title="给MySQL用户授权"></a>给MySQL用户授权</h3><p> MySQL支持的权限的完整列表 <span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2RvYy9yZWZtYW4vNS43L2VuL2dyYW50Lmh0bWw=">点这里<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>这里介绍几个常用的例子。</p>
-<p>授予指定用户所有权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON database_name.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>授予所有用户所有权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>授予指定用户对指定表所有权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON database_name.table_name TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>授予指定用户对指定表的指定权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT SELECT, INSERT, DELETE ON database_name.* TO database_user@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="撤销MySQL用户权限"><a href="#撤销MySQL用户权限" class="headerlink" title="撤销MySQL用户权限"></a>撤销MySQL用户权限</h3><p>撤销用户所有权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; REVOKE ALL PRIVILEGES ON database_name.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="显示MySQL用户权限"><a href="#显示MySQL用户权限" class="headerlink" title="显示MySQL用户权限"></a>显示MySQL用户权限</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SHOW GRANTS FOR &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
-
-<img data-src="https://i.loli.net/2019/12/18/xcUtA1OnaCZWd4j.png" >
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>该教程总结了 MySQL 用户的基本管理实例，如果向了解更多，请参考 <span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2RvYy9yZWZtYW4vNS43L2VuLw==">MySQL 5.7 官方文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>感谢：<span class="exturl" data-url="aHR0cHM6Ly9saW51eGl6ZS5jb20vcG9zdC9ob3ctdG8tbWFuYWdlLW15c3FsLWRhdGFiYXNlcy1hbmQtdXNlcnMtZnJvbS10aGUtY29tbWFuZC1saW5lLw==">How to Manage MySQL Databases and Users from the Command Line<i class="fa fa-external-link-alt"></i></span></p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python 批量下载壁纸代码</title>
     <url>/python-wallpaper/</url>
     <content><![CDATA[<p>Windows 可执行文件下载地址： <span class="exturl" data-url="aHR0cHM6Ly93d2QubGFuem91dC5jb20vaVhZdG4wMjB5ZnZp">https://wwd.lanzout.com/iXYtn020yfvi<i class="fa fa-external-link-alt"></i></span> 密码:52pj</p>
@@ -1379,6 +1305,80 @@
       </categories>
       <tags>
         <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL用户管理-创建、授权、查看、删除</title>
+    <url>/mysql-user-manage-create-grant-select-drop/</url>
+    <content><![CDATA[<h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><ul>
+<li><p>服务器版本：WSL 2 Ubuntu 18.04</p>
+</li>
+<li><p>MySQL版本：5.7.28-0ubuntu0.18.04.4 (Ubuntu)</p>
+</li>
+</ul>
+<p>在开始之前，请确保服务器已安装 MySQL，并拥有 root 权限。</p>
+<span id="more"></span>
+
+<h3 id="创建一个新的用户账号"><a href="#创建一个新的用户账号" class="headerlink" title="创建一个新的用户账号"></a>创建一个新的用户账号</h3><p>MySQL 中的用户账号是由用户名和主机名组成，例如<code>&#39;root&#39;@&#39;localhost&#39;</code>。</p>
+<p>运行以下命令即可创建一个用户名为<code>database_user</code>，密码为<code>user_password</code>的用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE USER &#x27;`database_user`&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;`user_password`&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>上述命令中，主机名为<code>localhost</code>，表示只能从本地主机（即运行该 MySQL Server 的服务器），如果要授予该用户来自其他主机的访问权限，只需将<code>localhost</code>改为远程登录 IP 或者 <code>%</code>，<code>%</code>表示通配符，意味着该用户能够从任何主机进行远程连接。 </p>
+<p>如果不确定用户是否存在，可以使用以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; CREATE USER IF NOT EXISTS &#x27;`database_user`&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;`user_password`&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改MySQL用户密码"><a href="#修改MySQL用户密码" class="headerlink" title="修改MySQL用户密码"></a>修改MySQL用户密码</h3><p>其实不同的 MySQL 版本修改用户密码的命令是不一样的。</p>
+<p>在终端执行<code> mysql --version</code>可以查看 MySQL 版本。</p>
+<p>如果是  MySQL 5.7.6 + 或者  MariaDB 10.1.20 +，需要使用以下命令来更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; ALTER USER &#x27;database_user&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;new_password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>如果是  MySQL 5.7.5 - 或者  MariaDB 10.1.20 -，则需要使用以下命令来更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SET PASSWORD FOR &#x27;database_user&#x27;@&#x27;localhost&#x27; = PASSWORD(&#x27;new_password&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看所有MySQL用户账号"><a href="#查看所有MySQL用户账号" class="headerlink" title="查看所有MySQL用户账号"></a>查看所有MySQL用户账号</h3><p>MySQL 中用户账户的全部信息都保存在<code>mysql.user</code>表中。</p>
+<p>使用以下命名查看<code>mysql.user</code>表结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; DESC mysql.user;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到结构如下：</p>
+<img data-src="https://i.loli.net/2019/12/18/AWn9bm2tR48vLoT.png" >
+
+<p>查看用户账号信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SELECT user, host FROM mysql.user;</span><br></pre></td></tr></table></figure>
+
+<p>结果和以下内容相似：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">+------------------+-----------+</span><br><span class="line">| user             | host      |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">| database_user    | %         |</span><br><span class="line">| database_user    | localhost |</span><br><span class="line">| debian-sys-maint | localhost |</span><br><span class="line">| mysql.session    | localhost |</span><br><span class="line">| mysql.sys        | localhost |</span><br><span class="line">| root             | localhost |</span><br><span class="line">+------------------+-----------+</span><br><span class="line">6 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除MySQL用户账号"><a href="#删除MySQL用户账号" class="headerlink" title="删除MySQL用户账号"></a>删除MySQL用户账号</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; DROP USER IF EXISTS &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="给MySQL用户授权"><a href="#给MySQL用户授权" class="headerlink" title="给MySQL用户授权"></a>给MySQL用户授权</h3><p> MySQL支持的权限的完整列表 <span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2RvYy9yZWZtYW4vNS43L2VuL2dyYW50Lmh0bWw=">点这里<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>这里介绍几个常用的例子。</p>
+<p>授予指定用户所有权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON database_name.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>授予所有用户所有权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>授予指定用户对指定表所有权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON database_name.table_name TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>授予指定用户对指定表的指定权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; GRANT SELECT, INSERT, DELETE ON database_name.* TO database_user@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="撤销MySQL用户权限"><a href="#撤销MySQL用户权限" class="headerlink" title="撤销MySQL用户权限"></a>撤销MySQL用户权限</h3><p>撤销用户所有权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; REVOKE ALL PRIVILEGES ON database_name.* TO &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示MySQL用户权限"><a href="#显示MySQL用户权限" class="headerlink" title="显示MySQL用户权限"></a>显示MySQL用户权限</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; SHOW GRANTS FOR &#x27;database_user&#x27;@&#x27;localhost&#x27;;</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://i.loli.net/2019/12/18/xcUtA1OnaCZWd4j.png" >
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>该教程总结了 MySQL 用户的基本管理实例，如果向了解更多，请参考 <span class="exturl" data-url="aHR0cHM6Ly9kZXYubXlzcWwuY29tL2RvYy9yZWZtYW4vNS43L2VuLw==">MySQL 5.7 官方文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>感谢：<span class="exturl" data-url="aHR0cHM6Ly9saW51eGl6ZS5jb20vcG9zdC9ob3ctdG8tbWFuYWdlLW15c3FsLWRhdGFiYXNlcy1hbmQtdXNlcnMtZnJvbS10aGUtY29tbWFuZC1saW5lLw==">How to Manage MySQL Databases and Users from the Command Line<i class="fa fa-external-link-alt"></i></span></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -1635,6 +1635,16 @@
 <p><a href="https://yingming006.cn/cron">https://yingming006.cn/cron</a></p>
 </blockquote>
 </li>
+<li><p>ip</p>
+<blockquote>
+<p><a href="https://yingming006.cn/ip">https://yingming006.cn/ip</a></p>
+</blockquote>
+</li>
+<li><p>timer</p>
+<blockquote>
+<p><a href="https://yingming006.cn/timer">https://yingming006.cn/timer</a></p>
+</blockquote>
+</li>
 </ul>
 <span id="more"></span>
 
@@ -1747,6 +1757,14 @@
 <li><p>渣男：说话的艺术</p>
 <blockquote>
 <p><span class="exturl" data-url="aHR0cHM6Ly9sb3ZlbGl2ZS50b29scy8=">https://lovelive.tools/<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><ul>
+<li><p>CodePen</p>
+<blockquote>
+<p>一个在线代码编辑器、学习环境和社区，用于使用HTML、CSS和JavaScript代码片段、项目和web应用程序进行前端web开发。</p>
+<p>[<span class="exturl" data-url="aHR0cHM6Ly9jb2RlcGVuLmlvL11baHR0cHM6Ly9jb2RlcGVuLmlvL10=">https://codepen.io/][https://codepen.io/]<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
 </li>
 </ul>
