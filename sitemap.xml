@@ -451,13 +451,6 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/windows/</loc>
-    <lastmod>2023-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/git/</loc>
     <lastmod>2023-03-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -466,6 +459,13 @@
   
   <url>
     <loc>https://yingming006.cn/tags/note/</loc>
+    <lastmod>2023-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/windows/</loc>
     <lastmod>2023-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -521,14 +521,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/https/</loc>
+    <loc>https://yingming006.cn/tags/tool/</loc>
     <lastmod>2023-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/tool/</loc>
+    <loc>https://yingming006.cn/tags/https/</loc>
     <lastmod>2023-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
