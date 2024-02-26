@@ -1,0 +1,78 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="generator" content="Hexo 6.3.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+	<link rel="mask-icon" href="/images/logo.svg" color="#222">
+	<meta name="google-site-verification" content="NZyNYgg0OZlLutc4Uc4x8bhzcMc0CPLY1GAcjRfqHoA">
+	<meta name="baidu-site-verification" content="N4cDkjIYCT">
+	<title>u Clock</title>
+	<link href="/assets/css/flipclock@0.7.8.css" rel="stylesheet">
+	<style>
+		body,
+		html {
+			height: 100%;
+			margin: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #121212;
+			color: #ffffff;
+		}
+
+		.clock {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.flip-clock-wrapper {
+			transform: scale(1);
+			/* 调整放大比例 */
+		}
+
+		.flip-clock-wrapper ul li a div.up:after {
+			height: 0;
+			/* 不显示横线 */
+		}
+	</style>
+</head>
+
+<body>
+	<div id="clock" class="clock"></div>
+</body>
+
+<script src="/assets/js/jquery@3.1.0.min.js"></script>
+<script src="/assets/js/flipclock@0.7.8.min.js"></script>
+<script type="text/javascript">
+	var clock;
+
+	$(document).ready(function () {
+		clock = $('.clock').FlipClock({
+			clockFace: 'TwentyFourHourClock'
+		});
+
+		// 页面加载时初始化大小
+		resizeFlipClock();
+
+		console.log(clock.getOptions())
+	});
+
+	function resizeFlipClock() {
+		var windowWidth = window.innerWidth;
+		var scaleFactor = windowWidth / 480; // 计算缩放比例 显示秒时
+
+		// 应用缩放比例到 FlipClock
+		var flipClock = document.querySelector('.flip-clock-wrapper');
+		flipClock.style.transform = 'scale(' + scaleFactor + ')';
+	}
+
+	// 在视窗大小变化时重新调整大小
+	window.addEventListener('resize', resizeFlipClock);
+</script>
+
+</html>

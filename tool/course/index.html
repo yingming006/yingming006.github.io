@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程安排</title>
+    <link rel="stylesheet" href="./course/style.css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="courses">
+            <div class="course" draggable="true" style="background-color: rgb(243, 150, 150);">语文</div>
+            <div class="course" draggable="true" style="background-color: rgba(0, 255, 0, 0.486);">数学</div>
+            <div class="course" draggable="true" style="background-color: rgba(0, 0, 255, 0.253);">英语</div>
+            
+            <!-- 添加更多课程 -->
+        </div>
+        <table id="schedule">
+            <tr>
+                <th>星期一</th><th>星期二</th><th>星期三</th><th>星期四</th>
+                <th>星期五</th><th>星期六</th><th>星期日</th>
+            </tr>
+            <!-- 生成9行 -->
+            <script>
+                for (let i = 0; i < 9; i++) {
+                    document.write('<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>');
+                }
+            </script>
+        </table>
+    </div>
+    <script src="./course/script.js"></script>
+</body>
+</html>
