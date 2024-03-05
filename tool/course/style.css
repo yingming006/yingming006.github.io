@@ -1,3 +1,0 @@
-/* build time:Mon Feb 26 2024 11:36:39 GMT+0800 (China Standard Time)*/
-#wrapper{display:flex;justify-content:start;align-items:start;gap:20px}#courses{display:flex;flex-direction:column;flex-shrink:0}.course{padding:10px;margin:10px 0;cursor:grab;transition:transform .2s ease}.course:hover{transform:scale(1.1)}#schedule{border-collapse:collapse}#schedule td,#schedule th{border:1px solid #000;width:100px;height:50px;text-align:center;vertical-align:middle}.hide{display:none}.placeholder{border:2px dashed #aaa;margin:10px 0;padding:10px;background-color:#f0f0f0}
-/* rebuild by neat */
