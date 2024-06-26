@@ -750,7 +750,12 @@
 <li>循环等待：若干线程之间形成一个循环链，每个线程都在等待下一个线程所持有的资源。</li>
 </ul>
 <h4 id="如何避免死锁"><a href="#如何避免死锁" class="headerlink" title="如何避免死锁"></a>如何避免死锁</h4><p>对于上述四个产生条件，破坏之一即可。</p>
-<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">    A[创建] --&gt; B[就绪];</span><br><span class="line">    B --&gt; C[运行];</span><br><span class="line">    C --&gt; D[阻塞或等待];</span><br><span class="line">    D --&gt; B;</span><br><span class="line">    C --&gt; E[终止];</span><br></pre></td></tr></table></figure>
+<h3 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h3><pre><code class="highlight mermaid">graph LR;
+    A[创建] --&gt; B[就绪];
+    B --&gt; C[运行];
+    C --&gt; D[阻塞或等待];
+    D --&gt; B;
+    C --&gt; E[终止];</code></pre>
 ]]></content>
       <categories>
         <category>tech</category>
