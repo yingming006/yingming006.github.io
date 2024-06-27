@@ -756,6 +756,20 @@
     C --&gt; D[阻塞或等待];
     D --&gt; B;
     C --&gt; E[终止];</code></pre>
+
+<h3 id="Java-中的线程生命周期"><a href="#Java-中的线程生命周期" class="headerlink" title="Java 中的线程生命周期"></a>Java 中的线程生命周期</h3><pre><code class="highlight mermaid">stateDiagram-v2
+    direction LR
+    新建 --&gt; 可运行: start()
+    可运行 --&gt; 阻塞: synchronized block/method
+    阻塞 --&gt; 可运行: lock released
+    可运行 --&gt; 等待: wait()
+    等待 --&gt; 可运行: notify()/notifyAll()
+    可运行 --&gt; 计时等待: wait(long), sleep(long), join(long)
+    计时等待 --&gt; 可运行: time out, notify()/notifyAll()
+    可运行 --&gt; 终止: run() completes
+    阻塞 --&gt; 终止: Exception
+    等待 --&gt; 终止: Exception
+    计时等待 --&gt; 终止: Exception</code></pre>
 ]]></content>
       <categories>
         <category>tech</category>
