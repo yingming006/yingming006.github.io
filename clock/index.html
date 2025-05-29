@@ -1,0 +1,159 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>极简在线时钟 - 当前时间</title>
+	<meta name="keywords" content="在线时钟，极简时钟，当前时间，实时显示">
+	<meta name="description" content="这是一个简约的在线时钟，可实时显示当前时间。可自定义字体和显示格式。">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+	<link rel="mask-icon" href="/images/logo.svg" color="#222">
+	<meta name="google-site-verification" content="NZyNYgg0OZlLutc4Uc4x8bhzcMc0CPLY1GAcjRfqHoA">
+	<meta name="baidu-site-verification" content="N4cDkjIYCT">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #222;
+			/* 深色背景 */
+			color: #fff;
+			/* 浅色数字 */
+		}
+
+		.clock {
+			font-family: Verdana, Geneva, sans-serif;
+			font-size: 20vw;
+			/* 根据视窗大小调整字体大小 */
+		}
+
+		.font-select-container {
+			display: none;
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			z-index: 1;
+		}
+
+		.font-size-select-container {
+			display: none;
+			position: absolute;
+			bottom: 10px;
+			left: 180px;
+			z-index: 1;
+		}
+
+		.show-second-btn-container {
+			display: none;
+			position: absolute;
+			bottom: 10px;
+			left: 350px;
+			z-index: 1;
+		}
+
+		.show-second-btn {
+			border: none;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+	</style>
+</head>
+
+<body oncontextmenu="return false;">
+	<div class="font-select-container">
+		<select id="fontSelect" onchange="changeFont()">
+			<option value="Verdana, Geneva, sans-serif" style="font-family: Verdana, Geneva, sans-serif;">01:23:45
+			</option>
+			<option value="Courier New, Courier, monospace" style="font-family: Courier New, Courier, monospace;">
+				01:23:45</option>
+			<option value="Lucida Console, Monaco, monospace" style="font-family: Lucida Console, Monaco, monospace;">
+				01:23:45</option>
+			<option value="Consolas, monaco, monospace" style="font-family: Consolas, monaco, monospace;">01:23:45
+			</option>
+		</select>
+	</div>
+	<div class="font-size-select-container">
+		<select id="fontSizeSelect" onchange="changeFontSize('selector')">
+			<option value="10vw">小</option>
+			<option value="20vw" selected>大</option>
+		</select>
+	</div>
+	<div class="show-second-btn-container">
+		<button class="show-second-btn" id="showSecondBtn" onclick="toggleSeconds()">隐藏秒</button>
+	</div>
+	<div class="clock" id="clock"></div>
+
+	<script>
+		var showSeconds = true; // 全局变量，用于控制是否显示秒数
+
+		function updateClock() {
+			var now = new Date();
+			var hours = now.getHours().toString().padStart(2, '0');
+			var minutes = now.getMinutes().toString().padStart(2, '0');
+			var seconds = now.getSeconds().toString().padStart(2, '0');
+			var timeString = hours + ":" + minutes;
+
+			if (showSeconds) {
+				timeString += ":" + seconds;
+			}
+
+			document.getElementById('clock').textContent = timeString;
+			document.title = timeString + ' - 在线时钟 - 当前时间'; // 更新标题为当前时间字符串
+		}
+
+		// 每秒更新一次时钟
+		setInterval(updateClock, 1000);
+
+		// 初始化时钟
+		updateClock();
+
+		function changeFont() {
+			var selectedFont = document.getElementById('fontSelect').value;
+			document.getElementById('clock').style.fontFamily = selectedFont;
+		}
+
+		var fontSelectContainer = document.querySelector('.font-select-container');
+		var fontSizeSelectContainer = document.querySelector('.font-size-select-container');
+		var showSecondBtnContainer = document.querySelector('.show-second-btn-container');
+
+		document.getElementById('clock').addEventListener('click', function () {
+			if (fontSelectContainer.style.display === 'none') {
+				fontSelectContainer.style.display = 'block';
+				fontSizeSelectContainer.style.display = 'block'; // 显示字体大小选择框
+				showSecondBtnContainer.style.display = 'block'; // 显示是否显示秒选择框
+			} else {
+				fontSelectContainer.style.display = 'none';
+				fontSizeSelectContainer.style.display = 'none'; // 隐藏字体大小选择框
+				showSecondBtnContainer.style.display = 'none'; // 隐藏是否显示秒选择框
+			}
+		});
+
+		function changeFontSize(fontSize) {
+			document.getElementById('clock').style.fontSize =
+				fontSize == 'selector'
+					? document.getElementById('fontSizeSelect').value
+					: fontSize;
+		}
+
+		function toggleSeconds() {
+			showSeconds = !showSeconds;
+			var showSecondBtn = document.getElementById('showSecondBtn');
+			if (showSeconds) {
+				showSecondBtn.textContent = "隐藏秒";
+			} else {
+				showSecondBtn.textContent = "显示秒";
+			}
+			updateClock();
+		}
+	</script>
+</body>
+
+</html>
