@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/qrcode/index.html</loc>
+    <loc>https://yingming006.cn/screencap/index.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/screencap/index.html</loc>
+    <loc>https://yingming006.cn/qrcode/index.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/game/adarkroom/LICENSE.html</loc>
+    <loc>https://yingming006.cn/game/adarkroom/browserWarning.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/game/adarkroom/browserWarning.html</loc>
+    <loc>https://yingming006.cn/game/adarkroom/LICENSE.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -518,14 +518,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java/</loc>
+    <loc>https://yingming006.cn/tags/note/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/note/</loc>
+    <loc>https://yingming006.cn/tags/java/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -588,13 +588,6 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/maven/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/tool/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -603,6 +596,13 @@
   
   <url>
     <loc>https://yingming006.cn/tags/nav/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/maven/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

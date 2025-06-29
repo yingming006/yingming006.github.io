@@ -5,8 +5,8 @@
  * - this library has no dependencies.
  * 
  * @author davidshimjs
- * @see <span class="exturl" data-url="aHR0cDovL3d3dy5kLXByb2plY3QuY29tLw==">http://www.d-project.com/<i class="fa fa-external-link-alt"></i></span>
- * @see <span class="exturl" data-url="aHR0cDovL2plcm9tZWV0aWVubmUuZ2l0aHViLmNvbS9qcXVlcnktcXJjb2RlLw==">http://jeromeetienne.github.com/jquery-qrcode/<i class="fa fa-external-link-alt"></i></span>
+ * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
+ * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
  */
 var QRCode;
 
