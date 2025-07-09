@@ -497,13 +497,6 @@
 
   
   <url>
-    <loc>https://yingming006.cn/tags/Ai/</loc>
-    <lastmod>2025-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/Hexo/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -511,7 +504,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java/</loc>
+    <loc>https://yingming006.cn/tags/Ai/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -525,6 +518,13 @@
   </url>
   
   <url>
+    <loc>https://yingming006.cn/tags/java/</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://yingming006.cn/tags/note/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -532,14 +532,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/mysql/</loc>
+    <loc>https://yingming006.cn/tags/windows/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/windows/</loc>
+    <loc>https://yingming006.cn/tags/mysql/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -609,14 +609,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java-collection/</loc>
+    <loc>https://yingming006.cn/tags/python/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/python/</loc>
+    <loc>https://yingming006.cn/tags/java-collection/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -637,13 +637,6 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/sql/</loc>
-    <lastmod>2025-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/algorithm/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -652,6 +645,13 @@
   
   <url>
     <loc>https://yingming006.cn/tags/https/</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/sql/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -693,14 +693,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/clash/</loc>
+    <loc>https://yingming006.cn/tags/office/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/office/</loc>
+    <loc>https://yingming006.cn/tags/clash/</loc>
     <lastmod>2025-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

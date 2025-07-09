@@ -583,24 +583,29 @@ thead {
   </entry>
   
   <entry>
-    <title>Java 开发手册</title>
-    <link href="https://yingming006.cn/java-development-manual/"/>
-    <id>https://yingming006.cn/java-development-manual/</id>
-    <published>2021-01-09T00:59:04.000Z</published>
-    <updated>2022-05-20T08:22:27.000Z</updated>
+    <title>备份 Hexo 博客(精简版)</title>
+    <link href="https://yingming006.cn/backup-hexo/"/>
+    <id>https://yingming006.cn/backup-hexo/</id>
+    <published>2020-12-15T11:40:55.000Z</published>
+    <updated>2020-12-15T11:40:55.000Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>Java 开发手册嵩山版 <a href="https://github.com/alibaba/p3c">地址</a><span id="more"></span></li></ul><div class="pdf-container" data-target="/pdf/Java开发手册嵩山版.pdf" data-height="800px"></div>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>备份是一个好习惯。</p></blockquote><p>目前网上绝大多数的 Hexo 博客备份都是在GitHub新建一个备份仓库，修改 <code>.gitignore</code>，每次更新博客的时候<code>git push</code>一下，这样确实方便很多，但是我在浏览 <a href="https://theme-next.js.org/docs/getting-started/#Configuration">next 官方文档</a>的时候，发现了可以对备份精简的方法，使用代替主题配置文件(<a href="https://theme-next.js.org/docs/getting-started/configuration.html">Alternate Theme Config</a>)<strong>去掉 themes 文件夹</strong>。</p><blockquote><p> 使用此功能需要 Hexo 版本 &gt;&#x3D; 5.0.0。</p></blockquote><span id="more"></span><p>首先配置站点<code>_config.yml</code>文件，</p><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml 以 next 主题为例</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">&quot;next&quot;</span></span><br></pre></td></tr></table></figure><p>然后在站点根目录新建<code>_config.[theme].yml</code>文件，例如 <code>_config.next.yml</code></p><p>然后把 next 主题文件夹下的 <code>_config.yml</code> 文件内容复制到 <code>_config.next.yml</code>就可以了。</p><p>配置完成后目录结构如下 </p><p><img data-src="https://i.loli.net/2020/12/15/vJ2YFQg3kEVelw4.png" alt="Snipaste_2020-12-15_22-06-10.png"></p><p>下次想要恢复的话，直接从GitHub上拉下来，执行<code>npm install</code>即可，非常简单。</p><p>另附 <code>.gitignore</code></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.json</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br></pre></td></tr></table></figure>]]></content>
     
     
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;Java 开发手册嵩山版 &lt;a href=&quot;https://github.com/alibaba/p3c&quot;&gt;地址&lt;/a&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;备份是一个好习惯。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;目前网上绝大多数的 Hexo 博客备份都是在GitHub新建一个备份仓库，修改 &lt;code&gt;.gitignore&lt;/code&gt;，每次更新博客的时候&lt;code&gt;git push&lt;/code&gt;一下，这样确实方便很多，但是我在浏览 &lt;a href=&quot;https://theme-next.js.org/docs/getting-started/#Configuration&quot;&gt;next 官方文档&lt;/a&gt;的时候，发现了可以对备份精简的方法，使用代替主题配置文件(&lt;a href=&quot;https://theme-next.js.org/docs/getting-started/configuration.html&quot;&gt;Alternate Theme Config&lt;/a&gt;)&lt;strong&gt;去掉 themes 文件夹&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; 使用此功能需要 Hexo 版本 &amp;gt;&amp;#x3D; 5.0.0。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
     <category term="tech" scheme="https://yingming006.cn/categories/tech/"/>
     
     
-    <category term="java" scheme="https://yingming006.cn/tags/java/"/>
+    <category term="Hexo" scheme="https://yingming006.cn/tags/Hexo/"/>
     
   </entry>
   
