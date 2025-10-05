@@ -445,6 +445,22 @@
       </tags>
   </entry>
   <entry>
+    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
+    <url>/fix-win10-cannot-open-postman/</url>
+    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
+<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
+<p>先打开任务管理器，结束 Postman 进程</p>
+<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
+<p>完成后再打开就可以了</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>解决 MySQL-Error:Your password does not satisfy the current policy requirements</title>
     <url>/fix-mysql-error-your-password-does-not-satisfy-the-current-policy-requirements/</url>
     <content><![CDATA[<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>MySQL版本：Server version: 5.7.27-0ubuntu0.18.04.1 (Ubuntu)</p>
@@ -482,22 +498,6 @@
       </categories>
       <tags>
         <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决 win10 Postman 无法打开的问题&quot;Could not open Postman&quot;</title>
-    <url>/fix-win10-cannot-open-postman/</url>
-    <content><![CDATA[<p>环境参数：<br>win 10 1903<br>Postman 7.13.0</p>
-<p>安装完 Postman 打开后会出现下列情况<br><img data-src="https://i.loli.net/2019/12/10/c9Q2EyGLZAWIPaD.png" width=300 ></p>
-<p>先打开任务管理器，结束 Postman 进程</p>
-<p>然后删除 Postman 本地数据<br><code>C:\Users\&lt;user&gt;\AppData\Roaming\Postman</code></p>
-<p>完成后再打开就可以了</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -1808,6 +1808,39 @@ thead {
       </tags>
   </entry>
   <entry>
+    <title>遍历列表(List)时删除元素</title>
+    <url>/remove-elements-from-list-while-iterating-in-java/</url>
+    <content><![CDATA[<p>Java 中的 List 集合，使用寻常的 <code>for</code> 循环进行遍历时删除操作时会引起 <code>ConcurrentModificationException</code> 异常，本文主要记录一下避免引起异常的方法。</p>
+<p>首先我们准备一个 <code>List</code>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; books = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">books.add(<span class="string">&quot;C++&quot;</span>);</span><br><span class="line">books.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">books.add(<span class="string">&quot;Python&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Collection-removeAll"><a href="#Collection-removeAll" class="headerlink" title="Collection#removeAll()"></a>Collection#removeAll()</h2><span id="more"></span>
+
+<p>利用 <code>Collection#removeAll()</code> 方法，先找到要删除的对象，在完成迭代后进行删除。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; found = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (String book : books) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;Java&quot;</span>.equals(book)) &#123;</span><br><span class="line">        found.add(book);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">books.removeAll(found);</span><br></pre></td></tr></table></figure>
+
+<p>这种方式理解简单，同时可以对其他的集合进行操作(<code>Collection</code>, <code>Set</code> 等)。</p>
+<p>但是有一个问题，就是我们对 <code>List</code> 遍历了两次: 第一次在 <code>for</code> 循环中找到要删除的对象，第二次是在 <code>books</code> 中找到要删除的对象并将其删除，这是非常影响效率的。</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>使用 <code>Iterator</code> 可以在迭代中删除对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Iterator&lt;String&gt; iter = books.iterator();</span><br><span class="line"><span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">    <span class="keyword">if</span>(iter.next().equals(<span class="string">&quot;Java&quot;</span>))&#123;</span><br><span class="line">        iter.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>Iterator</code> 迭代集合时，必须保证集合是可以被迭代并且可以删除元素的，否则会抛出 <code>UnsupportedOperationException</code>。</p>
+<h2 id="Collection-removeIf-JDK-1-8"><a href="#Collection-removeIf-JDK-1-8" class="headerlink" title="Collection#removeIf() (JDK &gt;&#x3D; 1.8)"></a>Collection#removeIf() (JDK &gt;&#x3D; 1.8)</h2><p><code>Collection#removeIf()</code> 使用了 <code>JDK 1.8</code> 的 <code>Lambda</code> 特性，对每一个匹配到的元素使用了 <code>Iterator</code> 的 <code>remove()</code> 方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">books.removeIf(s -&gt; s.equals(<span class="string">&quot;Java&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="stream-API-JDK-1-8"><a href="#stream-API-JDK-1-8" class="headerlink" title="stream API (JDK &gt;&#x3D; 1.8)"></a>stream API (JDK &gt;&#x3D; 1.8)</h2><p>使用 <code>stream</code> 过滤掉需要删除的元素，剩下的元素组成一个新的 <code>List</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; filtered = books.stream()</span><br><span class="line">        .filter(b -&gt; b.equals(<span class="string">&quot;Java&quot;</span>))</span><br><span class="line">        .collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+
+<p>这样原始 <code>List</code> 的数据结构并未发生改变，创建了一个新的 <code>List</code>，可以方便对原始数据进行操作，显然这种方式用途更加适用需要保存原始数据。</p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>java-collection</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 VS Code 和 WSL 搭建 C++ 开发环境</title>
     <url>/run-cpp-use-vscode-in-wsl/</url>
     <content><![CDATA[<p>本文整理自 Visual Studio Code 官方说明文档 <a href="https://code.visualstudio.com/docs/cpp/config-wsl">Using C++ and WSL in VS Code</a>，对文档内容做了一些简化。</p>
@@ -1868,39 +1901,6 @@ thead {
       </categories>
       <tags>
         <tag>wsl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>遍历列表(List)时删除元素</title>
-    <url>/remove-elements-from-list-while-iterating-in-java/</url>
-    <content><![CDATA[<p>Java 中的 List 集合，使用寻常的 <code>for</code> 循环进行遍历时删除操作时会引起 <code>ConcurrentModificationException</code> 异常，本文主要记录一下避免引起异常的方法。</p>
-<p>首先我们准备一个 <code>List</code>:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; books = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">books.add(<span class="string">&quot;C++&quot;</span>);</span><br><span class="line">books.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">books.add(<span class="string">&quot;Python&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Collection-removeAll"><a href="#Collection-removeAll" class="headerlink" title="Collection#removeAll()"></a>Collection#removeAll()</h2><span id="more"></span>
-
-<p>利用 <code>Collection#removeAll()</code> 方法，先找到要删除的对象，在完成迭代后进行删除。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; found = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (String book : books) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;Java&quot;</span>.equals(book)) &#123;</span><br><span class="line">        found.add(book);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">books.removeAll(found);</span><br></pre></td></tr></table></figure>
-
-<p>这种方式理解简单，同时可以对其他的集合进行操作(<code>Collection</code>, <code>Set</code> 等)。</p>
-<p>但是有一个问题，就是我们对 <code>List</code> 遍历了两次: 第一次在 <code>for</code> 循环中找到要删除的对象，第二次是在 <code>books</code> 中找到要删除的对象并将其删除，这是非常影响效率的。</p>
-<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>使用 <code>Iterator</code> 可以在迭代中删除对象。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Iterator&lt;String&gt; iter = books.iterator();</span><br><span class="line"><span class="keyword">while</span>(iter.hasNext())&#123;</span><br><span class="line">    <span class="keyword">if</span>(iter.next().equals(<span class="string">&quot;Java&quot;</span>))&#123;</span><br><span class="line">        iter.remove();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>Iterator</code> 迭代集合时，必须保证集合是可以被迭代并且可以删除元素的，否则会抛出 <code>UnsupportedOperationException</code>。</p>
-<h2 id="Collection-removeIf-JDK-1-8"><a href="#Collection-removeIf-JDK-1-8" class="headerlink" title="Collection#removeIf() (JDK &gt;&#x3D; 1.8)"></a>Collection#removeIf() (JDK &gt;&#x3D; 1.8)</h2><p><code>Collection#removeIf()</code> 使用了 <code>JDK 1.8</code> 的 <code>Lambda</code> 特性，对每一个匹配到的元素使用了 <code>Iterator</code> 的 <code>remove()</code> 方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">books.removeIf(s -&gt; s.equals(<span class="string">&quot;Java&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="stream-API-JDK-1-8"><a href="#stream-API-JDK-1-8" class="headerlink" title="stream API (JDK &gt;&#x3D; 1.8)"></a>stream API (JDK &gt;&#x3D; 1.8)</h2><p>使用 <code>stream</code> 过滤掉需要删除的元素，剩下的元素组成一个新的 <code>List</code>。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; filtered = books.stream()</span><br><span class="line">        .filter(b -&gt; b.equals(<span class="string">&quot;Java&quot;</span>))</span><br><span class="line">        .collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
-
-<p>这样原始 <code>List</code> 的数据结构并未发生改变，创建了一个新的 <code>List</code>，可以方便对原始数据进行操作，显然这种方式用途更加适用需要保存原始数据。</p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>java-collection</tag>
       </tags>
   </entry>
   <entry>
@@ -2354,6 +2354,89 @@ thead {
       </tags>
   </entry>
   <entry>
+    <title>软件备份</title>
+    <url>/win-and-android-software/</url>
+    <content><![CDATA[<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h4 id="UWP应用"><a href="#UWP应用" class="headerlink" title="UWP应用"></a>UWP应用</h4><ul>
+<li><a href="https://apps.microsoft.com/store/detail/nanazip/9N8G7TSCL18R">NanaZip(7-zip 替代品)</a></li>
+<li><a href="https://www.microsoft.com/zh-cn/p/snipaste/9p1wxpkb68kx">Snipaste</a></li>
+<li><a href="https://eartrumpet.app/">EarTrumpet</a></li>
+<li><a href="http://steampp.net/">Watt Toolkit「原名 Steam++」</a></li>
+<li><a href="https://apps.microsoft.com/store/detail/%E7%88%B1%E5%A3%81%E7%BA%B8uwp/9NBLGGH5KCCF">爱壁纸</a></li>
+<li><a href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701">Windows Terminal</a></li>
+<li><a href="https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV">Ubuntu</a></li>
+</ul>
+<span id="more"></span>
+
+<h4 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h4><ul>
+<li><a href="https://www.voidtools.com/zh-cn/">Everything</a></li>
+<li><a href="https://www.bandisoft.com/honeyview/">Honeyview</a></li>
+<li><a href="http://www.potplayercn.com/">PotPlayer</a></li>
+<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">Typora</a></li>
+<li><a href="https://u.tools/">uTools</a></li>
+<li><a href="https://github.com/Fndroid/clash_for_windows_pkg">Clash for Windows</a></li>
+<li><a href="https://github.com/zhongyang219/TrafficMonitor">TrafficMonitor</a></li>
+<li><a href="https://geekuninstaller.com/">geek Uninstaller</a></li>
+<li><a href="https://im.qq.com/">QQ</a></li>
+<li><a href="https://pc.weixin.qq.com/">微信</a></li>
+<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">迅雷</a></li>
+<li><a href="http://www.ffhome.com/works/ffrenamepro/1406.html">菲菲更名宝贝</a></li>
+<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">解锁文件IObit Unlocker</a></li>
+<li><a href="https://pandownload.net/">pandownload</a></li>
+<li><a href="https://www.todesk.com/">toDesk</a></li>
+<li><a href="https://windhawk.net/">Windhawk</a></li>
+</ul>
+<h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><ul>
+<li><a href="https://git-scm.com/">Git</a></li>
+<li><a href="https://www.heidisql.com/">HeidiSQL</a></li>
+<li><a href="https://www.jetbrains.com/idea/download/#section=windows">IDEA</a>  <a href="http://idea.javatiku.cn/?code=1576">code</a></li>
+<li><a href="https://www.injdk.cn/">JDK</a></li>
+<li><a href="https://code.visualstudio.com/">VSCode</a></li>
+<li><a href="http://nodejs.cn/">Node.js</a></li>
+<li><a href="https://winscp.net/eng/docs/lang:chs">WinSCP</a></li>
+<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">postman</a></li>
+<li><a href="https://downloads.apache.org/jmeter/binaries/">JMeter</a></li>
+</ul>
+<h3 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h3><h4 id="常用软件-1"><a href="#常用软件-1" class="headerlink" title="常用软件"></a>常用软件</h4><p><a href="https://onedrive.yingming006.cn/zh-CN/app/phone/">备份地址</a></p>
+<ul>
+<li>QQ</li>
+<li>微信</li>
+<li>钱迹</li>
+<li>QQ邮箱</li>
+<li>喜马拉雅听书</li>
+<li>网易云音乐</li>
+<li>闲鱼</li>
+<li>支付宝</li>
+<li>锤子便签</li>
+<li>高德地图</li>
+<li><a href="https://github.com/Kr328/ClashForAndroid">Clash for Android</a></li>
+<li>京东</li>
+<li>招商银行</li>
+<li>MT管理器</li>
+<li>淘宝</li>
+<li>阿里巴巴</li>
+<li><a href="https://github.com/gedoor/legado">阅读</a></li>
+<li>网上国网</li>
+<li>中国移动</li>
+<li>e充电</li>
+<li>邮储银行</li>
+<li>阿里云盘</li>
+<li>酷安</li>
+<li>哔哩哔哩</li>
+<li>李跳跳(公众号：大小姐李跳跳)</li>
+<li>冰箱</li>
+<li>MIUI5G开关</li>
+</ul>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>software</tag>
+        <tag>win</tag>
+        <tag>andriod</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>壁纸 Api</title>
     <url>/wallpaper-api/</url>
     <content><![CDATA[<blockquote>
@@ -2478,104 +2561,6 @@ thead {
       </tags>
   </entry>
   <entry>
-    <title>Office 的安装与激活</title>
-    <url>/windows-install-office/</url>
-    <content><![CDATA[<h3 id="下载-Office-Tool-Plus"><a href="#下载-Office-Tool-Plus" class="headerlink" title="下载 Office Tool Plus"></a>下载 Office Tool Plus</h3><p><a href="https://otp.landian.vip/zh-cn/download.html">官方地址</a></p>
-<h3 id="安装-Office"><a href="#安装-Office" class="headerlink" title="安装 Office"></a>安装 Office</h3><p>安装 <code>批量 (Volume) 许可证</code> 版本 Office</p>
-<h3 id="KMS-激活"><a href="#KMS-激活" class="headerlink" title="KMS 激活"></a>KMS 激活</h3><p><code>Microsoft-Activation-Scripts</code></p>
-<p><a href="https://github.com/massgravel/Microsoft-Activation-Scripts">脚本地址</a></p>
-]]></content>
-      <categories>
-        <category>tach</category>
-      </categories>
-      <tags>
-        <tag>office</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件备份</title>
-    <url>/win-and-android-software/</url>
-    <content><![CDATA[<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h4 id="UWP应用"><a href="#UWP应用" class="headerlink" title="UWP应用"></a>UWP应用</h4><ul>
-<li><a href="https://apps.microsoft.com/store/detail/nanazip/9N8G7TSCL18R">NanaZip(7-zip 替代品)</a></li>
-<li><a href="https://www.microsoft.com/zh-cn/p/snipaste/9p1wxpkb68kx">Snipaste</a></li>
-<li><a href="https://eartrumpet.app/">EarTrumpet</a></li>
-<li><a href="http://steampp.net/">Watt Toolkit「原名 Steam++」</a></li>
-<li><a href="https://apps.microsoft.com/store/detail/%E7%88%B1%E5%A3%81%E7%BA%B8uwp/9NBLGGH5KCCF">爱壁纸</a></li>
-<li><a href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701">Windows Terminal</a></li>
-<li><a href="https://apps.microsoft.com/store/detail/ubuntu/9PDXGNCFSCZV">Ubuntu</a></li>
-</ul>
-<span id="more"></span>
-
-<h4 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h4><ul>
-<li><a href="https://www.voidtools.com/zh-cn/">Everything</a></li>
-<li><a href="https://www.bandisoft.com/honeyview/">Honeyview</a></li>
-<li><a href="http://www.potplayercn.com/">PotPlayer</a></li>
-<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">Typora</a></li>
-<li><a href="https://u.tools/">uTools</a></li>
-<li><a href="https://github.com/Fndroid/clash_for_windows_pkg">Clash for Windows</a></li>
-<li><a href="https://github.com/zhongyang219/TrafficMonitor">TrafficMonitor</a></li>
-<li><a href="https://geekuninstaller.com/">geek Uninstaller</a></li>
-<li><a href="https://im.qq.com/">QQ</a></li>
-<li><a href="https://pc.weixin.qq.com/">微信</a></li>
-<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">迅雷</a></li>
-<li><a href="http://www.ffhome.com/works/ffrenamepro/1406.html">菲菲更名宝贝</a></li>
-<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">解锁文件IObit Unlocker</a></li>
-<li><a href="https://pandownload.net/">pandownload</a></li>
-<li><a href="https://www.todesk.com/">toDesk</a></li>
-<li><a href="https://windhawk.net/">Windhawk</a></li>
-</ul>
-<h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><ul>
-<li><a href="https://git-scm.com/">Git</a></li>
-<li><a href="https://www.heidisql.com/">HeidiSQL</a></li>
-<li><a href="https://www.jetbrains.com/idea/download/#section=windows">IDEA</a>  <a href="http://idea.javatiku.cn/?code=1576">code</a></li>
-<li><a href="https://www.injdk.cn/">JDK</a></li>
-<li><a href="https://code.visualstudio.com/">VSCode</a></li>
-<li><a href="http://nodejs.cn/">Node.js</a></li>
-<li><a href="https://winscp.net/eng/docs/lang:chs">WinSCP</a></li>
-<li><a href="https://onedrive.yingming006.cn/zh-CN/app/win/">postman</a></li>
-<li><a href="https://downloads.apache.org/jmeter/binaries/">JMeter</a></li>
-</ul>
-<h3 id="安卓"><a href="#安卓" class="headerlink" title="安卓"></a>安卓</h3><h4 id="常用软件-1"><a href="#常用软件-1" class="headerlink" title="常用软件"></a>常用软件</h4><p><a href="https://onedrive.yingming006.cn/zh-CN/app/phone/">备份地址</a></p>
-<ul>
-<li>QQ</li>
-<li>微信</li>
-<li>钱迹</li>
-<li>QQ邮箱</li>
-<li>喜马拉雅听书</li>
-<li>网易云音乐</li>
-<li>闲鱼</li>
-<li>支付宝</li>
-<li>锤子便签</li>
-<li>高德地图</li>
-<li><a href="https://github.com/Kr328/ClashForAndroid">Clash for Android</a></li>
-<li>京东</li>
-<li>招商银行</li>
-<li>MT管理器</li>
-<li>淘宝</li>
-<li>阿里巴巴</li>
-<li><a href="https://github.com/gedoor/legado">阅读</a></li>
-<li>网上国网</li>
-<li>中国移动</li>
-<li>e充电</li>
-<li>邮储银行</li>
-<li>阿里云盘</li>
-<li>酷安</li>
-<li>哔哩哔哩</li>
-<li>李跳跳(公众号：大小姐李跳跳)</li>
-<li>冰箱</li>
-<li>MIUI5G开关</li>
-</ul>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>software</tag>
-        <tag>win</tag>
-        <tag>andriod</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WIN10系统重装与常用软件安装</title>
     <url>/win10-system-reinstallation-and-common-software-install/</url>
     <content><![CDATA[<h2 id="系统重装"><a href="#系统重装" class="headerlink" title="系统重装"></a>系统重装</h2><h3 id="win10-家庭版"><a href="#win10-家庭版" class="headerlink" title="win10 家庭版"></a>win10 家庭版</h3><p><a href="https://www.microsoft.com/zh-cn/software-download/windows10">下载windows10</a> 官网，点击立即下载，通过该工具制作U盘启动盘。（最简单、最方便）</p>
@@ -2656,6 +2641,62 @@ thead {
       </tags>
   </entry>
   <entry>
+    <title>Office 的安装与激活</title>
+    <url>/windows-install-office/</url>
+    <content><![CDATA[<h3 id="下载-Office-Tool-Plus"><a href="#下载-Office-Tool-Plus" class="headerlink" title="下载 Office Tool Plus"></a>下载 Office Tool Plus</h3><p><a href="https://otp.landian.vip/zh-cn/download.html">官方地址</a></p>
+<h3 id="安装-Office"><a href="#安装-Office" class="headerlink" title="安装 Office"></a>安装 Office</h3><p>安装 <code>批量 (Volume) 许可证</code> 版本 Office</p>
+<h3 id="KMS-激活"><a href="#KMS-激活" class="headerlink" title="KMS 激活"></a>KMS 激活</h3><p><code>Microsoft-Activation-Scripts</code></p>
+<p><a href="https://github.com/massgravel/Microsoft-Activation-Scripts">脚本地址</a></p>
+]]></content>
+      <categories>
+        <category>tach</category>
+      </categories>
+      <tags>
+        <tag>office</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WSL2 访问 Windows 代理</title>
+    <url>/wsl2-access-windows-proxy/</url>
+    <content><![CDATA[<p>NEW : <a href="https://yingming006.cn/wsl-proxy-by-clash/">https://yingming006.cn/wsl-proxy-by-clash/</a></p>
+<h2 id="获取-WSL2-IP-地址"><a href="#获取-WSL2-IP-地址" class="headerlink" title="获取 WSL2 IP 地址"></a>获取 WSL2 IP 地址</h2><p>在 WSL2 中，要访问 Windows 上运行的网络应用（例如在 Windows 上运行的代理软件、SQL 服务器等），需要使用 WSL2 的 IP 地址，而不是 <code>localhost</code>。</p>
+<p>WSL2 的 IP 地址保存在 <code>/etc/resolv.conf</code> 文件中的 <code>nameserver</code>，可以通过以下命令获取：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><blockquote>
+<p>这里拿 v2ray 举例，默认 sock5 的监听端口为 10808</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PROXY_PORT=10808</span><br><span class="line"><span class="built_in">export</span> WINDOWS_NAMESERVER=`<span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line"><span class="built_in">export</span> WIN_PROXY=socks5://<span class="variable">$WINDOWS_NAMESERVER</span>:<span class="variable">$PROXY_PORT</span></span><br><span class="line"><span class="built_in">export</span> HTTP_PROXY=<span class="variable">$WIN_PROXY</span></span><br><span class="line"><span class="built_in">export</span> HTTPS_PROXY=<span class="variable">$WIN_PROXY</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="Windows-防火墙以及-v2ray-设置"><a href="#Windows-防火墙以及-v2ray-设置" class="headerlink" title="Windows 防火墙以及 v2ray 设置"></a>Windows 防火墙以及 v2ray 设置</h2><p>v2ray 默认情况下是不能通过防火墙的，需要允许 v2ray 通过 Windows 的防火墙，设置如图:</p>
+<p><img data-src="https://i.loli.net/2020/12/31/DStfWsanH1E6wLJ.png" alt="windows 防火墙"></p>
+<blockquote>
+<p>图中允许 v2ray 全部通过防火墙，读者可根据需要自定义开启</p>
+</blockquote>
+<p>v2ray 必须开启<strong>允许来自局域网的连接（connection from private net work）</strong></p>
+<p><img data-src="https://i.loli.net/2020/11/30/vZ1EH96GKOnDQBI.png" alt="v2ray"></p>
+<p>现在可以通过 <code>curl www.google.com</code> 来测试代理是否生效，如果控制台有输出即为设置成功。</p>
+<p>最后附上一个脚本，可以通过 <code>proxy start|stop|status</code> 开启、关闭或者检查代理。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">PROXY_PORT=10808</span><br><span class="line">WINDOWS_NAMESERVER=`<span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line">ALL_PROXY=socks5://<span class="variable">$WINDOWS_NAMESERVER</span>:<span class="variable">$PROXY_PORT</span></span><br><span class="line">GIT_HTTP_PROXY=`git config --global --get http.proxy`</span><br><span class="line">GIT_HTTPS_PROXY=`git config --global --get https.proxy`</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">        start)</span><br><span class="line">            <span class="built_in">export</span> HTTP_PROXY=<span class="variable">$ALL_PROXY</span></span><br><span class="line">            <span class="built_in">export</span> HTTPS_PROXY=<span class="variable">$ALL_PROXY</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> [ <span class="string">&quot;`git config --global --get http.proxy`&quot;</span> != <span class="variable">$ALL_PROXY</span> ]; <span class="keyword">then</span></span><br><span class="line">                git config --global http.proxy <span class="variable">$ALL_PROXY</span></span><br><span class="line">                git config --global https.proxy <span class="variable">$ALL_PROXY</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        stop)</span><br><span class="line">            <span class="built_in">unset</span> HTTP_PROXY</span><br><span class="line">            <span class="built_in">unset</span> HTTPS_PROXY</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> [ <span class="string">&quot;`git config --global --get http.proxy`&quot;</span> = <span class="variable">$ALL_PROXY</span> ]; <span class="keyword">then</span></span><br><span class="line">                git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">                git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        status)</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;HTTP_PROXY:&quot;</span> <span class="variable">$HTTP_PROXY</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;HTTPS_PROXY:&quot;</span> <span class="variable">$HTTPS_PROXY</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;GIT_HTTP_PROXY: `git config --global --get http.proxy`&quot;</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;GIT_HTTPS_PROXY: `git config --global --get https.proxy`&quot;</span></span><br><span class="line">            ;;</span><br><span class="line">        *)</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;usage: source <span class="variable">$0</span> start|stop|status&quot;</span></span><br><span class="line">            ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+
+<p>使得命令生效的话还需要在 <code>~/.bashrc</code> 文件末尾新增一条命令(<code>~/.set-wsl2-proxy.sh</code> 表示脚本路径):</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> proxy=<span class="string">&quot;source ~/set-wsl2-proxy.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考:</p>
+<ol>
+<li><a href="https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#accessing-windows-networking-apps-from-linux-host-ip">https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#accessing-windows-networking-apps-from-linux-host-ip</a></li>
+<li><a href="https://zinglix.xyz/2020/04/18/wsl2-proxy/">https://zinglix.xyz/2020/04/18/wsl2-proxy/</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>wsl2访问代理通过clash</title>
     <url>/wsl-proxy-by-clash/</url>
     <content><![CDATA[<span id="more"></span>
@@ -2693,47 +2734,6 @@ thead {
 <p>参数为 wsl 的绝对路径（默认为 <code>C:\Windows\system32\wsl.exe</code>）</p>
 </blockquote>
 <p>问题原因及解决方案的讨论见 <a href="https://github.com/microsoft/WSL/issues/4177#issuecomment-597736482">Gihub Issue</a></p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>wsl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL2 访问 Windows 代理</title>
-    <url>/wsl2-access-windows-proxy/</url>
-    <content><![CDATA[<p>NEW : <a href="https://yingming006.cn/wsl-proxy-by-clash/">https://yingming006.cn/wsl-proxy-by-clash/</a></p>
-<h2 id="获取-WSL2-IP-地址"><a href="#获取-WSL2-IP-地址" class="headerlink" title="获取 WSL2 IP 地址"></a>获取 WSL2 IP 地址</h2><p>在 WSL2 中，要访问 Windows 上运行的网络应用（例如在 Windows 上运行的代理软件、SQL 服务器等），需要使用 WSL2 的 IP 地址，而不是 <code>localhost</code>。</p>
-<p>WSL2 的 IP 地址保存在 <code>/etc/resolv.conf</code> 文件中的 <code>nameserver</code>，可以通过以下命令获取：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><blockquote>
-<p>这里拿 v2ray 举例，默认 sock5 的监听端口为 10808</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PROXY_PORT=10808</span><br><span class="line"><span class="built_in">export</span> WINDOWS_NAMESERVER=`<span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line"><span class="built_in">export</span> WIN_PROXY=socks5://<span class="variable">$WINDOWS_NAMESERVER</span>:<span class="variable">$PROXY_PORT</span></span><br><span class="line"><span class="built_in">export</span> HTTP_PROXY=<span class="variable">$WIN_PROXY</span></span><br><span class="line"><span class="built_in">export</span> HTTPS_PROXY=<span class="variable">$WIN_PROXY</span></span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="Windows-防火墙以及-v2ray-设置"><a href="#Windows-防火墙以及-v2ray-设置" class="headerlink" title="Windows 防火墙以及 v2ray 设置"></a>Windows 防火墙以及 v2ray 设置</h2><p>v2ray 默认情况下是不能通过防火墙的，需要允许 v2ray 通过 Windows 的防火墙，设置如图:</p>
-<p><img data-src="https://i.loli.net/2020/12/31/DStfWsanH1E6wLJ.png" alt="windows 防火墙"></p>
-<blockquote>
-<p>图中允许 v2ray 全部通过防火墙，读者可根据需要自定义开启</p>
-</blockquote>
-<p>v2ray 必须开启<strong>允许来自局域网的连接（connection from private net work）</strong></p>
-<p><img data-src="https://i.loli.net/2020/11/30/vZ1EH96GKOnDQBI.png" alt="v2ray"></p>
-<p>现在可以通过 <code>curl www.google.com</code> 来测试代理是否生效，如果控制台有输出即为设置成功。</p>
-<p>最后附上一个脚本，可以通过 <code>proxy start|stop|status</code> 开启、关闭或者检查代理。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">PROXY_PORT=10808</span><br><span class="line">WINDOWS_NAMESERVER=`<span class="built_in">cat</span> /etc/resolv.conf|grep nameserver|awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span>`</span><br><span class="line">ALL_PROXY=socks5://<span class="variable">$WINDOWS_NAMESERVER</span>:<span class="variable">$PROXY_PORT</span></span><br><span class="line">GIT_HTTP_PROXY=`git config --global --get http.proxy`</span><br><span class="line">GIT_HTTPS_PROXY=`git config --global --get https.proxy`</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$1</span> <span class="keyword">in</span></span><br><span class="line">        start)</span><br><span class="line">            <span class="built_in">export</span> HTTP_PROXY=<span class="variable">$ALL_PROXY</span></span><br><span class="line">            <span class="built_in">export</span> HTTPS_PROXY=<span class="variable">$ALL_PROXY</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> [ <span class="string">&quot;`git config --global --get http.proxy`&quot;</span> != <span class="variable">$ALL_PROXY</span> ]; <span class="keyword">then</span></span><br><span class="line">                git config --global http.proxy <span class="variable">$ALL_PROXY</span></span><br><span class="line">                git config --global https.proxy <span class="variable">$ALL_PROXY</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        stop)</span><br><span class="line">            <span class="built_in">unset</span> HTTP_PROXY</span><br><span class="line">            <span class="built_in">unset</span> HTTPS_PROXY</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> [ <span class="string">&quot;`git config --global --get http.proxy`&quot;</span> = <span class="variable">$ALL_PROXY</span> ]; <span class="keyword">then</span></span><br><span class="line">                git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">                git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">            ;;</span><br><span class="line">        status)</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;HTTP_PROXY:&quot;</span> <span class="variable">$HTTP_PROXY</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;HTTPS_PROXY:&quot;</span> <span class="variable">$HTTPS_PROXY</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;GIT_HTTP_PROXY: `git config --global --get http.proxy`&quot;</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;GIT_HTTPS_PROXY: `git config --global --get https.proxy`&quot;</span></span><br><span class="line">            ;;</span><br><span class="line">        *)</span><br><span class="line">            <span class="built_in">echo</span> <span class="string">&quot;usage: source <span class="variable">$0</span> start|stop|status&quot;</span></span><br><span class="line">            ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-
-<p>使得命令生效的话还需要在 <code>~/.bashrc</code> 文件末尾新增一条命令(<code>~/.set-wsl2-proxy.sh</code> 表示脚本路径):</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> proxy=<span class="string">&quot;source ~/set-wsl2-proxy.sh&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考:</p>
-<ol>
-<li><a href="https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#accessing-windows-networking-apps-from-linux-host-ip">https://docs.microsoft.com/zh-cn/windows/wsl/compare-versions#accessing-windows-networking-apps-from-linux-host-ip</a></li>
-<li><a href="https://zinglix.xyz/2020/04/18/wsl2-proxy/">https://zinglix.xyz/2020/04/18/wsl2-proxy/</a></li>
-</ol>
 ]]></content>
       <categories>
         <category>tech</category>
