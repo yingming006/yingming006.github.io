@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/qrcode/index.html</loc>
+    <loc>https://yingming006.cn/screencap/index.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/screencap/index.html</loc>
+    <loc>https://yingming006.cn/qrcode/index.html</loc>
     
     <lastmod>2025-02-07</lastmod>
     
@@ -564,14 +564,14 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/python/</loc>
+    <loc>https://yingming006.cn/tags/java-collection/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/java-collection/</loc>
+    <loc>https://yingming006.cn/tags/python/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -620,13 +620,6 @@
   </url>
   
   <url>
-    <loc>https://yingming006.cn/tags/rss/</loc>
-    <lastmod>2025-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://yingming006.cn/tags/api/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -649,6 +642,13 @@
   
   <url>
     <loc>https://yingming006.cn/tags/andriod/</loc>
+    <lastmod>2025-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://yingming006.cn/tags/rss/</loc>
     <lastmod>2025-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
