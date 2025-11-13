@@ -51,6 +51,158 @@
       </tags>
   </entry>
   <entry>
+    <title>代码生成器prompt</title>
+    <url>/code-generator-prompt/</url>
+    <content><![CDATA[<p>规则和脚本：</p>
+<span id="more"></span>
+<figure class="highlight md"><figcaption><span>code_generator_prompt.md</span></figcaption><table><tr><td class="code"><pre><span class="line">你是一位世界顶级的软件工程师和代码专家，精通多种编程语言，包括但不限于 Python, JavaScript, TypeScript, Go, Rust, Java, C++, SQL。你的核心任务是作为我的个人代码助手。</span><br><span class="line"></span><br><span class="line">请严格遵守以下规则：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**代码优先**</span>: 当我要求编写代码时，直接提供完整、可运行、高质量的代码块。</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**清晰注释**</span>: 在关键代码行或复杂逻辑处添加简洁明了的注释，解释其目的。</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**解释与思路**</span>: 在代码块之后，用简洁的语言解释你的核心思路、关键函数或算法，并说明为什么选择这种实现方式。</span><br><span class="line"><span class="bullet">4.</span>  <span class="strong">**格式规范**</span>: 所有代码都必须使用 Markdown 的代码块格式，并明确标注语言类型（例如 <span class="code">`python ... `</span>）。</span><br><span class="line"><span class="bullet">5.</span>  <span class="strong">**保持上下文**</span>: 记住我们之前的对话，以便在我追问或要求修改时，你能理解上下文。</span><br><span class="line"><span class="bullet">6.</span>  <span class="strong">**主动提问**</span>: 如果我的问题模糊不清，你会主动提出澄清性问题，而不是猜测我的意图。</span><br><span class="line"><span class="bullet">7.</span>  <span class="strong">**考虑多种方案**</span>: 对于复杂问题，如果存在多种解决方案，请列出它们并分析各自的优缺点，然后推荐最佳方案。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>generate_context.sh</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ===================================================================================</span></span><br><span class="line"><span class="comment"># &quot;The Clean Cut&quot; - 纯净最终版项目上下文生成脚本</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 功能:</span></span><br><span class="line"><span class="comment">#   遍历当前 Git 仓库中所有被跟踪的文本文件，并将它们的内容</span></span><br><span class="line"><span class="comment">#   整合成一个对大语言模型（LLM）友好的单一 Markdown 文件。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line"><span class="comment">#   在项目根目录生成一个名为 project_context_for_llm.md 的文件，</span></span><br><span class="line"><span class="comment">#   该文件包含引导提示、项目文件树和所有源代码。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># ===================================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 配置区 ---</span></span><br><span class="line">FINAL_OUTPUT_FILE=<span class="string">&quot;project_context_for_llm.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 核心函数定义 ---</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数：打印文件的完整内容</span></span><br><span class="line"><span class="function"><span class="title">print_full_file</span></span>() &#123;</span><br><span class="line">    file_path=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    temp_output_file=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    filename=$(<span class="built_in">basename</span> -- <span class="string">&quot;<span class="variable">$file_path</span>&quot;</span>)</span><br><span class="line">    extension=<span class="string">&quot;<span class="variable">$&#123;filename##*.&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$extension</span>&quot;</span> = <span class="string">&quot;<span class="variable">$filename</span>&quot;</span> ] || [ -z <span class="string">&quot;<span class="variable">$extension</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        extension=<span class="string">&quot;text&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;--- FILE: <span class="variable">$&#123;file_path&#125;</span> ---&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;\`\`\`<span class="variable">$&#123;extension&#125;</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">cat</span> <span class="string">&quot;<span class="variable">$&#123;file_path&#125;</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;\`\`\`&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数：生成项目的元数据（头部信息）</span></span><br><span class="line"><span class="function"><span class="title">generate_header</span></span>() &#123;</span><br><span class="line">    temp_output_file=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    current_dir=$(<span class="built_in">pwd</span>)</span><br><span class="line">    project_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$current_dir</span>&quot;</span>)</span><br><span class="line">    generation_time=$(<span class="built_in">date</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;# Project Context: <span class="variable">$project_name</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;## Generation Time: <span class="variable">$generation_time</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">command</span> -v tree &gt; /dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;## Project File Tree&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&#x27;```&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        tree -aF --matchdirs --ignore-case -I <span class="string">&#x27;.git|node_modules|dist|build|target|venv|__pycache__&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&#x27;```&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;## Source Code &amp; Files&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 主程序入口 ---</span></span><br><span class="line"></span><br><span class="line">TEMP_FILE=$(<span class="built_in">mktemp</span>)</span><br><span class="line"><span class="comment"># 确保脚本退出时，无论成功还是失败，都删除临时文件</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;rm -f &quot;$TEMP_FILE&quot;&#x27;</span> EXIT</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Curating project context for LLM...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 1: 生成头部信息</span></span><br><span class="line">generate_header <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 2: 遍历文件并处理</span></span><br><span class="line"><span class="comment"># 排除常见的二进制文件、锁文件、依赖目录和构建产物</span></span><br><span class="line">BINARY_EXTENSIONS=<span class="string">&#x27;(png|jpg|jpeg|gif|webp|ico|svg|zip|gz|tar|rar|7z|so|a|dll|lib|jar|war|ear|exe|dmg|bin|pdf|doc|docx|xls|xlsx|ppt|pptx|o|class|pyc)&#x27;</span></span><br><span class="line">EXCLUDE_PATTERNS=<span class="string">&#x27;(^|/)\.git/|node_modules/|dist/|build/|target/|venv/|__pycache__/|(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|\.min\.js|\.min\.css)$|\.&#x27;</span><span class="string">&quot;<span class="variable">$&#123;BINARY_EXTENSIONS&#125;</span>&quot;</span><span class="string">&#x27;$&#x27;</span></span><br><span class="line"></span><br><span class="line">git ls-files | grep -vE <span class="string">&quot;<span class="variable">$EXCLUDE_PATTERNS</span>&quot;</span> | <span class="keyword">while</span> <span class="built_in">read</span> -r file; <span class="keyword">do</span></span><br><span class="line">    <span class="comment"># 确保文件存在且是一个普通文件</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span> <span class="built_in">continue</span>; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;  - Processing: <span class="variable">$file</span>&quot;</span></span><br><span class="line">    print_full_file <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 3: 组合最终的输出文件</span></span><br><span class="line"><span class="comment"># 为 LLM 准备的引导提示</span></span><br><span class="line">PROMPT_TEMPLATE=<span class="string">&#x27;你好，我将为你提供我一个软件项目的完整上下文。这份上下文是一个 Markdown 文件，其中包含了项目的文件结构树以及所有相关源代码文件的内容。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">请你仔细阅读并完全理解这份上下文。在后续的对话中，我将基于这些信息向你提问。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">当你准备好后，请回答“我已经准备好了，请开始提问。”</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">--- 以下是项目上下文 ---</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$PROMPT_TEMPLATE</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br><span class="line"><span class="built_in">cat</span> <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;🎉 Success! Your ready-to-use context is in: <span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>Ai</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>异能者(ERAZER)无线机械键盘GK501</title>
+    <url>/erazer/</url>
+    <content><![CDATA[<h2 id="连接模式设置"><a class="markdownIt-Anchor" href="#连接模式设置"></a> 连接模式设置</h2>
+<h3 id="1-模式切换"><a class="markdownIt-Anchor" href="#1-模式切换"></a> 1. 模式切换</h3>
+<ul>
+<li><strong>系统切换</strong>: 拨动侧键选择 Mac/Win 系统（Win系统下 Win键与 Alt键位置互换）。</li>
+<li><strong>连接模式切换</strong>: 拨动侧键选择 USB有线/OFF/无线模式。</li>
+</ul>
+<h3 id="2-蓝牙连接支持3台设备"><a class="markdownIt-Anchor" href="#2-蓝牙连接支持3台设备"></a> 2. 蓝牙连接（支持3台设备）</h3>
+<ol>
+<li>切换至对应系统（Mac/Win）。</li>
+<li>拨动开关至无线模式。</li>
+<li>长按 <code>FN+Q/W/E</code> 5秒进入配对（对应蓝牙1/2/3），按键闪烁。</li>
+<li>设备搜索并连接 <strong>“ERAZER GK 501”</strong>，成功后停止闪烁。</li>
+</ol>
+<ul>
+<li><strong>切换设备</strong>: 按 <code>FN+Q/W/E</code> 切换已配对的设备。</li>
+</ul>
+<span id="more"></span>
+<h3 id="3-24g连接"><a class="markdownIt-Anchor" href="#3-24g连接"></a> 3. 2.4G连接</h3>
+<ol>
+<li>切换至对应系统（Mac/Win）。</li>
+<li>拨动开关至无线模式。</li>
+<li>长按 <code>FN+R</code> 5秒进入配对，R键闪烁。</li>
+<li>插入接收器，连接成功后停止闪烁。</li>
+</ol>
+<h3 id="4-usb有线连接"><a class="markdownIt-Anchor" href="#4-usb有线连接"></a> 4. USB有线连接</h3>
+<ol>
+<li>切换至对应系统（Mac/Win）。</li>
+<li>拨动开关至有线模式。</li>
+<li>插入数据线，T键闪烁3次后连接成功。</li>
+</ol>
+<hr />
+<h2 id="功能操作"><a class="markdownIt-Anchor" href="#功能操作"></a> 功能操作</h2>
+<h3 id="1-电量管理"><a class="markdownIt-Anchor" href="#1-电量管理"></a> 1. 电量管理</h3>
+<ul>
+<li><strong>查询电量</strong>: 无线模式下按 <code>FN+B</code>，数字区亮红灯显示电量（如“1、2、3”亮表示30%）。</li>
+<li><strong>低电量提示</strong>: ESC键闪烁，电压低于3.1V自动关机。</li>
+</ul>
+<h3 id="2-背光控制"><a class="markdownIt-Anchor" href="#2-背光控制"></a> 2. 背光控制</h3>
+<ul>
+<li><strong>亮度调节</strong>: <code>FN+↑/↓</code>（共5档）。</li>
+<li><strong>速度调节</strong>: <code>FN+←/→</code>（共5档）。</li>
+<li><strong>模式切换</strong>: <code>FN+HOME</code> 循环切换（如波浪、呼吸、烟花等22种模式）。</li>
+<li><strong>开关背光</strong>: <code>FN+Backspace</code>。</li>
+</ul>
+<h3 id="3-快捷键功能"><a class="markdownIt-Anchor" href="#3-快捷键功能"></a> 3. 快捷键功能</h3>
+<h4 id="windows系统"><a class="markdownIt-Anchor" href="#windows系统"></a> Windows系统：</h4>
+<table>
+<thead>
+<tr>
+<th>组合键</th>
+<th>功能</th>
+<th>组合键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FN+F1</code></td>
+<td>打开“我的电脑”</td>
+<td><code>FN+F7</code></td>
+<td>播放/暂停</td>
+</tr>
+<tr>
+<td><code>FN+F2</code></td>
+<td>搜索</td>
+<td><code>FN+F9</code></td>
+<td>静音</td>
+</tr>
+<tr>
+<td><code>FN+F3</code></td>
+<td>计算器</td>
+<td><code>FN+F10</code></td>
+<td>音量-</td>
+</tr>
+<tr>
+<td><code>FN+F5</code></td>
+<td>上一曲</td>
+<td><code>FN+F11</code></td>
+<td>音量+</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mac系统"><a class="markdownIt-Anchor" href="#mac系统"></a> Mac系统：</h4>
+<table>
+<thead>
+<tr>
+<th>组合键</th>
+<th>功能</th>
+<th>组合键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FN+F1</code></td>
+<td>屏幕亮度-</td>
+<td><code>FN+F8</code></td>
+<td>播放/暂停</td>
+</tr>
+<tr>
+<td><code>FN+F2</code></td>
+<td>屏幕亮度+</td>
+<td><code>FN+F12</code></td>
+<td>音量+</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-其他功能"><a class="markdownIt-Anchor" href="#4-其他功能"></a> 4. 其他功能</h3>
+<ul>
+<li><strong>恢复出厂设置</strong>: 长按 <code>FN+ESC</code> 3秒。</li>
+<li><strong>睡眠模式</strong>: 无操作2分钟进入浅睡眠，30分钟后深度睡眠（按任意键唤醒）。</li>
+</ul>
+<hr />
+<h2 id="指示灯说明"><a class="markdownIt-Anchor" href="#指示灯说明"></a> 指示灯说明</h2>
+<ul>
+<li><strong>状态灯</strong>: CAPS/WIN/NUM 无功能时亮，有功能时灭。</li>
+<li><strong>连接模式灯</strong>: 底部显示蓝牙1/2/3、2.4G、有线状态。</li>
+<li><strong>充电提示</strong>: 充电时指示灯灭，充满恢复灯效。</li>
+</ul>
+<hr />
+<h2 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h2>
+<ol>
+<li>蓝牙/2.4G配对失败后，键盘保留最后一次成功配置。</li>
+<li>接收器需插入电脑USB口使用，配对时确保距离小于10米。</li>
+<li>双系统模式下，仅背光和按键功能恢复默认，系统设置不变。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于 Hexo + GitHub Pages 搭建个人博客</title>
     <url>/build-a-personal-blog-based-on-hexo-and-github-pages/</url>
     <content><![CDATA[<h2 id="必读文档"><a class="markdownIt-Anchor" href="#必读文档"></a> 必读文档</h2>
@@ -318,158 +470,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>代码生成器prompt</title>
-    <url>/code-generator-prompt/</url>
-    <content><![CDATA[<p>规则和脚本：</p>
-<span id="more"></span>
-<figure class="highlight md"><figcaption><span>code_generator_prompt.md</span></figcaption><table><tr><td class="code"><pre><span class="line">你是一位世界顶级的软件工程师和代码专家，精通多种编程语言，包括但不限于 Python, JavaScript, TypeScript, Go, Rust, Java, C++, SQL。你的核心任务是作为我的个人代码助手。</span><br><span class="line"></span><br><span class="line">请严格遵守以下规则：</span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span>  <span class="strong">**代码优先**</span>: 当我要求编写代码时，直接提供完整、可运行、高质量的代码块。</span><br><span class="line"><span class="bullet">2.</span>  <span class="strong">**清晰注释**</span>: 在关键代码行或复杂逻辑处添加简洁明了的注释，解释其目的。</span><br><span class="line"><span class="bullet">3.</span>  <span class="strong">**解释与思路**</span>: 在代码块之后，用简洁的语言解释你的核心思路、关键函数或算法，并说明为什么选择这种实现方式。</span><br><span class="line"><span class="bullet">4.</span>  <span class="strong">**格式规范**</span>: 所有代码都必须使用 Markdown 的代码块格式，并明确标注语言类型（例如 <span class="code">`python ... `</span>）。</span><br><span class="line"><span class="bullet">5.</span>  <span class="strong">**保持上下文**</span>: 记住我们之前的对话，以便在我追问或要求修改时，你能理解上下文。</span><br><span class="line"><span class="bullet">6.</span>  <span class="strong">**主动提问**</span>: 如果我的问题模糊不清，你会主动提出澄清性问题，而不是猜测我的意图。</span><br><span class="line"><span class="bullet">7.</span>  <span class="strong">**考虑多种方案**</span>: 对于复杂问题，如果存在多种解决方案，请列出它们并分析各自的优缺点，然后推荐最佳方案。</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><figcaption><span>generate_context.sh</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ===================================================================================</span></span><br><span class="line"><span class="comment"># &quot;The Clean Cut&quot; - 纯净最终版项目上下文生成脚本</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 功能:</span></span><br><span class="line"><span class="comment">#   遍历当前 Git 仓库中所有被跟踪的文本文件，并将它们的内容</span></span><br><span class="line"><span class="comment">#   整合成一个对大语言模型（LLM）友好的单一 Markdown 文件。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 输出:</span></span><br><span class="line"><span class="comment">#   在项目根目录生成一个名为 project_context_for_llm.md 的文件，</span></span><br><span class="line"><span class="comment">#   该文件包含引导提示、项目文件树和所有源代码。</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># ===================================================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 配置区 ---</span></span><br><span class="line">FINAL_OUTPUT_FILE=<span class="string">&quot;project_context_for_llm.md&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 核心函数定义 ---</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数：打印文件的完整内容</span></span><br><span class="line"><span class="function"><span class="title">print_full_file</span></span>() &#123;</span><br><span class="line">    file_path=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    temp_output_file=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    filename=$(<span class="built_in">basename</span> -- <span class="string">&quot;<span class="variable">$file_path</span>&quot;</span>)</span><br><span class="line">    extension=<span class="string">&quot;<span class="variable">$&#123;filename##*.&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$extension</span>&quot;</span> = <span class="string">&quot;<span class="variable">$filename</span>&quot;</span> ] || [ -z <span class="string">&quot;<span class="variable">$extension</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">        extension=<span class="string">&quot;text&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;--- FILE: <span class="variable">$&#123;file_path&#125;</span> ---&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;\`\`\`<span class="variable">$&#123;extension&#125;</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">cat</span> <span class="string">&quot;<span class="variable">$&#123;file_path&#125;</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;\`\`\`&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 函数：生成项目的元数据（头部信息）</span></span><br><span class="line"><span class="function"><span class="title">generate_header</span></span>() &#123;</span><br><span class="line">    temp_output_file=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    current_dir=$(<span class="built_in">pwd</span>)</span><br><span class="line">    project_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$current_dir</span>&quot;</span>)</span><br><span class="line">    generation_time=$(<span class="built_in">date</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;# Project Context: <span class="variable">$project_name</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;## Generation Time: <span class="variable">$generation_time</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">command</span> -v tree &gt; /dev/null 2&gt;&amp;1; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;## Project File Tree&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&#x27;```&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        tree -aF --matchdirs --ignore-case -I <span class="string">&#x27;.git|node_modules|dist|build|target|venv|__pycache__&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&#x27;```&#x27;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;## Source Code &amp; Files&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$temp_output_file</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># --- 主程序入口 ---</span></span><br><span class="line"></span><br><span class="line">TEMP_FILE=$(<span class="built_in">mktemp</span>)</span><br><span class="line"><span class="comment"># 确保脚本退出时，无论成功还是失败，都删除临时文件</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;rm -f &quot;$TEMP_FILE&quot;&#x27;</span> EXIT</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Curating project context for LLM...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 1: 生成头部信息</span></span><br><span class="line">generate_header <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 2: 遍历文件并处理</span></span><br><span class="line"><span class="comment"># 排除常见的二进制文件、锁文件、依赖目录和构建产物</span></span><br><span class="line">BINARY_EXTENSIONS=<span class="string">&#x27;(png|jpg|jpeg|gif|webp|ico|svg|zip|gz|tar|rar|7z|so|a|dll|lib|jar|war|ear|exe|dmg|bin|pdf|doc|docx|xls|xlsx|ppt|pptx|o|class|pyc)&#x27;</span></span><br><span class="line">EXCLUDE_PATTERNS=<span class="string">&#x27;(^|/)\.git/|node_modules/|dist/|build/|target/|venv/|__pycache__/|(package-lock\.json|pnpm-lock\.yaml|yarn\.lock|\.min\.js|\.min\.css)$|\.&#x27;</span><span class="string">&quot;<span class="variable">$&#123;BINARY_EXTENSIONS&#125;</span>&quot;</span><span class="string">&#x27;$&#x27;</span></span><br><span class="line"></span><br><span class="line">git ls-files | grep -vE <span class="string">&quot;<span class="variable">$EXCLUDE_PATTERNS</span>&quot;</span> | <span class="keyword">while</span> <span class="built_in">read</span> -r file; <span class="keyword">do</span></span><br><span class="line">    <span class="comment"># 确保文件存在且是一个普通文件</span></span><br><span class="line">    <span class="keyword">if</span> [ ! -f <span class="string">&quot;<span class="variable">$file</span>&quot;</span> ]; <span class="keyword">then</span> <span class="built_in">continue</span>; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;  - Processing: <span class="variable">$file</span>&quot;</span></span><br><span class="line">    print_full_file <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 步骤 3: 组合最终的输出文件</span></span><br><span class="line"><span class="comment"># 为 LLM 准备的引导提示</span></span><br><span class="line">PROMPT_TEMPLATE=<span class="string">&#x27;你好，我将为你提供我一个软件项目的完整上下文。这份上下文是一个 Markdown 文件，其中包含了项目的文件结构树以及所有相关源代码文件的内容。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">请你仔细阅读并完全理解这份上下文。在后续的对话中，我将基于这些信息向你提问。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">当你准备好后，请回答“我已经准备好了，请开始提问。”</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">--- 以下是项目上下文 ---</span></span><br><span class="line"><span class="string">&#x27;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$PROMPT_TEMPLATE</span>&quot;</span> &gt; <span class="string">&quot;<span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br><span class="line"><span class="built_in">cat</span> <span class="string">&quot;<span class="variable">$TEMP_FILE</span>&quot;</span> &gt;&gt; <span class="string">&quot;<span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;🎉 Success! Your ready-to-use context is in: <span class="variable">$FINAL_OUTPUT_FILE</span>&quot;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>Ai</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>异能者(ERAZER)无线机械键盘GK501</title>
-    <url>/erazer/</url>
-    <content><![CDATA[<h2 id="连接模式设置"><a class="markdownIt-Anchor" href="#连接模式设置"></a> 连接模式设置</h2>
-<h3 id="1-模式切换"><a class="markdownIt-Anchor" href="#1-模式切换"></a> 1. 模式切换</h3>
-<ul>
-<li><strong>系统切换</strong>: 拨动侧键选择 Mac/Win 系统（Win系统下 Win键与 Alt键位置互换）。</li>
-<li><strong>连接模式切换</strong>: 拨动侧键选择 USB有线/OFF/无线模式。</li>
-</ul>
-<h3 id="2-蓝牙连接支持3台设备"><a class="markdownIt-Anchor" href="#2-蓝牙连接支持3台设备"></a> 2. 蓝牙连接（支持3台设备）</h3>
-<ol>
-<li>切换至对应系统（Mac/Win）。</li>
-<li>拨动开关至无线模式。</li>
-<li>长按 <code>FN+Q/W/E</code> 5秒进入配对（对应蓝牙1/2/3），按键闪烁。</li>
-<li>设备搜索并连接 <strong>“ERAZER GK 501”</strong>，成功后停止闪烁。</li>
-</ol>
-<ul>
-<li><strong>切换设备</strong>: 按 <code>FN+Q/W/E</code> 切换已配对的设备。</li>
-</ul>
-<span id="more"></span>
-<h3 id="3-24g连接"><a class="markdownIt-Anchor" href="#3-24g连接"></a> 3. 2.4G连接</h3>
-<ol>
-<li>切换至对应系统（Mac/Win）。</li>
-<li>拨动开关至无线模式。</li>
-<li>长按 <code>FN+R</code> 5秒进入配对，R键闪烁。</li>
-<li>插入接收器，连接成功后停止闪烁。</li>
-</ol>
-<h3 id="4-usb有线连接"><a class="markdownIt-Anchor" href="#4-usb有线连接"></a> 4. USB有线连接</h3>
-<ol>
-<li>切换至对应系统（Mac/Win）。</li>
-<li>拨动开关至有线模式。</li>
-<li>插入数据线，T键闪烁3次后连接成功。</li>
-</ol>
-<hr />
-<h2 id="功能操作"><a class="markdownIt-Anchor" href="#功能操作"></a> 功能操作</h2>
-<h3 id="1-电量管理"><a class="markdownIt-Anchor" href="#1-电量管理"></a> 1. 电量管理</h3>
-<ul>
-<li><strong>查询电量</strong>: 无线模式下按 <code>FN+B</code>，数字区亮红灯显示电量（如“1、2、3”亮表示30%）。</li>
-<li><strong>低电量提示</strong>: ESC键闪烁，电压低于3.1V自动关机。</li>
-</ul>
-<h3 id="2-背光控制"><a class="markdownIt-Anchor" href="#2-背光控制"></a> 2. 背光控制</h3>
-<ul>
-<li><strong>亮度调节</strong>: <code>FN+↑/↓</code>（共5档）。</li>
-<li><strong>速度调节</strong>: <code>FN+←/→</code>（共5档）。</li>
-<li><strong>模式切换</strong>: <code>FN+HOME</code> 循环切换（如波浪、呼吸、烟花等22种模式）。</li>
-<li><strong>开关背光</strong>: <code>FN+Backspace</code>。</li>
-</ul>
-<h3 id="3-快捷键功能"><a class="markdownIt-Anchor" href="#3-快捷键功能"></a> 3. 快捷键功能</h3>
-<h4 id="windows系统"><a class="markdownIt-Anchor" href="#windows系统"></a> Windows系统：</h4>
-<table>
-<thead>
-<tr>
-<th>组合键</th>
-<th>功能</th>
-<th>组合键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>FN+F1</code></td>
-<td>打开“我的电脑”</td>
-<td><code>FN+F7</code></td>
-<td>播放/暂停</td>
-</tr>
-<tr>
-<td><code>FN+F2</code></td>
-<td>搜索</td>
-<td><code>FN+F9</code></td>
-<td>静音</td>
-</tr>
-<tr>
-<td><code>FN+F3</code></td>
-<td>计算器</td>
-<td><code>FN+F10</code></td>
-<td>音量-</td>
-</tr>
-<tr>
-<td><code>FN+F5</code></td>
-<td>上一曲</td>
-<td><code>FN+F11</code></td>
-<td>音量+</td>
-</tr>
-</tbody>
-</table>
-<h4 id="mac系统"><a class="markdownIt-Anchor" href="#mac系统"></a> Mac系统：</h4>
-<table>
-<thead>
-<tr>
-<th>组合键</th>
-<th>功能</th>
-<th>组合键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>FN+F1</code></td>
-<td>屏幕亮度-</td>
-<td><code>FN+F8</code></td>
-<td>播放/暂停</td>
-</tr>
-<tr>
-<td><code>FN+F2</code></td>
-<td>屏幕亮度+</td>
-<td><code>FN+F12</code></td>
-<td>音量+</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-其他功能"><a class="markdownIt-Anchor" href="#4-其他功能"></a> 4. 其他功能</h3>
-<ul>
-<li><strong>恢复出厂设置</strong>: 长按 <code>FN+ESC</code> 3秒。</li>
-<li><strong>睡眠模式</strong>: 无操作2分钟进入浅睡眠，30分钟后深度睡眠（按任意键唤醒）。</li>
-</ul>
-<hr />
-<h2 id="指示灯说明"><a class="markdownIt-Anchor" href="#指示灯说明"></a> 指示灯说明</h2>
-<ul>
-<li><strong>状态灯</strong>: CAPS/WIN/NUM 无功能时亮，有功能时灭。</li>
-<li><strong>连接模式灯</strong>: 底部显示蓝牙1/2/3、2.4G、有线状态。</li>
-<li><strong>充电提示</strong>: 充电时指示灯灭，充满恢复灯效。</li>
-</ul>
-<hr />
-<h2 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h2>
-<ol>
-<li>蓝牙/2.4G配对失败后，键盘保留最后一次成功配置。</li>
-<li>接收器需插入电脑USB口使用，配对时确保距离小于10米。</li>
-<li>双系统模式下，仅背光和按键功能恢复默认，系统设置不变。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>daily</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -919,285 +919,106 @@ Postman 7.13.0</p>
       </tags>
   </entry>
   <entry>
-    <title>面试</title>
-    <url>/interview/</url>
-    <content><![CDATA[<h3 id="如何理解-spring-当中的-bean"><a class="markdownIt-Anchor" href="#如何理解-spring-当中的-bean"></a> 如何理解 Spring 当中的 Bean？</h3>
-<ol>
-<li><strong>Spring容器就是个HashMap</strong><br />
-Spring容器本质上就是一个大的HashMap，用来存放和管理所有的Bean。这个Map的key是Bean的名字（默认是类名首字母小写，或者你指定的名字），value就是Bean的实例。你可以把这个Map理解为一个“对象池”，Spring负责把这些对象实例化、管理、并提供给你使用。</li>
-</ol>
-<span id="more"></span>
-<ol start="2">
-<li>
-<p><strong>前置处理器就是准备好实例化类的条件</strong><br />
-前置处理器（比如<code>BeanFactoryPostProcessor</code>）的作用是在Bean实例化之前，准备好一些条件。比如，它可以修改Bean的定义（BeanDefinition），或者做一些配置的预处理工作。你可以把它理解为一个“装修工”，在房子建好之前，先把图纸改好。</p>
-</li>
-<li>
-<p><strong>后置处理器就是把类按第2步的条件实例化以后放进HashMap</strong><br />
-后置处理器（比如<code>BeanPostProcessor</code>）的作用是在Bean实例化之后，做一些额外的处理。比如，你可以在这里对Bean进行一些定制化的操作，或者给Bean注入一些额外的属性。最后，这个Bean会被放进Spring的HashMap里，name或者你指定的名字是key，实例就是value。这个value也就是实例，就是你问的Bean，跟你手动new出来的没有本质区别，只不过Spring帮你管理了它的生命周期。</p>
-</li>
-<li>
-<p><strong>依赖注入就是把HashMap里的类实例用name拿出来用</strong><br />
-依赖注入（Dependency Injection, DI）就是把HashMap里的Bean实例通过name拿出来，然后注入到需要它的地方。比如，你有一个Service类，它依赖一个Dao类，Spring会自动从HashMap里找到这个Dao的实例，然后注入到Service里。你不用手动去new这个Dao，Spring帮你搞定。</p>
-</li>
-<li>
-<p><strong>AOP就是允许在HashMap里面的实例使用的时候，在方法开始、进行、结束的时间点上搞一个回调函数</strong><br />
-AOP（面向切面编程）就是在Bean的方法执行时，插入一些额外的逻辑。比如，你可以在方法执行前、执行后、或者抛出异常时，插入一些代码。这些插入的代码就是“切面”，Spring通过动态代理或者字节码增强来实现这个功能。你可以把它理解为一个“钩子”，在方法执行的特定时间点挂上一些额外的逻辑。</p>
-</li>
-<li>
-<p><strong>自定义starter就是在SpringBootApplication实例化的时候把指定目录下配置的类也放到前置处理器等待实例化</strong><br />
-自定义Starter就是在Spring Boot启动时，自动加载一些配置类和Bean。你可以把这些类放到指定的目录下，Spring Boot会自动扫描并加载它们。这些类会被放到前置处理器中，等待实例化。你可以把它理解为一个“自动装配”的过程，Spring Boot帮你把这些类自动加载到容器里。</p>
-</li>
-<li>
-<p><strong>观察者模式也只不过是在第6步的实例里面给一个监听器，监听指定事件的发生罢了</strong><br />
-观察者模式（Observer Pattern）在Spring中的应用就是事件监听机制。你可以在Bean里注册一个监听器（Listener），当某个事件发生时，监听器会自动触发。Spring内置了很多事件（比如<code>ContextRefreshedEvent</code>、<code>ContextClosedEvent</code>等），你也可以自定义事件。你完全可以自己实现一个Listener，监听指定的事件。</p>
-</li>
-<li>
-<p><strong>所谓的几级缓存，也不过就是解决实例化的时候，AB类互相依赖的问题</strong><br />
-Spring的几级缓存主要是为了解决循环依赖的问题。比如，A类依赖B类，B类又依赖A类。Spring通过三级缓存来解决这个问题：先创建一个A的引用（半成品）给B，然后实例化B，最后再实例化A。这样，A和B都能正常初始化。你可以把它理解为一个“先上车后补票”的过程，Spring通过这种方式解决了循环依赖的问题。</p>
-</li>
-<li>
-<p><strong>Bean的生命周期</strong><br />
-Bean的生命周期从Spring容器启动时开始，到容器关闭时结束。大致分为以下几个阶段：</p>
-<ul>
-<li><strong>实例化</strong>：通过反射或者工厂方法创建Bean的实例。</li>
-<li><strong>属性赋值</strong>：将配置中的属性值注入到Bean中。</li>
-<li><strong>初始化</strong>：调用Bean的初始化方法（比如<code>@PostConstruct</code>注解的方法）。</li>
-<li><strong>使用</strong>：Bean可以被应用程序使用。</li>
-<li><strong>销毁</strong>：当容器关闭时，调用Bean的销毁方法（比如<code>@PreDestroy</code>注解的方法）。</li>
-</ul>
-</li>
-<li>
-<p><strong>Bean的作用域</strong><br />
-Spring中的Bean有不同的作用域（Scope），常见的有：</p>
-<ul>
-<li><strong>Singleton</strong>：默认作用域，整个Spring容器中只有一个实例。</li>
-<li><strong>Prototype</strong>：每次请求都会创建一个新的实例。</li>
-<li><strong>Request</strong>：每个HTTP请求都会创建一个新的实例，仅在Web应用中有效。</li>
-<li><strong>Session</strong>：每个HTTP Session都会创建一个新的实例，仅在Web应用中有效。</li>
-</ul>
-</li>
-<li>
-<p><strong>Bean的懒加载</strong><br />
-默认情况下，Spring容器启动时会立即创建所有的Singleton Bean。如果你希望某个Bean在第一次使用时才创建，可以使用<code>@Lazy</code>注解，将其标记为懒加载。这样可以加快应用的启动速度，尤其是当某些Bean的初始化比较耗时的时候。</p>
-</li>
-<li>
-<p><strong>Bean的自动装配</strong><br />
-Spring支持通过<code>@Autowired</code>注解自动装配Bean。Spring会根据类型或者名称，自动从容器中找到合适的Bean并注入到目标对象中。如果容器中有多个相同类型的Bean，你可以通过<code>@Qualifier</code>注解指定具体的Bean。</p>
-</li>
-</ol>
-<p><strong>总结</strong><br />
-Spring中的Bean就是一个由Spring容器管理的对象，它的生命周期、依赖注入、AOP、缓存等问题都由Spring帮你处理。你只需要关注业务逻辑，剩下的交给Spring就行了。</p>
-<h3 id="理解-mysql-的存储与索引机制"><a class="markdownIt-Anchor" href="#理解-mysql-的存储与索引机制"></a> 理解 MySQL 的存储与索引机制</h3>
+    <title>JVM 概述</title>
+    <url>/java-concurrency-jvm/</url>
+    <content><![CDATA[<h3 id="jvm-内存模型"><a class="markdownIt-Anchor" href="#jvm-内存模型"></a> JVM 内存模型</h3>
 <ol>
 <li>
-<p>Page：MySQL 存储的基本单元</p>
+<p>程序计数器</p>
 <ul>
-<li>MySQL 存储数据的基本单元是 <strong>Page</strong>，默认大小为 <strong>16KB</strong>。</li>
-<li>Page 是磁盘和内存之间数据交换的最小单位，确保高效读写。</li>
-<li>你可以把 Page 想象成一个增强的 <strong>HashMap</strong>，里面存了数据的 Key 和 Value：
-<ul>
-<li><strong>Key</strong>：建表时定义的主键（比如 ID）。</li>
-<li><strong>Value</strong>：对应行的真实数据。</li>
-</ul>
+<li>
+<p>是一块较小的内存空间，可以看作是当前线程所执行的字节码的行号指示器。</p>
 </li>
-<li>除了 Key 和 Value，Page 还包括：
-<ul>
-<li><strong>前后指针</strong>：指向相邻的 Page，形成一个双向链表。</li>
-<li><strong>起始主键记录</strong>：标明当前 Page 从哪个主键开始。</li>
-</ul>
+<li>
+<p>每个线程都有一个独立的程序计数器，用于线程切换后能恢复到正确的执行位置。</p>
 </li>
 </ul>
 </li>
 <li>
-<p>数据多了怎么办？B+ 树来帮忙</p>
+<p>虚拟机栈</p>
 <ul>
-<li>随着数据量增加，Page 数量也会增加。如果每次查询都要遍历所有 Page，效率会很低。</li>
-<li>为了解决这个问题，MySQL 引入了 <strong>B+ 树</strong>：
-<ul>
-<li>最底层的 Page 存储实际数据。</li>
-<li>上层的 Page 存储指向下层 Page 的指针。</li>
-<li>这样，MySQL 可以通过 B+ 树快速定位目标数据，即使数据量巨大。</li>
-</ul>
-</li>
-<li>举个例子：
-<ul>
-<li>第一层 B+ 树是一个管理 Page 的 Page。</li>
-<li>当数据更多时，管理 Page 的 Page 也变多，就需要第二层、第三层 Page 来管理，最终形成一个层层嵌套的结构。</li>
-</ul>
-</li>
+<li>每个线程都有自己的虚拟机栈，用于存储方法的局部变量表、操作数栈、动态链接、方法出口等信息。</li>
+<li>当线程调用一个方法时，会为该方法创建一个栈帧并压入虚拟机栈；方法执行完毕后，栈帧出栈。</li>
 </ul>
 </li>
 <li>
-<p>为什么 Page 是双链表？</p>
+<p>本地方法栈</p>
 <ul>
-<li>Page 之间通过双链表连接，主要是为了支持 <strong>范围查询</strong>。</li>
-<li>比如，查询 <code>ID &gt; 10</code> 的数据时：
-<ul>
-<li>MySQL 可以先找到 ID 为 10 的 Page。</li>
-<li>然后沿着后指针遍历，直接获取后面的数据。</li>
-<li>这样就避免了从 B+ 树根节点重新查找，效率更高。</li>
-</ul>
-</li>
+<li>与虚拟机栈的作用类似，只不过本地方法栈是为执行 Native 方法服务的。</li>
+<li>用于存储本地方法（使用 JNI 编写的方法）的调用信息。</li>
 </ul>
 </li>
 <li>
-<p>为什么推荐自增主键？</p>
+<p>堆</p>
 <ul>
-<li>使用 <strong>自增主键</strong> 的好处是：
-<ul>
-<li>新数据总是追加到 B+ 树的最后。</li>
-<li>不需要频繁调整 Page 内的数据顺序，减少了 Page 分裂和数据的重新排列。</li>
-<li>插入效率更高。</li>
-</ul>
-</li>
+<li>被所有线程共享的一块内存区域，用于存放对象实例和数组。</li>
+<li>是垃圾收集器管理的主要区域。</li>
 </ul>
 </li>
 <li>
-<p>联合索引：多个字段怎么排序？</p>
+<p>方法区</p>
 <ul>
-<li>联合索引是根据多个字段（比如 A、B、C）建立的索引。</li>
-<li>它会按照字段的顺序排序：先按 A 排序，再按 B，最后按 C。</li>
-<li>查询时：
-<ul>
-<li>如果跳过了联合索引的第一个字段（比如 A），索引就会失效。</li>
-<li>如果有 A 但没有 B，A 会生效，B 不会生效。</li>
-<li>因为 B+ 树是按字段顺序构建的，缺少前面的字段就无法有效利用索引。</li>
-</ul>
-</li>
+<li>存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
+<li>在 Java 8 之后，方法区被元空间（Metaspace）替代。</li>
 </ul>
 </li>
 <li>
-<p>为什么 <code>LIKE '%bc%'</code> 会让索引失效？</p>
+<p>运行时常量池</p>
 <ul>
-<li>对 <code>VARCHAR</code> 字段使用 <code>LIKE '%bc%'</code> 时，索引可能失效。</li>
-<li>因为 B+ 树是按字典序构建的，如果查询模式不以索引的最左前缀开始（比如 <code>%bc%</code>），MySQL 就无法有效利用索引。</li>
-</ul>
-</li>
-<li>
-<p>回表：为什么要多查一次？</p>
-<ul>
-<li><strong>回表</strong> 是指在非主键索引中查找到主键后，还需要回到主键索引中查找完整的数据行。</li>
-<li>举个例子：
-<ul>
-<li>你在某个非主键索引中找到了主键 ID。</li>
-<li>然后需要根据 ID 去主键索引中查找完整的数据。</li>
-</ul>
-</li>
-<li>这个过程增加了额外的 I/O 操作，会影响查询性能。</li>
-</ul>
-</li>
-<li>
-<p>覆盖索引：为什么更快？</p>
-<ul>
-<li><strong>覆盖索引</strong> 是指查询所需的所有字段都包含在索引中。</li>
-<li>这样就不需要回表查询主键索引，减少了 I/O 操作，查询效率更高。</li>
-</ul>
-</li>
-<li>
-<p>聚簇索引 vs 非聚簇索引</p>
-<ul>
-<li><strong>聚簇索引</strong>：
-<ul>
-<li>数据行直接存储在索引的叶子节点上。</li>
-<li>主键索引通常是聚簇索引。</li>
-</ul>
-</li>
-<li><strong>非聚簇索引</strong>：
-<ul>
-<li>叶子节点存储的是指向数据行的指针。</li>
-<li>查询时需要回表获取完整数据。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>为什么 MySQL 不适合全文索引？</p>
-<ul>
-<li>MySQL 使用 B+ 树索引，需要从左到右的顺序匹配。</li>
-<li>对于全文搜索，这种结构效率较低。</li>
-<li><strong>Elasticsearch (ES)</strong> 使用 <strong>倒排索引</strong>，通过分词技术快速定位包含特定词汇的文档。</li>
-<li>因此，ES 更适合处理全文搜索。</li>
-</ul>
-</li>
-<li>
-<p>索引的选择性与维护成本</p>
-<ul>
-<li><strong>索引的选择性</strong>：
-<ul>
-<li>高选择性索引（唯一或几乎唯一的索引）更能提高查询效率，因为它们能更有效地缩小搜索范围。</li>
-</ul>
-</li>
-<li><strong>索引的维护成本</strong>：
-<ul>
-<li>索引会加速查询，但也会增加数据插入、更新和删除的成本，因为每次数据变动都可能需要更新索引。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>查询优化器的作用</p>
-<ul>
-<li>MySQL 的查询优化器会根据查询条件和索引情况，选择最有效的查询计划。</li>
-<li>理解这一点有助于更好地设计索引和编写查询语句。</li>
+<li>是方法区的一部分，用于存放编译期生成的各种字面量和符号引用。</li>
 </ul>
 </li>
 </ol>
-<p>总结</p>
-<ul>
-<li>MySQL 的存储和索引机制围绕 <strong>Page</strong> 和 <strong>B+ 树</strong> 展开。</li>
-<li>通过合理设计索引（如自增主键、联合索引、覆盖索引），可以显著提高查询效率。</li>
-<li>但同时也要注意索引的维护成本和适用场景，避免不必要的性能损耗。</li>
-</ul>
-<h3 id="如何理解spirngcloud"><a class="markdownIt-Anchor" href="#如何理解spirngcloud"></a> 如何理解SpirngCloud</h3>
+<span id="more"></span>
+<p><img data-src="https://ask.qcloudimg.com/http-save/yehe-4283147/d9212c539a39252e8c7e67259cb480e6.png" alt="" /></p>
+<h3 id="jvm-垃圾回收"><a class="markdownIt-Anchor" href="#jvm-垃圾回收"></a> JVM 垃圾回收</h3>
+<h3 id="java-内存模型"><a class="markdownIt-Anchor" href="#java-内存模型"></a> Java 内存模型</h3>
+<p>Java 内存模型（JMM）时 Java 语言规范中定义的一种内存模型，它规定了 Java 程序中各种变量（线程共享变量）的访问规则，以及在并发环境下如何保证这些变量的内存一致性。</p>
+<p>JMM 是 Java 并发编程的基础，它确保了在多线程环境中，不同线程对共享变量的读写操作能够按照预期的顺序执行。</p>
+<p>JMM 的主要目标：</p>
 <ol>
-<li>
-<p><strong>微服务的核心思想</strong></p>
-<p>微服务是一种架构风格，它将应用程序拆分为一组<strong>小型、独立的服务</strong>，每个服务都围绕特定的业务功能构建。<strong>Spring Cloud</strong>是实现微服务架构的一组工具和框架。微服务的核心思想是让一个服务只做一件事，功能之间相互隔离，就像吃鸳鸯锅一样，每个格子只有一个味道。</p>
-</li>
-<li>
-<p><strong>服务通信方式</strong></p>
-<p>服务拆开后，微服务之间需要通信。Spring Cloud提供了多种通信方式：</p>
+<li>保证<strong>原子性</strong>：确保单个操作（如读取、赋值）不可分割，要么完全执行，要么完全不执行。</li>
+<li>保证<strong>可见性</strong>：确保当一个线程修改了共享变量的值，其他线程能够立即看到这个修改。</li>
+<li>保证<strong>有序性</strong>：确保程序中的操作按照程序员预期的顺序执行，即使在多线程环境下也是如此。</li>
+</ol>
+<p>JMM 中的相关概念：</p>
 <ul>
-<li>
-<p><strong>异步通信</strong>：比如订单系统和发邮件系统，订单系统需要告诉发邮件系统给用户发送发票。这时候就用到<strong>MQ消息队列</strong>（如RabbitMQ、Kafka）。MQ就像发短信，发送方只管发，接收方只管收，互不干扰。</p>
-</li>
-<li>
-<p><strong>同步通信</strong>：有时候不能发短信，得打电话。比如用户下单时，订单系统需要立即知道风控系统的结果，不能等。这时候就需要<strong>RPC</strong>（如gRPC）或<strong>HTTP调用</strong>（如RESTful API）。RPC协议更精简，传输效率更高，适合微服务之间的实时通信。</p>
-</li>
+<li>主内存：所有线程共享的内存区域，用于存储共享变量。</li>
+<li>工作内存：每个线程自己的内存区域，存储了主内存中共享变量的副本。</li>
+<li>happens-before 规则：一种偏序关系，用于确定两个操作的执行顺序。如果一个操作happens-before另一个操作，那么第一个操作的结果对第二个操作必须是可见的。</li>
+<li>内存屏障：一种同步机制，用于控制指令的执行顺序。
+<ul>
+<li>volatile：当一个变量被声明为volatile时，JVM会在对该变量的读写操作前后自动插入内存屏障，以确保变量的读写操作不会被重排序，并且对所有线程都是可见的。</li>
+<li>synchronized：当一个方法或代码块被声明为synchronized时，JVM会在进入和退出同步块时自动插入内存屏障，以确保在同步块内的写操作对其他线程可见，并且在同步块执行期间，其他线程不能进入该同步块。</li>
+<li>Locks：在使用显式锁（如ReentrantLock）时，JVM也会在加锁和解锁操作中插入内存屏障，以确保锁的可见性和内存一致性。</li>
+<li>Atomic 操作：Java并发包中的原子类（如AtomicInteger、AtomicReference等）使用底层的硬件指令和内存屏障来保证操作的原子性和可见性。</li>
 </ul>
 </li>
-<li>
-<p><strong>服务发现与注册中心</strong></p>
-<p>随着服务越来越多，怎么知道该调用哪个服务呢？这就需要<strong>注册中心</strong>（如Eureka、Consul）。服务上线时把自己提供的或需要的能力告诉注册中心，由注册中心负责转接，就像电话交换机一样。</p>
+<li>volatile 关键字：用于声明一个变量的读写操作都直接作用于主内存，而不是工作内存。</li>
+<li>synchronized 关键字：用于声明一个方法或代码块的执行需要获取锁，确保同一时刻只有一个线程可以执行该段代码。</li>
+</ul>
+<p><img data-src="https://ask.qcloudimg.com/http-save/yehe-4283147/a8ab9a9d6c63ad834425910928a3bd3f.png" alt="" /></p>
+<h3 id="jvm-中的锁升级"><a class="markdownIt-Anchor" href="#jvm-中的锁升级"></a> JVM 中的锁升级</h3>
+<ol>
+<li>无锁状态
+<ul>
+<li>初始状态下，对象没有被锁定，任何线程都可以通过CAS（Compare-And-Swap）操作来尝试获取锁。</li>
+</ul>
 </li>
-<li>
-<p><strong>服务限流与熔断</strong></p>
-<p>运维同学可能会担心服务之间的调用过于频繁，导致CPU和内存扛不住。这时候可以加个限制，比如每秒只允许调用一次，这就是<strong>服务限流</strong>（如Sentinel）。如果某个服务扛不住了，还可以启用<strong>熔断策略</strong>（如Hystrix），直接返回默认结果，避免整个系统崩溃。或者把请求暂时转移到其他系统，这就是<strong>死信队列</strong>。</p>
+<li>偏向锁状态
+<ul>
+<li>当线程首次访问同步块时，JVM 可能会将对象偏向该线程，即把对象头中的锁标记设置为偏向模式，并存储当前线程的ID。如果同一线程再次访问，无需进行同步操作。</li>
+</ul>
 </li>
-<li>
-<p><strong>水平扩容与容器化</strong></p>
-<p>如果服务的并发量上去了，一个实例不够用，就需要<strong>水平扩容</strong>。人工扩容对运维压力很大，这时候可以用<strong>容器技术</strong>（如Docker）和编排工具（如Kubernetes），它会自动拉起服务实例，做好反向代理和负载均衡。</p>
+<li>轻量级锁状态
+<ul>
+<li>如果有另一个线程尝试获取偏向锁，JVM会撤销偏向状态，将锁升级为轻量级锁。轻量级锁通过CAS操作来实现，如果竞争不激烈，这种锁的开销很小。</li>
+</ul>
 </li>
-<li>
-<p><strong>配置中心</strong></p>
-<p>有时候配置文件内容变了，不想改代码发版怎么办？<strong>配置中心</strong>（如Spring Cloud Config、Nacos）就派上用场了。配置中心和服务保持长连接，配置随改随更新，完全不用改代码发版。</p>
-</li>
-<li>
-<p><strong>统一网关与网络安全</strong></p>
-<p>网络安全也是个问题，后端服务的IP不能直接暴露，否则容易被DDoS攻击。这时候可以用<strong>统一网关</strong>（如Spring Cloud Gateway、Zuul），由网关层统一接收请求，再反向代理给真实服务。网关还可以提供<strong>身份验证、限流、日志记录</strong>等功能。</p>
-</li>
-<li>
-<p><strong>单点登录（SSO）</strong></p>
-<p>用户登录也是个麻烦事，每个功能都要登录一次。**单点登录（SSO）**可以解决这个问题，用户的token缓存在系统中，各个服务都能识别这个登录态。通过共享的认证机制（如OAuth2、JWT），各个服务可以识别用户的登录状态。</p>
-</li>
-<li>
-<p><strong>监控与预警</strong></p>
-<p>运维同学还希望有提前预警机制，避免每次出问题才救火。可以用<strong>Grafana</strong>和<strong>Prometheus</strong>，实时监控系统状态，设置阈值预警。</p>
-</li>
-<li>
-<p><strong>用户ID生成</strong></p>
-<p>最后，用户ID生成也是个问题，多个用户可能生成重复的ID。**雪花算法（Snowflake）**可以保证每个用户ID唯一，避免重复。雪花算法通过结合时间戳、机器ID和序列号，生成全局唯一的ID。</p>
+<li>重量级锁状态
+<ul>
+<li>当轻量级锁状态下发生线程竞争，即有多个线程尝试获取同一把锁时，JVM会将锁进一步升级为重量级锁。重量级锁依赖操作系统的互斥量实现，开销较大，但可以处理更复杂的同步场景。</li>
+</ul>
 </li>
 </ol>
 ]]></content>
@@ -1205,7 +1026,9 @@ Spring中的Bean就是一个由Spring容器管理的对象，它的生命周期�
         <category>tech</category>
       </categories>
       <tags>
-        <tag>interview</tag>
+        <tag>Java</tag>
+        <tag>并发</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -1332,119 +1155,6 @@ Spring中的Bean就是一个由Spring容器管理的对象，它的生命周期�
       <tags>
         <tag>Java</tag>
         <tag>并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JVM 概述</title>
-    <url>/java-concurrency-jvm/</url>
-    <content><![CDATA[<h3 id="jvm-内存模型"><a class="markdownIt-Anchor" href="#jvm-内存模型"></a> JVM 内存模型</h3>
-<ol>
-<li>
-<p>程序计数器</p>
-<ul>
-<li>
-<p>是一块较小的内存空间，可以看作是当前线程所执行的字节码的行号指示器。</p>
-</li>
-<li>
-<p>每个线程都有一个独立的程序计数器，用于线程切换后能恢复到正确的执行位置。</p>
-</li>
-</ul>
-</li>
-<li>
-<p>虚拟机栈</p>
-<ul>
-<li>每个线程都有自己的虚拟机栈，用于存储方法的局部变量表、操作数栈、动态链接、方法出口等信息。</li>
-<li>当线程调用一个方法时，会为该方法创建一个栈帧并压入虚拟机栈；方法执行完毕后，栈帧出栈。</li>
-</ul>
-</li>
-<li>
-<p>本地方法栈</p>
-<ul>
-<li>与虚拟机栈的作用类似，只不过本地方法栈是为执行 Native 方法服务的。</li>
-<li>用于存储本地方法（使用 JNI 编写的方法）的调用信息。</li>
-</ul>
-</li>
-<li>
-<p>堆</p>
-<ul>
-<li>被所有线程共享的一块内存区域，用于存放对象实例和数组。</li>
-<li>是垃圾收集器管理的主要区域。</li>
-</ul>
-</li>
-<li>
-<p>方法区</p>
-<ul>
-<li>存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</li>
-<li>在 Java 8 之后，方法区被元空间（Metaspace）替代。</li>
-</ul>
-</li>
-<li>
-<p>运行时常量池</p>
-<ul>
-<li>是方法区的一部分，用于存放编译期生成的各种字面量和符号引用。</li>
-</ul>
-</li>
-</ol>
-<span id="more"></span>
-<p><img data-src="https://ask.qcloudimg.com/http-save/yehe-4283147/d9212c539a39252e8c7e67259cb480e6.png" alt="" /></p>
-<h3 id="jvm-垃圾回收"><a class="markdownIt-Anchor" href="#jvm-垃圾回收"></a> JVM 垃圾回收</h3>
-<h3 id="java-内存模型"><a class="markdownIt-Anchor" href="#java-内存模型"></a> Java 内存模型</h3>
-<p>Java 内存模型（JMM）时 Java 语言规范中定义的一种内存模型，它规定了 Java 程序中各种变量（线程共享变量）的访问规则，以及在并发环境下如何保证这些变量的内存一致性。</p>
-<p>JMM 是 Java 并发编程的基础，它确保了在多线程环境中，不同线程对共享变量的读写操作能够按照预期的顺序执行。</p>
-<p>JMM 的主要目标：</p>
-<ol>
-<li>保证<strong>原子性</strong>：确保单个操作（如读取、赋值）不可分割，要么完全执行，要么完全不执行。</li>
-<li>保证<strong>可见性</strong>：确保当一个线程修改了共享变量的值，其他线程能够立即看到这个修改。</li>
-<li>保证<strong>有序性</strong>：确保程序中的操作按照程序员预期的顺序执行，即使在多线程环境下也是如此。</li>
-</ol>
-<p>JMM 中的相关概念：</p>
-<ul>
-<li>主内存：所有线程共享的内存区域，用于存储共享变量。</li>
-<li>工作内存：每个线程自己的内存区域，存储了主内存中共享变量的副本。</li>
-<li>happens-before 规则：一种偏序关系，用于确定两个操作的执行顺序。如果一个操作happens-before另一个操作，那么第一个操作的结果对第二个操作必须是可见的。</li>
-<li>内存屏障：一种同步机制，用于控制指令的执行顺序。
-<ul>
-<li>volatile：当一个变量被声明为volatile时，JVM会在对该变量的读写操作前后自动插入内存屏障，以确保变量的读写操作不会被重排序，并且对所有线程都是可见的。</li>
-<li>synchronized：当一个方法或代码块被声明为synchronized时，JVM会在进入和退出同步块时自动插入内存屏障，以确保在同步块内的写操作对其他线程可见，并且在同步块执行期间，其他线程不能进入该同步块。</li>
-<li>Locks：在使用显式锁（如ReentrantLock）时，JVM也会在加锁和解锁操作中插入内存屏障，以确保锁的可见性和内存一致性。</li>
-<li>Atomic 操作：Java并发包中的原子类（如AtomicInteger、AtomicReference等）使用底层的硬件指令和内存屏障来保证操作的原子性和可见性。</li>
-</ul>
-</li>
-<li>volatile 关键字：用于声明一个变量的读写操作都直接作用于主内存，而不是工作内存。</li>
-<li>synchronized 关键字：用于声明一个方法或代码块的执行需要获取锁，确保同一时刻只有一个线程可以执行该段代码。</li>
-</ul>
-<p><img data-src="https://ask.qcloudimg.com/http-save/yehe-4283147/a8ab9a9d6c63ad834425910928a3bd3f.png" alt="" /></p>
-<h3 id="jvm-中的锁升级"><a class="markdownIt-Anchor" href="#jvm-中的锁升级"></a> JVM 中的锁升级</h3>
-<ol>
-<li>无锁状态
-<ul>
-<li>初始状态下，对象没有被锁定，任何线程都可以通过CAS（Compare-And-Swap）操作来尝试获取锁。</li>
-</ul>
-</li>
-<li>偏向锁状态
-<ul>
-<li>当线程首次访问同步块时，JVM 可能会将对象偏向该线程，即把对象头中的锁标记设置为偏向模式，并存储当前线程的ID。如果同一线程再次访问，无需进行同步操作。</li>
-</ul>
-</li>
-<li>轻量级锁状态
-<ul>
-<li>如果有另一个线程尝试获取偏向锁，JVM会撤销偏向状态，将锁升级为轻量级锁。轻量级锁通过CAS操作来实现，如果竞争不激烈，这种锁的开销很小。</li>
-</ul>
-</li>
-<li>重量级锁状态
-<ul>
-<li>当轻量级锁状态下发生线程竞争，即有多个线程尝试获取同一把锁时，JVM会将锁进一步升级为重量级锁。重量级锁依赖操作系统的互斥量实现，开销较大，但可以处理更复杂的同步场景。</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>并发</tag>
-        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -1923,6 +1633,22 @@ thead {
       </tags>
   </entry>
   <entry>
+    <title>Python 批量下载壁纸代码</title>
+    <url>/python-wallpaper/</url>
+    <content><![CDATA[<p>Windows 可执行文件下载地址： <a href="https://wwd.lanzout.com/iXYtn020yfvi">https://wwd.lanzout.com/iXYtn020yfvi</a> 密码:52pj</p>
+<span id="more"></span>
+<p><img data-src="https://i.bmp.ovh/imgs/2022/03/d54e875706235203.png" alt="" /><br />
+<img data-src="https://i.bmp.ovh/imgs/2022/03/8defbea6ff559fc8.png" alt="" /><br />
+<img data-src="https://i.bmp.ovh/imgs/2022/03/20c8290ebcc68dc6.png" alt="" /></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests, json, os, math, time, tqdm</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类 url</span></span><br><span class="line">category_url = <span class="string">&#x27;http://service.aibizhi.adesk.com/v1/wallpaper/category&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 壁纸 url</span></span><br><span class="line">wallpaper_url = <span class="string">&#x27;http://service.aibizhi.adesk.com/v1/wallpaper/category/&#123;&#125;/wallpaper&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取到的分类列表</span></span><br><span class="line">category_list = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 待下载的分类</span></span><br><span class="line">down_num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跳过数量</span></span><br><span class="line">skip = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回数量</span></span><br><span class="line">limit = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; Tablet PC 2.0; .NET4.0E)&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片分类</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_get_category</span>():</span><br><span class="line">    response = requests.get(url=category_url, headers=headers)</span><br><span class="line">    response.encoding = <span class="string">&#x27;gbk&#x27;</span></span><br><span class="line">    data = json.loads(response.text)</span><br><span class="line"></span><br><span class="line">    pc_category_name_list = []</span><br><span class="line">    pc_category_id_list = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> data[<span class="string">&#x27;res&#x27;</span>][<span class="string">&#x27;category&#x27;</span>]:</span><br><span class="line">        name = item[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">        cid = item[<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        pc_category_name_list.append(name)</span><br><span class="line">        pc_category_id_list.append(cid)</span><br><span class="line"></span><br><span class="line">    category_list.append(pc_category_name_list)</span><br><span class="line">    category_list.append(pc_category_id_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_show_input</span>():</span><br><span class="line"></span><br><span class="line">    input_str = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> idx, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(category_list[<span class="number">0</span>]):</span><br><span class="line">        input_str = input_str + <span class="built_in">str</span>(idx + <span class="number">1</span>) + <span class="string">&quot;-&quot;</span> + item + <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line">    n_input = <span class="built_in">input</span>(<span class="built_in">str</span>(input_str) + <span class="string">&quot;\n请输入下载分类：&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> n_input <span class="keyword">or</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(n_input) <span class="keyword">or</span> <span class="built_in">int</span>(n_input) &gt; <span class="built_in">len</span>(category_list[<span class="number">0</span>]):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;未输入任何分类,请重新输入!&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    i_skip = <span class="built_in">input</span>(<span class="string">&#x27;请输入起始位置，默认为0：&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> i_skip:</span><br><span class="line">        i_skip = <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(i_skip):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请输入数字！&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    i_limit = <span class="built_in">input</span>(<span class="string">&#x27;请输入下载数量，默认为20：&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> i_limit:</span><br><span class="line">        i_limit = <span class="number">20</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(i_limit):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请输入数字！&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">int</span>(i_limit) &gt; <span class="number">1000</span>:</span><br><span class="line">        i_limit = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> limit, skip, down_num</span><br><span class="line"></span><br><span class="line">    skip = <span class="built_in">int</span>(i_skip)</span><br><span class="line">    limit = <span class="built_in">int</span>(i_limit)</span><br><span class="line">    down_num = <span class="built_in">int</span>(n_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片 url</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_get_img_url</span>(<span class="params">down, skip, limit</span>):    </span><br><span class="line"></span><br><span class="line">    img_list = &#123;&#125;</span><br><span class="line">    title_list = []</span><br><span class="line">    href_list = []</span><br><span class="line"></span><br><span class="line">    url = wallpaper_url.<span class="built_in">format</span>(category_list[<span class="number">1</span>][down - <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 每次最大获取20张图片链接</span></span><br><span class="line">    t = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> limit &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 参数</span></span><br><span class="line">        <span class="keyword">if</span> limit &gt; <span class="number">20</span>:</span><br><span class="line">            params = <span class="string">&#x27;?skip=&#123;&#125;&#x27;</span></span><br><span class="line">            params = params.<span class="built_in">format</span>(<span class="built_in">str</span>(<span class="number">20</span> * t + skip))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            params = <span class="string">&#x27;?skip=&#123;&#125;&amp;limit=&#123;&#125;&#x27;</span></span><br><span class="line">            params = params.<span class="built_in">format</span>(<span class="built_in">str</span>(<span class="number">20</span> * t + skip), <span class="built_in">str</span>(limit))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取 json</span></span><br><span class="line">        response = requests.get(url=url + params, headers=headers)</span><br><span class="line">        response.encoding = <span class="string">&#x27;gbk&#x27;</span></span><br><span class="line">        page_text = response.text</span><br><span class="line"></span><br><span class="line">        arr = json.loads(page_text)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># # 循环取出列表元素</span></span><br><span class="line">        <span class="keyword">for</span> ul <span class="keyword">in</span> arr[<span class="string">&#x27;res&#x27;</span>][<span class="string">&#x27;wallpaper&#x27;</span>]:</span><br><span class="line">            href = ul[<span class="string">&#x27;img&#x27;</span>]</span><br><span class="line">            title = ul[<span class="string">&#x27;id&#x27;</span>] + <span class="string">&#x27;.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 将取出的图片链接和标题，存放到img_list中</span></span><br><span class="line">            title_list.append(title)</span><br><span class="line">            href_list.append(href)</span><br><span class="line">        limit -= <span class="number">20</span></span><br><span class="line">        t += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    img_list = &#123;<span class="string">&#x27;title&#x27;</span>: title_list, <span class="string">&#x27;href&#x27;</span>: href_list&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 与本地文件夹内文件比较，去重</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + category_list[<span class="number">0</span>][down - <span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">return</span> img_list</span><br><span class="line">   </span><br><span class="line">    path = <span class="built_in">str</span>(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + category_list[<span class="number">0</span>][down - <span class="number">1</span>])</span><br><span class="line">    filelist=os.listdir(path)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 倒序遍历删除已经下载过的图片</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(img_list[<span class="string">&#x27;title&#x27;</span>]) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> img_list[<span class="string">&#x27;title&#x27;</span>][i] <span class="keyword">in</span> filelist:</span><br><span class="line">            img_list[<span class="string">&#x27;title&#x27;</span>].remove(img_list[<span class="string">&#x27;title&#x27;</span>][i])</span><br><span class="line">            img_list[<span class="string">&#x27;href&#x27;</span>].remove(img_list[<span class="string">&#x27;href&#x27;</span>][i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_down_img</span>(<span class="params">down_num</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> skip, limit</span><br><span class="line"></span><br><span class="line">    img_list = _get_img_url(down_num, skip, limit)</span><br><span class="line">    filepath = category_list[<span class="number">0</span>][down_num - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + filepath):</span><br><span class="line">        os.mkdir(filepath)</span><br><span class="line"></span><br><span class="line">    title_list = img_list[<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">    href_list = img_list[<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 循环取出图片详情页地址和标题，下载，显示进度条</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm.trange(<span class="built_in">len</span>(title_list)):</span><br><span class="line"></span><br><span class="line">        title = title_list[i]</span><br><span class="line">        img_url = href_list[i]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将获取到到图片地址下载保存</span></span><br><span class="line">        img_data = requests.get(img_url, headers=headers).content</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filepath + <span class="string">&#x27;/&#x27;</span> + title, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            fp.write(img_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_start</span>():</span><br><span class="line">    _get_category()</span><br><span class="line">    _show_input()</span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(<span class="number">8</span>) <span class="keyword">as</span> t:</span><br><span class="line">            t.submit(_down_img, down_num) </span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;——————程序执行完毕——————&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;——————耗时 &#x27;</span> + <span class="string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="built_in">format</span>(end-start) + <span class="string">&#x27;秒——————&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        _start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL用户管理-创建、授权、查看、删除</title>
     <url>/mysql-user-manage-create-grant-select-drop/</url>
     <content><![CDATA[<h3 id="测试环境"><a class="markdownIt-Anchor" href="#测试环境"></a> 测试环境</h3>
@@ -1991,6 +1717,296 @@ thead {
       </tags>
   </entry>
   <entry>
+    <title>面试</title>
+    <url>/interview/</url>
+    <content><![CDATA[<h3 id="如何理解-spring-当中的-bean"><a class="markdownIt-Anchor" href="#如何理解-spring-当中的-bean"></a> 如何理解 Spring 当中的 Bean？</h3>
+<ol>
+<li><strong>Spring容器就是个HashMap</strong><br />
+Spring容器本质上就是一个大的HashMap，用来存放和管理所有的Bean。这个Map的key是Bean的名字（默认是类名首字母小写，或者你指定的名字），value就是Bean的实例。你可以把这个Map理解为一个“对象池”，Spring负责把这些对象实例化、管理、并提供给你使用。</li>
+</ol>
+<span id="more"></span>
+<ol start="2">
+<li>
+<p><strong>前置处理器就是准备好实例化类的条件</strong><br />
+前置处理器（比如<code>BeanFactoryPostProcessor</code>）的作用是在Bean实例化之前，准备好一些条件。比如，它可以修改Bean的定义（BeanDefinition），或者做一些配置的预处理工作。你可以把它理解为一个“装修工”，在房子建好之前，先把图纸改好。</p>
+</li>
+<li>
+<p><strong>后置处理器就是把类按第2步的条件实例化以后放进HashMap</strong><br />
+后置处理器（比如<code>BeanPostProcessor</code>）的作用是在Bean实例化之后，做一些额外的处理。比如，你可以在这里对Bean进行一些定制化的操作，或者给Bean注入一些额外的属性。最后，这个Bean会被放进Spring的HashMap里，name或者你指定的名字是key，实例就是value。这个value也就是实例，就是你问的Bean，跟你手动new出来的没有本质区别，只不过Spring帮你管理了它的生命周期。</p>
+</li>
+<li>
+<p><strong>依赖注入就是把HashMap里的类实例用name拿出来用</strong><br />
+依赖注入（Dependency Injection, DI）就是把HashMap里的Bean实例通过name拿出来，然后注入到需要它的地方。比如，你有一个Service类，它依赖一个Dao类，Spring会自动从HashMap里找到这个Dao的实例，然后注入到Service里。你不用手动去new这个Dao，Spring帮你搞定。</p>
+</li>
+<li>
+<p><strong>AOP就是允许在HashMap里面的实例使用的时候，在方法开始、进行、结束的时间点上搞一个回调函数</strong><br />
+AOP（面向切面编程）就是在Bean的方法执行时，插入一些额外的逻辑。比如，你可以在方法执行前、执行后、或者抛出异常时，插入一些代码。这些插入的代码就是“切面”，Spring通过动态代理或者字节码增强来实现这个功能。你可以把它理解为一个“钩子”，在方法执行的特定时间点挂上一些额外的逻辑。</p>
+</li>
+<li>
+<p><strong>自定义starter就是在SpringBootApplication实例化的时候把指定目录下配置的类也放到前置处理器等待实例化</strong><br />
+自定义Starter就是在Spring Boot启动时，自动加载一些配置类和Bean。你可以把这些类放到指定的目录下，Spring Boot会自动扫描并加载它们。这些类会被放到前置处理器中，等待实例化。你可以把它理解为一个“自动装配”的过程，Spring Boot帮你把这些类自动加载到容器里。</p>
+</li>
+<li>
+<p><strong>观察者模式也只不过是在第6步的实例里面给一个监听器，监听指定事件的发生罢了</strong><br />
+观察者模式（Observer Pattern）在Spring中的应用就是事件监听机制。你可以在Bean里注册一个监听器（Listener），当某个事件发生时，监听器会自动触发。Spring内置了很多事件（比如<code>ContextRefreshedEvent</code>、<code>ContextClosedEvent</code>等），你也可以自定义事件。你完全可以自己实现一个Listener，监听指定的事件。</p>
+</li>
+<li>
+<p><strong>所谓的几级缓存，也不过就是解决实例化的时候，AB类互相依赖的问题</strong><br />
+Spring的几级缓存主要是为了解决循环依赖的问题。比如，A类依赖B类，B类又依赖A类。Spring通过三级缓存来解决这个问题：先创建一个A的引用（半成品）给B，然后实例化B，最后再实例化A。这样，A和B都能正常初始化。你可以把它理解为一个“先上车后补票”的过程，Spring通过这种方式解决了循环依赖的问题。</p>
+</li>
+<li>
+<p><strong>Bean的生命周期</strong><br />
+Bean的生命周期从Spring容器启动时开始，到容器关闭时结束。大致分为以下几个阶段：</p>
+<ul>
+<li><strong>实例化</strong>：通过反射或者工厂方法创建Bean的实例。</li>
+<li><strong>属性赋值</strong>：将配置中的属性值注入到Bean中。</li>
+<li><strong>初始化</strong>：调用Bean的初始化方法（比如<code>@PostConstruct</code>注解的方法）。</li>
+<li><strong>使用</strong>：Bean可以被应用程序使用。</li>
+<li><strong>销毁</strong>：当容器关闭时，调用Bean的销毁方法（比如<code>@PreDestroy</code>注解的方法）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Bean的作用域</strong><br />
+Spring中的Bean有不同的作用域（Scope），常见的有：</p>
+<ul>
+<li><strong>Singleton</strong>：默认作用域，整个Spring容器中只有一个实例。</li>
+<li><strong>Prototype</strong>：每次请求都会创建一个新的实例。</li>
+<li><strong>Request</strong>：每个HTTP请求都会创建一个新的实例，仅在Web应用中有效。</li>
+<li><strong>Session</strong>：每个HTTP Session都会创建一个新的实例，仅在Web应用中有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>Bean的懒加载</strong><br />
+默认情况下，Spring容器启动时会立即创建所有的Singleton Bean。如果你希望某个Bean在第一次使用时才创建，可以使用<code>@Lazy</code>注解，将其标记为懒加载。这样可以加快应用的启动速度，尤其是当某些Bean的初始化比较耗时的时候。</p>
+</li>
+<li>
+<p><strong>Bean的自动装配</strong><br />
+Spring支持通过<code>@Autowired</code>注解自动装配Bean。Spring会根据类型或者名称，自动从容器中找到合适的Bean并注入到目标对象中。如果容器中有多个相同类型的Bean，你可以通过<code>@Qualifier</code>注解指定具体的Bean。</p>
+</li>
+</ol>
+<p><strong>总结</strong><br />
+Spring中的Bean就是一个由Spring容器管理的对象，它的生命周期、依赖注入、AOP、缓存等问题都由Spring帮你处理。你只需要关注业务逻辑，剩下的交给Spring就行了。</p>
+<h3 id="理解-mysql-的存储与索引机制"><a class="markdownIt-Anchor" href="#理解-mysql-的存储与索引机制"></a> 理解 MySQL 的存储与索引机制</h3>
+<ol>
+<li>
+<p>Page：MySQL 存储的基本单元</p>
+<ul>
+<li>MySQL 存储数据的基本单元是 <strong>Page</strong>，默认大小为 <strong>16KB</strong>。</li>
+<li>Page 是磁盘和内存之间数据交换的最小单位，确保高效读写。</li>
+<li>你可以把 Page 想象成一个增强的 <strong>HashMap</strong>，里面存了数据的 Key 和 Value：
+<ul>
+<li><strong>Key</strong>：建表时定义的主键（比如 ID）。</li>
+<li><strong>Value</strong>：对应行的真实数据。</li>
+</ul>
+</li>
+<li>除了 Key 和 Value，Page 还包括：
+<ul>
+<li><strong>前后指针</strong>：指向相邻的 Page，形成一个双向链表。</li>
+<li><strong>起始主键记录</strong>：标明当前 Page 从哪个主键开始。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>数据多了怎么办？B+ 树来帮忙</p>
+<ul>
+<li>随着数据量增加，Page 数量也会增加。如果每次查询都要遍历所有 Page，效率会很低。</li>
+<li>为了解决这个问题，MySQL 引入了 <strong>B+ 树</strong>：
+<ul>
+<li>最底层的 Page 存储实际数据。</li>
+<li>上层的 Page 存储指向下层 Page 的指针。</li>
+<li>这样，MySQL 可以通过 B+ 树快速定位目标数据，即使数据量巨大。</li>
+</ul>
+</li>
+<li>举个例子：
+<ul>
+<li>第一层 B+ 树是一个管理 Page 的 Page。</li>
+<li>当数据更多时，管理 Page 的 Page 也变多，就需要第二层、第三层 Page 来管理，最终形成一个层层嵌套的结构。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>为什么 Page 是双链表？</p>
+<ul>
+<li>Page 之间通过双链表连接，主要是为了支持 <strong>范围查询</strong>。</li>
+<li>比如，查询 <code>ID &gt; 10</code> 的数据时：
+<ul>
+<li>MySQL 可以先找到 ID 为 10 的 Page。</li>
+<li>然后沿着后指针遍历，直接获取后面的数据。</li>
+<li>这样就避免了从 B+ 树根节点重新查找，效率更高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>为什么推荐自增主键？</p>
+<ul>
+<li>使用 <strong>自增主键</strong> 的好处是：
+<ul>
+<li>新数据总是追加到 B+ 树的最后。</li>
+<li>不需要频繁调整 Page 内的数据顺序，减少了 Page 分裂和数据的重新排列。</li>
+<li>插入效率更高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>联合索引：多个字段怎么排序？</p>
+<ul>
+<li>联合索引是根据多个字段（比如 A、B、C）建立的索引。</li>
+<li>它会按照字段的顺序排序：先按 A 排序，再按 B，最后按 C。</li>
+<li>查询时：
+<ul>
+<li>如果跳过了联合索引的第一个字段（比如 A），索引就会失效。</li>
+<li>如果有 A 但没有 B，A 会生效，B 不会生效。</li>
+<li>因为 B+ 树是按字段顺序构建的，缺少前面的字段就无法有效利用索引。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>为什么 <code>LIKE '%bc%'</code> 会让索引失效？</p>
+<ul>
+<li>对 <code>VARCHAR</code> 字段使用 <code>LIKE '%bc%'</code> 时，索引可能失效。</li>
+<li>因为 B+ 树是按字典序构建的，如果查询模式不以索引的最左前缀开始（比如 <code>%bc%</code>），MySQL 就无法有效利用索引。</li>
+</ul>
+</li>
+<li>
+<p>回表：为什么要多查一次？</p>
+<ul>
+<li><strong>回表</strong> 是指在非主键索引中查找到主键后，还需要回到主键索引中查找完整的数据行。</li>
+<li>举个例子：
+<ul>
+<li>你在某个非主键索引中找到了主键 ID。</li>
+<li>然后需要根据 ID 去主键索引中查找完整的数据。</li>
+</ul>
+</li>
+<li>这个过程增加了额外的 I/O 操作，会影响查询性能。</li>
+</ul>
+</li>
+<li>
+<p>覆盖索引：为什么更快？</p>
+<ul>
+<li><strong>覆盖索引</strong> 是指查询所需的所有字段都包含在索引中。</li>
+<li>这样就不需要回表查询主键索引，减少了 I/O 操作，查询效率更高。</li>
+</ul>
+</li>
+<li>
+<p>聚簇索引 vs 非聚簇索引</p>
+<ul>
+<li><strong>聚簇索引</strong>：
+<ul>
+<li>数据行直接存储在索引的叶子节点上。</li>
+<li>主键索引通常是聚簇索引。</li>
+</ul>
+</li>
+<li><strong>非聚簇索引</strong>：
+<ul>
+<li>叶子节点存储的是指向数据行的指针。</li>
+<li>查询时需要回表获取完整数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>为什么 MySQL 不适合全文索引？</p>
+<ul>
+<li>MySQL 使用 B+ 树索引，需要从左到右的顺序匹配。</li>
+<li>对于全文搜索，这种结构效率较低。</li>
+<li><strong>Elasticsearch (ES)</strong> 使用 <strong>倒排索引</strong>，通过分词技术快速定位包含特定词汇的文档。</li>
+<li>因此，ES 更适合处理全文搜索。</li>
+</ul>
+</li>
+<li>
+<p>索引的选择性与维护成本</p>
+<ul>
+<li><strong>索引的选择性</strong>：
+<ul>
+<li>高选择性索引（唯一或几乎唯一的索引）更能提高查询效率，因为它们能更有效地缩小搜索范围。</li>
+</ul>
+</li>
+<li><strong>索引的维护成本</strong>：
+<ul>
+<li>索引会加速查询，但也会增加数据插入、更新和删除的成本，因为每次数据变动都可能需要更新索引。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>查询优化器的作用</p>
+<ul>
+<li>MySQL 的查询优化器会根据查询条件和索引情况，选择最有效的查询计划。</li>
+<li>理解这一点有助于更好地设计索引和编写查询语句。</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul>
+<li>MySQL 的存储和索引机制围绕 <strong>Page</strong> 和 <strong>B+ 树</strong> 展开。</li>
+<li>通过合理设计索引（如自增主键、联合索引、覆盖索引），可以显著提高查询效率。</li>
+<li>但同时也要注意索引的维护成本和适用场景，避免不必要的性能损耗。</li>
+</ul>
+<h3 id="如何理解spirngcloud"><a class="markdownIt-Anchor" href="#如何理解spirngcloud"></a> 如何理解SpirngCloud</h3>
+<ol>
+<li>
+<p><strong>微服务的核心思想</strong></p>
+<p>微服务是一种架构风格，它将应用程序拆分为一组<strong>小型、独立的服务</strong>，每个服务都围绕特定的业务功能构建。<strong>Spring Cloud</strong>是实现微服务架构的一组工具和框架。微服务的核心思想是让一个服务只做一件事，功能之间相互隔离，就像吃鸳鸯锅一样，每个格子只有一个味道。</p>
+</li>
+<li>
+<p><strong>服务通信方式</strong></p>
+<p>服务拆开后，微服务之间需要通信。Spring Cloud提供了多种通信方式：</p>
+<ul>
+<li>
+<p><strong>异步通信</strong>：比如订单系统和发邮件系统，订单系统需要告诉发邮件系统给用户发送发票。这时候就用到<strong>MQ消息队列</strong>（如RabbitMQ、Kafka）。MQ就像发短信，发送方只管发，接收方只管收，互不干扰。</p>
+</li>
+<li>
+<p><strong>同步通信</strong>：有时候不能发短信，得打电话。比如用户下单时，订单系统需要立即知道风控系统的结果，不能等。这时候就需要<strong>RPC</strong>（如gRPC）或<strong>HTTP调用</strong>（如RESTful API）。RPC协议更精简，传输效率更高，适合微服务之间的实时通信。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>服务发现与注册中心</strong></p>
+<p>随着服务越来越多，怎么知道该调用哪个服务呢？这就需要<strong>注册中心</strong>（如Eureka、Consul）。服务上线时把自己提供的或需要的能力告诉注册中心，由注册中心负责转接，就像电话交换机一样。</p>
+</li>
+<li>
+<p><strong>服务限流与熔断</strong></p>
+<p>运维同学可能会担心服务之间的调用过于频繁，导致CPU和内存扛不住。这时候可以加个限制，比如每秒只允许调用一次，这就是<strong>服务限流</strong>（如Sentinel）。如果某个服务扛不住了，还可以启用<strong>熔断策略</strong>（如Hystrix），直接返回默认结果，避免整个系统崩溃。或者把请求暂时转移到其他系统，这就是<strong>死信队列</strong>。</p>
+</li>
+<li>
+<p><strong>水平扩容与容器化</strong></p>
+<p>如果服务的并发量上去了，一个实例不够用，就需要<strong>水平扩容</strong>。人工扩容对运维压力很大，这时候可以用<strong>容器技术</strong>（如Docker）和编排工具（如Kubernetes），它会自动拉起服务实例，做好反向代理和负载均衡。</p>
+</li>
+<li>
+<p><strong>配置中心</strong></p>
+<p>有时候配置文件内容变了，不想改代码发版怎么办？<strong>配置中心</strong>（如Spring Cloud Config、Nacos）就派上用场了。配置中心和服务保持长连接，配置随改随更新，完全不用改代码发版。</p>
+</li>
+<li>
+<p><strong>统一网关与网络安全</strong></p>
+<p>网络安全也是个问题，后端服务的IP不能直接暴露，否则容易被DDoS攻击。这时候可以用<strong>统一网关</strong>（如Spring Cloud Gateway、Zuul），由网关层统一接收请求，再反向代理给真实服务。网关还可以提供<strong>身份验证、限流、日志记录</strong>等功能。</p>
+</li>
+<li>
+<p><strong>单点登录（SSO）</strong></p>
+<p>用户登录也是个麻烦事，每个功能都要登录一次。**单点登录（SSO）**可以解决这个问题，用户的token缓存在系统中，各个服务都能识别这个登录态。通过共享的认证机制（如OAuth2、JWT），各个服务可以识别用户的登录状态。</p>
+</li>
+<li>
+<p><strong>监控与预警</strong></p>
+<p>运维同学还希望有提前预警机制，避免每次出问题才救火。可以用<strong>Grafana</strong>和<strong>Prometheus</strong>，实时监控系统状态，设置阈值预警。</p>
+</li>
+<li>
+<p><strong>用户ID生成</strong></p>
+<p>最后，用户ID生成也是个问题，多个用户可能生成重复的ID。**雪花算法（Snowflake）**可以保证每个用户ID唯一，避免重复。雪花算法通过结合时间戳、机器ID和序列号，生成全局唯一的ID。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>interview</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>遍历列表(List)时删除元素</title>
     <url>/remove-elements-from-list-while-iterating-in-java/</url>
     <content><![CDATA[<p>Java 中的 List 集合，使用寻常的 <code>for</code> 循环进行遍历时删除操作时会引起 <code>ConcurrentModificationException</code> 异常，本文主要记录一下避免引起异常的方法。</p>
@@ -2019,22 +2035,6 @@ thead {
       </categories>
       <tags>
         <tag>java-collection</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python 批量下载壁纸代码</title>
-    <url>/python-wallpaper/</url>
-    <content><![CDATA[<p>Windows 可执行文件下载地址： <a href="https://wwd.lanzout.com/iXYtn020yfvi">https://wwd.lanzout.com/iXYtn020yfvi</a> 密码:52pj</p>
-<span id="more"></span>
-<p><img data-src="https://i.bmp.ovh/imgs/2022/03/d54e875706235203.png" alt="" /><br />
-<img data-src="https://i.bmp.ovh/imgs/2022/03/8defbea6ff559fc8.png" alt="" /><br />
-<img data-src="https://i.bmp.ovh/imgs/2022/03/20c8290ebcc68dc6.png" alt="" /></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests, json, os, math, time, tqdm</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类 url</span></span><br><span class="line">category_url = <span class="string">&#x27;http://service.aibizhi.adesk.com/v1/wallpaper/category&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 壁纸 url</span></span><br><span class="line">wallpaper_url = <span class="string">&#x27;http://service.aibizhi.adesk.com/v1/wallpaper/category/&#123;&#125;/wallpaper&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取到的分类列表</span></span><br><span class="line">category_list = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 待下载的分类</span></span><br><span class="line">down_num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跳过数量</span></span><br><span class="line">skip = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回数量</span></span><br><span class="line">limit = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; Tablet PC 2.0; .NET4.0E)&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片分类</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_get_category</span>():</span><br><span class="line">    response = requests.get(url=category_url, headers=headers)</span><br><span class="line">    response.encoding = <span class="string">&#x27;gbk&#x27;</span></span><br><span class="line">    data = json.loads(response.text)</span><br><span class="line"></span><br><span class="line">    pc_category_name_list = []</span><br><span class="line">    pc_category_id_list = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> data[<span class="string">&#x27;res&#x27;</span>][<span class="string">&#x27;category&#x27;</span>]:</span><br><span class="line">        name = item[<span class="string">&#x27;name&#x27;</span>]</span><br><span class="line">        cid = item[<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        pc_category_name_list.append(name)</span><br><span class="line">        pc_category_id_list.append(cid)</span><br><span class="line"></span><br><span class="line">    category_list.append(pc_category_name_list)</span><br><span class="line">    category_list.append(pc_category_id_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_show_input</span>():</span><br><span class="line"></span><br><span class="line">    input_str = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> idx, item <span class="keyword">in</span> <span class="built_in">enumerate</span>(category_list[<span class="number">0</span>]):</span><br><span class="line">        input_str = input_str + <span class="built_in">str</span>(idx + <span class="number">1</span>) + <span class="string">&quot;-&quot;</span> + item + <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line">    n_input = <span class="built_in">input</span>(<span class="built_in">str</span>(input_str) + <span class="string">&quot;\n请输入下载分类：&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> n_input <span class="keyword">or</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(n_input) <span class="keyword">or</span> <span class="built_in">int</span>(n_input) &gt; <span class="built_in">len</span>(category_list[<span class="number">0</span>]):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;未输入任何分类,请重新输入!&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    i_skip = <span class="built_in">input</span>(<span class="string">&#x27;请输入起始位置，默认为0：&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> i_skip:</span><br><span class="line">        i_skip = <span class="number">0</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(i_skip):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请输入数字！&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    i_limit = <span class="built_in">input</span>(<span class="string">&#x27;请输入下载数量，默认为20：&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> i_limit:</span><br><span class="line">        i_limit = <span class="number">20</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="keyword">not</span> <span class="built_in">str</span>.isdigit(i_limit):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请输入数字！&quot;</span>)</span><br><span class="line">        _start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">int</span>(i_limit) &gt; <span class="number">1000</span>:</span><br><span class="line">        i_limit = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> limit, skip, down_num</span><br><span class="line"></span><br><span class="line">    skip = <span class="built_in">int</span>(i_skip)</span><br><span class="line">    limit = <span class="built_in">int</span>(i_limit)</span><br><span class="line">    down_num = <span class="built_in">int</span>(n_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取图片 url</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_get_img_url</span>(<span class="params">down, skip, limit</span>):    </span><br><span class="line"></span><br><span class="line">    img_list = &#123;&#125;</span><br><span class="line">    title_list = []</span><br><span class="line">    href_list = []</span><br><span class="line"></span><br><span class="line">    url = wallpaper_url.<span class="built_in">format</span>(category_list[<span class="number">1</span>][down - <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 每次最大获取20张图片链接</span></span><br><span class="line">    t = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> limit &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 参数</span></span><br><span class="line">        <span class="keyword">if</span> limit &gt; <span class="number">20</span>:</span><br><span class="line">            params = <span class="string">&#x27;?skip=&#123;&#125;&#x27;</span></span><br><span class="line">            params = params.<span class="built_in">format</span>(<span class="built_in">str</span>(<span class="number">20</span> * t + skip))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            params = <span class="string">&#x27;?skip=&#123;&#125;&amp;limit=&#123;&#125;&#x27;</span></span><br><span class="line">            params = params.<span class="built_in">format</span>(<span class="built_in">str</span>(<span class="number">20</span> * t + skip), <span class="built_in">str</span>(limit))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取 json</span></span><br><span class="line">        response = requests.get(url=url + params, headers=headers)</span><br><span class="line">        response.encoding = <span class="string">&#x27;gbk&#x27;</span></span><br><span class="line">        page_text = response.text</span><br><span class="line"></span><br><span class="line">        arr = json.loads(page_text)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># # 循环取出列表元素</span></span><br><span class="line">        <span class="keyword">for</span> ul <span class="keyword">in</span> arr[<span class="string">&#x27;res&#x27;</span>][<span class="string">&#x27;wallpaper&#x27;</span>]:</span><br><span class="line">            href = ul[<span class="string">&#x27;img&#x27;</span>]</span><br><span class="line">            title = ul[<span class="string">&#x27;id&#x27;</span>] + <span class="string">&#x27;.jpg&#x27;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 将取出的图片链接和标题，存放到img_list中</span></span><br><span class="line">            title_list.append(title)</span><br><span class="line">            href_list.append(href)</span><br><span class="line">        limit -= <span class="number">20</span></span><br><span class="line">        t += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    img_list = &#123;<span class="string">&#x27;title&#x27;</span>: title_list, <span class="string">&#x27;href&#x27;</span>: href_list&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 与本地文件夹内文件比较，去重</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + category_list[<span class="number">0</span>][down - <span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">return</span> img_list</span><br><span class="line">   </span><br><span class="line">    path = <span class="built_in">str</span>(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + category_list[<span class="number">0</span>][down - <span class="number">1</span>])</span><br><span class="line">    filelist=os.listdir(path)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 倒序遍历删除已经下载过的图片</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(img_list[<span class="string">&#x27;title&#x27;</span>]) - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> img_list[<span class="string">&#x27;title&#x27;</span>][i] <span class="keyword">in</span> filelist:</span><br><span class="line">            img_list[<span class="string">&#x27;title&#x27;</span>].remove(img_list[<span class="string">&#x27;title&#x27;</span>][i])</span><br><span class="line">            img_list[<span class="string">&#x27;href&#x27;</span>].remove(img_list[<span class="string">&#x27;href&#x27;</span>][i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> img_list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_down_img</span>(<span class="params">down_num</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> skip, limit</span><br><span class="line"></span><br><span class="line">    img_list = _get_img_url(down_num, skip, limit)</span><br><span class="line">    filepath = category_list[<span class="number">0</span>][down_num - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(os.getcwd() + <span class="string">&#x27;/&#x27;</span> + filepath):</span><br><span class="line">        os.mkdir(filepath)</span><br><span class="line"></span><br><span class="line">    title_list = img_list[<span class="string">&#x27;title&#x27;</span>]</span><br><span class="line">    href_list = img_list[<span class="string">&#x27;href&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 循环取出图片详情页地址和标题，下载，显示进度条</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tqdm.trange(<span class="built_in">len</span>(title_list)):</span><br><span class="line"></span><br><span class="line">        title = title_list[i]</span><br><span class="line">        img_url = href_list[i]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将获取到到图片地址下载保存</span></span><br><span class="line">        img_data = requests.get(img_url, headers=headers).content</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filepath + <span class="string">&#x27;/&#x27;</span> + title, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            fp.write(img_data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_start</span>():</span><br><span class="line">    _get_category()</span><br><span class="line">    _show_input()</span><br><span class="line">    start = time.time()</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor(<span class="number">8</span>) <span class="keyword">as</span> t:</span><br><span class="line">            t.submit(_down_img, down_num) </span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;——————程序执行完毕——————&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;——————耗时 &#x27;</span> + <span class="string">&quot;&#123;:.2f&#125;&quot;</span>.<span class="built_in">format</span>(end-start) + <span class="string">&#x27;秒——————&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        _start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -2104,6 +2104,43 @@ thead {
       </categories>
       <tags>
         <tag>wsl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一句</title>
+    <url>/sayings/</url>
+    <content><![CDATA[<p>你见过风吗？没见过不等于他不存在。<br />
+《大魔术师》</p>
+<p>人啊，不能让自己太安逸了，身子安逸了，心就麻木了，这他娘的和咸鱼有什么区别？<br />
+—— 孑与2《唐砖》</p>
+<p>想，都是问题<br />
+做，才有活路<br />
+—— 电视剧《希望的大地》</p>
+<p>不知他人苦，莫劝人大度。</p>
+<p>不明白任何情况就劝你一定要大度的人，这种人你要离他远一点，因为雷劈他的时候会连累到你。<br />
+—— 郭德纲</p>
+<p>使我有洛阳二倾田，安能佩六国相印？<br />
+—— 苏秦</p>
+<p>佛说，你有多爱这少女?<br />
+阿难回答说，<br />
+“我愿化身石桥，受五百年风吹，五百年日晒，五百年雨打，但求此少女从桥上走过”</p>
+<p>学习并不是让你变得更强大，而是面临问题时多一种方法。</p>
+<p>既然有能力去承担最坏的结果，为什么不大胆追求，为什么不玩一把大的呢！</p>
+<p>天地四方为江湖，世人聪明反糊涂。名利场上风浪起，赢到头来却是输。<br />
+—— 金庸《侠客行》</p>
+<p>多少事，从来急，<br />
+天地转，光阴迫，<br />
+一万年太久，只争朝夕。<br />
+—— 毛泽东《满江红·和郭沫若同志》</p>
+<p>输的时候，说什么都像是借口。<br />
+—— 前 SKT 教练 KKoma 在 2015 年 msi 失利后对队员所说。</p>
+<p>让你枯燥乏味的东西，是你不了解不知道的地方。</p>
+]]></content>
+      <categories>
+        <category>daily</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
       </tags>
   </entry>
   <entry>
@@ -2273,43 +2310,6 @@ thead {
       </tags>
   </entry>
   <entry>
-    <title>一句</title>
-    <url>/sayings/</url>
-    <content><![CDATA[<p>你见过风吗？没见过不等于他不存在。<br />
-《大魔术师》</p>
-<p>人啊，不能让自己太安逸了，身子安逸了，心就麻木了，这他娘的和咸鱼有什么区别？<br />
-—— 孑与2《唐砖》</p>
-<p>想，都是问题<br />
-做，才有活路<br />
-—— 电视剧《希望的大地》</p>
-<p>不知他人苦，莫劝人大度。</p>
-<p>不明白任何情况就劝你一定要大度的人，这种人你要离他远一点，因为雷劈他的时候会连累到你。<br />
-—— 郭德纲</p>
-<p>使我有洛阳二倾田，安能佩六国相印？<br />
-—— 苏秦</p>
-<p>佛说，你有多爱这少女?<br />
-阿难回答说，<br />
-“我愿化身石桥，受五百年风吹，五百年日晒，五百年雨打，但求此少女从桥上走过”</p>
-<p>学习并不是让你变得更强大，而是面临问题时多一种方法。</p>
-<p>既然有能力去承担最坏的结果，为什么不大胆追求，为什么不玩一把大的呢！</p>
-<p>天地四方为江湖，世人聪明反糊涂。名利场上风浪起，赢到头来却是输。<br />
-—— 金庸《侠客行》</p>
-<p>多少事，从来急，<br />
-天地转，光阴迫，<br />
-一万年太久，只争朝夕。<br />
-—— 毛泽东《满江红·和郭沫若同志》</p>
-<p>输的时候，说什么都像是借口。<br />
-—— 前 SKT 教练 KKoma 在 2015 年 msi 失利后对队员所说。</p>
-<p>让你枯燥乏味的东西，是你不了解不知道的地方。</p>
-]]></content>
-      <categories>
-        <category>daily</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>搜索引擎的一些搜索技巧</title>
     <url>/search-skills/</url>
     <content><![CDATA[<style>
@@ -2403,117 +2403,41 @@ thead {
       </tags>
   </entry>
   <entry>
-    <title>排序算法-Java实现</title>
-    <url>/sort-algorithm-in-java/</url>
-    <content><![CDATA[<h3 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h3>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">swapped</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j + <span class="number">1</span> &lt;= i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                swap(array, j, j + <span class="number">1</span>);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) &#123;</span><br><span class="line">            <span class="comment">// 本轮没有替换, 提前结束</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h2>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> array.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 初始化最小值索引</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> i;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(array[min] &lt; array[j]) &#123;</span><br><span class="line">                min = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 最小值索引已更改, 交换</span></span><br><span class="line">        <span class="keyword">if</span>(min != i) &#123;</span><br><span class="line">            swap(array, i, min);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="插入排序"><a class="markdownIt-Anchor" href="#插入排序"></a> 插入排序</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> array[i];</span><br><span class="line">        <span class="keyword">while</span> (i - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; array[i - <span class="number">1</span>] &gt; k) &#123;</span><br><span class="line">            array[i] = array[i - <span class="number">1</span>];</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        array[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="快速排序"><a class="markdownIt-Anchor" href="#快速排序"></a> 快速排序</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    doSort(array, <span class="number">0</span>, array.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doSort</span><span class="params">(<span class="type">int</span>[] array, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left - <span class="number">1</span>, j = right + <span class="number">1</span>, mid = array[left + right &gt;&gt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++; <span class="keyword">while</span> (array[i] &lt; mid);</span><br><span class="line">        <span class="keyword">do</span> j --; <span class="keyword">while</span> (array[j] &gt; mid);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) swap(array, i, j);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    doSort(array, left, j);</span><br><span class="line">    doSort(array, j + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="归并排序"><a class="markdownIt-Anchor" href="#归并排序"></a> 归并排序</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">        doSort(array, <span class="number">0</span>, array.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doSort</span><span class="params">(<span class="type">int</span>[] array, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + right &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        doSort(array, left, mid);</span><br><span class="line">        doSort(array, mid + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left, j = mid + <span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] tmp = <span class="keyword">new</span> <span class="title class_">int</span>[right - left + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &lt; array[j]) tmp[k++] = array[i++];</span><br><span class="line">            <span class="keyword">else</span> tmp[k++] = array[j++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid) tmp[k++] = array[i++];</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= right) tmp[k++] = array[j++];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = left, j = <span class="number">0</span>; i &lt;= right; i++, j++) array[i] = tmp[j];</span><br><span class="line">        <span class="comment">// System.arraycopy(tmp, 0, array, left, right - left + 1);</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="堆排序"><a class="markdownIt-Anchor" href="#堆排序"></a> 堆排序</h2>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= size; i++) &#123;</span><br><span class="line">        push_up(arr, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        swap(arr, <span class="number">1</span>, size);</span><br><span class="line">        size--;</span><br><span class="line">        push_down(arr, size, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">push_down</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> size, <span class="type">int</span> u)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> u, left = u * <span class="number">2</span>, right = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (left &lt;= size &amp;&amp; arr[left] &gt; arr[t]) t = left;</span><br><span class="line">    <span class="keyword">if</span> (right &lt;= size &amp;&amp; arr[right] &gt; arr[t]) t = right;</span><br><span class="line">    <span class="keyword">if</span> (u != t) &#123;</span><br><span class="line">        swap(arr, u, t);</span><br><span class="line">        push_down(arr, size, t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">push_up</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> u)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (u / <span class="number">2</span> &gt; <span class="number">0</span> &amp;&amp; arr[u / <span class="number">2</span>] &lt; arr[u]) &#123;</span><br><span class="line">        swap(arr, u / <span class="number">2</span>, u);</span><br><span class="line">        u /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>源码地址：<a href="https://github.com/yingming006/AlgorithmsInJava/tree/main/sort">AlgorithmsInJava/sort</a></p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL命令:DDL,DQL,DML,DCL和TCL</title>
-    <url>/sql-commond-ddl-dql-dml-dcl-tcl/</url>
-    <content><![CDATA[<img data-src="https://i.loli.net/2019/11/14/ptPu9y2gIsFjl7U.png" >
-<p>SQL 是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统。 SQL使用某些命令（例如，创建，删除，插入等）来执行所需的任务。</p>
-<span id="more"></span>
-<p>SQL 命令主要由以下几类：</p>
-<ul>
-<li>DDL – Data Definition Language</li>
-<li>DQl – Data Query Language</li>
-<li>DML – Data Manipulation Language</li>
-<li>DCL – Data Control Language</li>
-<li>TCL – Transaction Control Language</li>
-</ul>
-<h3 id="1-ddl-data-definition-language"><a class="markdownIt-Anchor" href="#1-ddl-data-definition-language"></a> 1. DDL – Data Definition Language</h3>
-<p>DDL：创建和修改数据库中<a href="https://www.geeksforgeeks.org/database-objects-in-dbms/">数据库对象</a>（Table ,  View 等）结构。</p>
-<ul>
-<li>
-<p>CREATE： 在数据库中创建对象</p>
-<p>创建数据库：<code> CREATE DATABASE IF NOT EXISTS test_db;</code></p>
-</li>
-<li>
-<p>DROP： 从数据库中删除对象</p>
-<p>删除数据库：<code> DROP DATABASE IF NOT EXISTS test_db;</code></p>
-</li>
-<li>
-<p>ALTER： 修改数据库对象</p>
-<p>修改数据表：<code>ALTER TABLE tb_emp1 ADD COLUMN col1 INT FIRST;</code>（在表的第一列添加一个 int 类型的字段 col1 ）</p>
-</li>
-<li>
-<p>TRUNCATE：从表中删除所有记录</p>
-<p><code>TRUNCATE TABLE  table_name;</code></p>
-</li>
-<li>
-<p>COMMETN：添加注释</p>
-</li>
-<li>
-<p>RENAME：重命名数据库中的表名，字段名</p>
-</li>
-</ul>
-<h3 id="2-dql-data-query-language"><a class="markdownIt-Anchor" href="#2-dql-data-query-language"></a> 2. DQL -  <strong>Data Query Language</strong></h3>
-<p>DQL ：用于用于从数据库查询数据。</p>
-<ul>
-<li>SELECT</li>
-</ul>
-<h3 id="3-dml-data-manipulation-language"><a class="markdownIt-Anchor" href="#3-dml-data-manipulation-language"></a> 3. DML - Data Manipulation Language</h3>
-<p>DML：  用于在添加（插入），删除和修改（更新）数据 。</p>
-<ul>
-<li>INSERT：插入数据</li>
-<li>UPDATE：更新数据</li>
-<li>DELETE：删除数据</li>
-</ul>
-<h3 id="4-dcl-data-control-language"><a class="markdownIt-Anchor" href="#4-dcl-data-control-language"></a> 4. DCL – Data Control Language</h3>
-<p>DCL： 授权，角色控制等。</p>
-<ul>
-<li>GRANT：为用户赋予访问权限</li>
-<li>REVOKE：撤回授权权限</li>
-</ul>
-<h3 id="5-tcl-transaction-control-language"><a class="markdownIt-Anchor" href="#5-tcl-transaction-control-language"></a> 5. TCL – Transaction Control Language</h3>
-<p>TCL：处理数据库中的事务。</p>
-<ul>
-<li>
-<p>COMMIT：提交一个事务</p>
-</li>
-<li>
-<p>SAVEPOINT：在事务中设置保存点，可以回滚到此保存点</p>
-</li>
-<li>
-<p>ROLLBACK：回滚事务</p>
-</li>
-<li>
-<p>SET TRANSACTION：改变事务选项</p>
-</li>
-</ul>
-<p>参考：<a href="https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/">SQL|DDL,DQL,DML,DCL and TCL Commands - GeeksforGeeks</a></p>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>速算技巧</title>
     <url>/su-suan/</url>
-    <content><![CDATA[<h3 id="11"><a class="markdownIt-Anchor" href="#11"></a> ×11</h3>
+    <content><![CDATA[<h3 id="两位数-两位数-通用法"><a class="markdownIt-Anchor" href="#两位数-两位数-通用法"></a> 两位数 × 两位数 (通用法)</h3>
+<p><strong>方法</strong>：拆分为“头尾积”与两个“交叉积”，然后对位相加。</p>
+<blockquote>
+<p>此方法将所有进位集中到最后一步，简化心算。</p>
+</blockquote>
+<p><strong>步骤</strong>：</p>
+<blockquote>
+<ol>
+<li><strong>计算头尾积</strong>：(十位数 × 十位数) 拼接 (个位数 × 个位数)。<strong>注意：个位数乘积需占两位，不足补 0</strong>。</li>
+<li><strong>计算交叉积</strong>：分别计算 (首 1× 尾 2) 和 (尾 1× 首 2)。</li>
+<li><strong>组合相加</strong>：将交叉积的结果末尾补 0，与头尾积对位相加。</li>
+</ol>
+</blockquote>
+<span id="more"></span>
+<p><strong>示例(无进位)</strong>：计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>21</mn><mo>×</mo><mn>34</mn></mrow><annotation encoding="application/x-tex">21 \times 34</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">4</span></span></span></span></p>
+<blockquote>
+<ol>
+<li><strong>头尾积</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>→</mo><mn>6</mn><mi mathvariant="normal">∣</mi><mn>04</mn><mo>→</mo><mn>604</mn></mrow><annotation encoding="application/x-tex">(2 \times 3) | (1 \times 4) \rightarrow 6 | 04 \rightarrow 604</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mord">∣</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mord">∣</span><span class="mord">0</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mord">4</span></span></span></span></li>
+<li><strong>交叉积</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>×</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">(2 \times 4)=8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span> 以及 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>×</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">(1 \times 3)=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span></li>
+<li><strong>相加</strong>：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  604  (头尾积)</span><br><span class="line">   80  (交叉积 2×4)</span><br><span class="line">   30  (交叉积 1×3)</span><br><span class="line">-----</span><br><span class="line">  714</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<p><strong>示例(有进位)</strong>：计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48</mn><mo>×</mo><mn>67</mn></mrow><annotation encoding="application/x-tex">48 \times 67</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">7</span></span></span></span></p>
+<blockquote>
+<ol>
+<li><strong>头尾积</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>×</mo><mn>6</mn><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi><mo stretchy="false">(</mo><mn>8</mn><mo>×</mo><mn>7</mn><mo stretchy="false">)</mo><mo>→</mo><mn>24</mn><mi mathvariant="normal">∣</mi><mn>56</mn><mo>→</mo><mn>2456</mn></mrow><annotation encoding="application/x-tex">(4 \times 6) | (8 \times 7) \rightarrow 24 | 56 \rightarrow 2456</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mclose">)</span><span class="mord">∣</span><span class="mopen">(</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">∣</span><span class="mord">5</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">5</span><span class="mord">6</span></span></span></span></li>
+<li><strong>交叉积</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>×</mo><mn>7</mn><mo stretchy="false">)</mo><mo>=</mo><mn>28</mn></mrow><annotation encoding="application/x-tex">(4 \times 7)=28</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">8</span></span></span></span> 以及 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>8</mn><mo>×</mo><mn>6</mn><mo stretchy="false">)</mo><mo>=</mo><mn>48</mn></mrow><annotation encoding="application/x-tex">(8 \times 6)=48</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">8</span></span></span></span></li>
+<li><strong>相加</strong>：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> 2456  (头尾积)</span><br><span class="line">  280  (交叉积 4×7)</span><br><span class="line">  480  (交叉积 8×6)</span><br><span class="line">------</span><br><span class="line"> 3216</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</blockquote>
+<h3 id="11"><a class="markdownIt-Anchor" href="#11"></a> ×11</h3>
 <p><strong>方法</strong>：“首尾不动，依次相加”，满十进一。</p>
 <p><strong>步骤</strong>：</p>
 <blockquote>
@@ -2522,7 +2446,6 @@ thead {
 <strong>中间位</strong>：从右向左，将原数相邻的两位数字依次相加，得到积的中间各位。<br />
 <strong>进位</strong>：相加过程中，如果结果满 10，则向前一位进 1。</p>
 </blockquote>
-<span id="more"></span>
 <p><strong>示例(两位数)</strong>：计算 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48</mn><mo>×</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">48 \times 11</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">1</span></span></span></span></p>
 <blockquote>
 <p>首位：4，末位：8<br />
@@ -2700,10 +2623,118 @@ thead {
 </blockquote>
 ]]></content>
       <categories>
-        <category>tech</category>
+        <category>行测基础</category>
       </categories>
       <tags>
         <tag>速算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>排序算法-Java实现</title>
+    <url>/sort-algorithm-in-java/</url>
+    <content><![CDATA[<h3 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h3>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">swapped</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j + <span class="number">1</span> &lt;= i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                swap(array, j, j + <span class="number">1</span>);</span><br><span class="line">                swapped = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!swapped) &#123;</span><br><span class="line">            <span class="comment">// 本轮没有替换, 提前结束</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="选择排序"><a class="markdownIt-Anchor" href="#选择排序"></a> 选择排序</h2>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> array.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 初始化最小值索引</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> i;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(array[min] &lt; array[j]) &#123;</span><br><span class="line">                min = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 最小值索引已更改, 交换</span></span><br><span class="line">        <span class="keyword">if</span>(min != i) &#123;</span><br><span class="line">            swap(array, i, min);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入排序"><a class="markdownIt-Anchor" href="#插入排序"></a> 插入排序</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> array[i];</span><br><span class="line">        <span class="keyword">while</span> (i - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; array[i - <span class="number">1</span>] &gt; k) &#123;</span><br><span class="line">            array[i] = array[i - <span class="number">1</span>];</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        array[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a class="markdownIt-Anchor" href="#快速排序"></a> 快速排序</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">    doSort(array, <span class="number">0</span>, array.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doSort</span><span class="params">(<span class="type">int</span>[] array, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left - <span class="number">1</span>, j = right + <span class="number">1</span>, mid = array[left + right &gt;&gt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++; <span class="keyword">while</span> (array[i] &lt; mid);</span><br><span class="line">        <span class="keyword">do</span> j --; <span class="keyword">while</span> (array[j] &gt; mid);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j) swap(array, i, j);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    doSort(array, left, j);</span><br><span class="line">    doSort(array, j + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a class="markdownIt-Anchor" href="#归并排序"></a> 归并排序</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] array)</span> &#123;</span><br><span class="line">        doSort(array, <span class="number">0</span>, array.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">doSort</span><span class="params">(<span class="type">int</span>[] array, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt;= right) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + right &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        doSort(array, left, mid);</span><br><span class="line">        doSort(array, mid + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> left, j = mid + <span class="number">1</span>, k = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] tmp = <span class="keyword">new</span> <span class="title class_">int</span>[right - left + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[i] &lt; array[j]) tmp[k++] = array[i++];</span><br><span class="line">            <span class="keyword">else</span> tmp[k++] = array[j++];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i &lt;= mid) tmp[k++] = array[i++];</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= right) tmp[k++] = array[j++];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (i = left, j = <span class="number">0</span>; i &lt;= right; i++, j++) array[i] = tmp[j];</span><br><span class="line">        <span class="comment">// System.arraycopy(tmp, 0, array, left, right - left + 1);</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="堆排序"><a class="markdownIt-Anchor" href="#堆排序"></a> 堆排序</h2>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= size; i++) &#123;</span><br><span class="line">        push_up(arr, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        swap(arr, <span class="number">1</span>, size);</span><br><span class="line">        size--;</span><br><span class="line">        push_down(arr, size, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">push_down</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> size, <span class="type">int</span> u)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> u, left = u * <span class="number">2</span>, right = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (left &lt;= size &amp;&amp; arr[left] &gt; arr[t]) t = left;</span><br><span class="line">    <span class="keyword">if</span> (right &lt;= size &amp;&amp; arr[right] &gt; arr[t]) t = right;</span><br><span class="line">    <span class="keyword">if</span> (u != t) &#123;</span><br><span class="line">        swap(arr, u, t);</span><br><span class="line">        push_down(arr, size, t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">push_up</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> u)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (u / <span class="number">2</span> &gt; <span class="number">0</span> &amp;&amp; arr[u / <span class="number">2</span>] &lt; arr[u]) &#123;</span><br><span class="line">        swap(arr, u / <span class="number">2</span>, u);</span><br><span class="line">        u /= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>源码地址：<a href="https://github.com/yingming006/AlgorithmsInJava/tree/main/sort">AlgorithmsInJava/sort</a></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL命令:DDL,DQL,DML,DCL和TCL</title>
+    <url>/sql-commond-ddl-dql-dml-dcl-tcl/</url>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/11/14/ptPu9y2gIsFjl7U.png" >
+<p>SQL 是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统。 SQL使用某些命令（例如，创建，删除，插入等）来执行所需的任务。</p>
+<span id="more"></span>
+<p>SQL 命令主要由以下几类：</p>
+<ul>
+<li>DDL – Data Definition Language</li>
+<li>DQl – Data Query Language</li>
+<li>DML – Data Manipulation Language</li>
+<li>DCL – Data Control Language</li>
+<li>TCL – Transaction Control Language</li>
+</ul>
+<h3 id="1-ddl-data-definition-language"><a class="markdownIt-Anchor" href="#1-ddl-data-definition-language"></a> 1. DDL – Data Definition Language</h3>
+<p>DDL：创建和修改数据库中<a href="https://www.geeksforgeeks.org/database-objects-in-dbms/">数据库对象</a>（Table ,  View 等）结构。</p>
+<ul>
+<li>
+<p>CREATE： 在数据库中创建对象</p>
+<p>创建数据库：<code> CREATE DATABASE IF NOT EXISTS test_db;</code></p>
+</li>
+<li>
+<p>DROP： 从数据库中删除对象</p>
+<p>删除数据库：<code> DROP DATABASE IF NOT EXISTS test_db;</code></p>
+</li>
+<li>
+<p>ALTER： 修改数据库对象</p>
+<p>修改数据表：<code>ALTER TABLE tb_emp1 ADD COLUMN col1 INT FIRST;</code>（在表的第一列添加一个 int 类型的字段 col1 ）</p>
+</li>
+<li>
+<p>TRUNCATE：从表中删除所有记录</p>
+<p><code>TRUNCATE TABLE  table_name;</code></p>
+</li>
+<li>
+<p>COMMETN：添加注释</p>
+</li>
+<li>
+<p>RENAME：重命名数据库中的表名，字段名</p>
+</li>
+</ul>
+<h3 id="2-dql-data-query-language"><a class="markdownIt-Anchor" href="#2-dql-data-query-language"></a> 2. DQL -  <strong>Data Query Language</strong></h3>
+<p>DQL ：用于用于从数据库查询数据。</p>
+<ul>
+<li>SELECT</li>
+</ul>
+<h3 id="3-dml-data-manipulation-language"><a class="markdownIt-Anchor" href="#3-dml-data-manipulation-language"></a> 3. DML - Data Manipulation Language</h3>
+<p>DML：  用于在添加（插入），删除和修改（更新）数据 。</p>
+<ul>
+<li>INSERT：插入数据</li>
+<li>UPDATE：更新数据</li>
+<li>DELETE：删除数据</li>
+</ul>
+<h3 id="4-dcl-data-control-language"><a class="markdownIt-Anchor" href="#4-dcl-data-control-language"></a> 4. DCL – Data Control Language</h3>
+<p>DCL： 授权，角色控制等。</p>
+<ul>
+<li>GRANT：为用户赋予访问权限</li>
+<li>REVOKE：撤回授权权限</li>
+</ul>
+<h3 id="5-tcl-transaction-control-language"><a class="markdownIt-Anchor" href="#5-tcl-transaction-control-language"></a> 5. TCL – Transaction Control Language</h3>
+<p>TCL：处理数据库中的事务。</p>
+<ul>
+<li>
+<p>COMMIT：提交一个事务</p>
+</li>
+<li>
+<p>SAVEPOINT：在事务中设置保存点，可以回滚到此保存点</p>
+</li>
+<li>
+<p>ROLLBACK：回滚事务</p>
+</li>
+<li>
+<p>SET TRANSACTION：改变事务选项</p>
+</li>
+</ul>
+<p>参考：<a href="https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/">SQL|DDL,DQL,DML,DCL and TCL Commands - GeeksforGeeks</a></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -2769,6 +2800,65 @@ thead {
       </categories>
       <tags>
         <tag>https</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自建 Tiny Tiny RSS 记录</title>
+    <url>/ttrss-log/</url>
+    <content><![CDATA[<h3 id="准备环境"><a class="markdownIt-Anchor" href="#准备环境"></a> 准备环境</h3>
+<ul>
+<li>Ubuntu 20.04 LTS</li>
+<li><a href="https://yingming006.cn/install-software-in-ubuntu/#Docker-Composer">Docker-Compose</a></li>
+</ul>
+<h3 id="部署-ttrss"><a class="markdownIt-Anchor" href="#部署-ttrss"></a> 部署 TTRSS</h3>
+<ol>
+<li>下载 <a href="https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml">docker-compose.yml</a> 至任意目录。</li>
+</ol>
+<span id="more"></span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>更改 <code>docker-compose.yml</code> 的配置：</li>
+</ol>
+<ul>
+<li>SELF_URL_PATH：<a href="https://ttrss.yingming006.cn">https://ttrss.yingming006.cn</a><br />
+TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</li>
+</ul>
+<ol start="3">
+<li>部署启动</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> docker-compose up -d</span><br></pre></td></tr></table></figure>
+<h3 id="配置-https"><a class="markdownIt-Anchor" href="#配置-https"></a> 配置 HTTPS</h3>
+<p>可以参考：<a href="https://yingming006.cn/support-https-with-let-s-encrypt/">启用 HTTPS</a></p>
+<h3 id="ttrss-网站配置"><a class="markdownIt-Anchor" href="#ttrss-网站配置"></a> TTRSS 网站配置</h3>
+<p>登录 TTRSS，打开偏好设置，根据自己的需求进行配置</p>
+<p>推荐打开的配置：</p>
+<ul>
+<li>启用 API</li>
+</ul>
+<p><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGo/ttrss-open-api.png" alt="" /></p>
+<ul>
+<li>插件
+<ul>
+<li>fever：开启后可以使用 <code>Fever API</code> 来获取RSS，需要在 <code>Fever Emulation</code> 中设置密码，此密码用于 <code>Fever API</code> 登录</li>
+<li>mercury_fulltext：全文获取</li>
+</ul>
+</li>
+</ul>
+<h3 id="mercury-全文获取"><a class="markdownIt-Anchor" href="#mercury-全文获取"></a> Mercury 全文获取</h3>
+<ol>
+<li>偏好设置中启用 <code>mercury-fulltext</code> 插件</li>
+<li>偏好设置-信息源-Mercury Fulltext settins 中设置地址<br />
+<img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGomercury-fulltext.png" alt="" /></li>
+<li>编辑信息源中，插件 tab 下启用 <code>Get fulltext via Mercury Parser</code><br />
+<img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGoopen-mercury-fulltext.png" alt="" /></li>
+</ol>
+<h3 id="部署-rsshub"><a class="markdownIt-Anchor" href="#部署-rsshub"></a> 部署 RSSHub</h3>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>rss</tag>
       </tags>
   </entry>
   <entry>
@@ -2991,62 +3081,38 @@ first：起始位置</p>
       </tags>
   </entry>
   <entry>
-    <title>自建 Tiny Tiny RSS 记录</title>
-    <url>/ttrss-log/</url>
-    <content><![CDATA[<h3 id="准备环境"><a class="markdownIt-Anchor" href="#准备环境"></a> 准备环境</h3>
-<ul>
-<li>Ubuntu 20.04 LTS</li>
-<li><a href="https://yingming006.cn/install-software-in-ubuntu/#Docker-Composer">Docker-Compose</a></li>
-</ul>
-<h3 id="部署-ttrss"><a class="markdownIt-Anchor" href="#部署-ttrss"></a> 部署 TTRSS</h3>
-<ol>
-<li>下载 <a href="https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml">docker-compose.yml</a> 至任意目录。</li>
-</ol>
-<span id="more"></span>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ttrss &amp;&amp; <span class="built_in">cd</span> ttrss</span><br><span class="line">wget https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>更改 <code>docker-compose.yml</code> 的配置：</li>
-</ol>
-<ul>
-<li>SELF_URL_PATH：<a href="https://ttrss.yingming006.cn">https://ttrss.yingming006.cn</a><br />
-TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用于访问 TTRSS 的 URL 保持完全一致，否则 TTRSS 将无法启动。</li>
-</ul>
-<ol start="3">
-<li>部署启动</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> docker-compose up -d</span><br></pre></td></tr></table></figure>
-<h3 id="配置-https"><a class="markdownIt-Anchor" href="#配置-https"></a> 配置 HTTPS</h3>
-<p>可以参考：<a href="https://yingming006.cn/support-https-with-let-s-encrypt/">启用 HTTPS</a></p>
-<h3 id="ttrss-网站配置"><a class="markdownIt-Anchor" href="#ttrss-网站配置"></a> TTRSS 网站配置</h3>
-<p>登录 TTRSS，打开偏好设置，根据自己的需求进行配置</p>
-<p>推荐打开的配置：</p>
-<ul>
-<li>启用 API</li>
-</ul>
-<p><img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGo/ttrss-open-api.png" alt="" /></p>
-<ul>
-<li>插件
-<ul>
-<li>fever：开启后可以使用 <code>Fever API</code> 来获取RSS，需要在 <code>Fever Emulation</code> 中设置密码，此密码用于 <code>Fever API</code> 登录</li>
-<li>mercury_fulltext：全文获取</li>
-</ul>
-</li>
-</ul>
-<h3 id="mercury-全文获取"><a class="markdownIt-Anchor" href="#mercury-全文获取"></a> Mercury 全文获取</h3>
-<ol>
-<li>偏好设置中启用 <code>mercury-fulltext</code> 插件</li>
-<li>偏好设置-信息源-Mercury Fulltext settins 中设置地址<br />
-<img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGomercury-fulltext.png" alt="" /></li>
-<li>编辑信息源中，插件 tab 下启用 <code>Get fulltext via Mercury Parser</code><br />
-<img data-src="https://cdn.jsdelivr.net/gh/yingming006/img-hosting/PicGoopen-mercury-fulltext.png" alt="" /></li>
-</ol>
-<h3 id="部署-rsshub"><a class="markdownIt-Anchor" href="#部署-rsshub"></a> 部署 RSSHub</h3>
+    <title>Office 的安装与激活</title>
+    <url>/windows-install-office/</url>
+    <content><![CDATA[<h3 id="下载-office-tool-plus"><a class="markdownIt-Anchor" href="#下载-office-tool-plus"></a> 下载 Office Tool Plus</h3>
+<p><a href="https://otp.landian.vip/zh-cn/download.html">官方地址</a></p>
+<h3 id="安装-office"><a class="markdownIt-Anchor" href="#安装-office"></a> 安装 Office</h3>
+<p>安装 <code>批量 (Volume) 许可证</code> 版本 Office</p>
+<h3 id="kms-激活"><a class="markdownIt-Anchor" href="#kms-激活"></a> KMS 激活</h3>
+<p><code>Microsoft-Activation-Scripts</code></p>
+<p><a href="https://github.com/massgravel/Microsoft-Activation-Scripts">脚本地址</a></p>
 ]]></content>
       <categories>
         <category>tech</category>
       </categories>
       <tags>
-        <tag>rss</tag>
+        <tag>office</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wsl2访问代理通过clash</title>
+    <url>/wsl-proxy-by-clash/</url>
+    <content><![CDATA[<span id="more"></span>
+<div style="display: flex; justify-content: space-between;">
+  <img data-src="https://s2.loli.net/2023/08/20/X3Vog9PcLkZspwN.png" alt="clash-setting.png" width="55%">
+  <img data-src="https://s2.loli.net/2023/08/20/4ucTnsg3MLwFqtD.png" alt="clash-tun.png" width="55%">
+</div>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>wsl</tag>
+        <tag>clash</tag>
       </tags>
   </entry>
   <entry>
@@ -3140,41 +3206,6 @@ TTRSS 实例地址。🔴 请注意，该变量值必须与你在浏览器中用
       </categories>
       <tags>
         <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Office 的安装与激活</title>
-    <url>/windows-install-office/</url>
-    <content><![CDATA[<h3 id="下载-office-tool-plus"><a class="markdownIt-Anchor" href="#下载-office-tool-plus"></a> 下载 Office Tool Plus</h3>
-<p><a href="https://otp.landian.vip/zh-cn/download.html">官方地址</a></p>
-<h3 id="安装-office"><a class="markdownIt-Anchor" href="#安装-office"></a> 安装 Office</h3>
-<p>安装 <code>批量 (Volume) 许可证</code> 版本 Office</p>
-<h3 id="kms-激活"><a class="markdownIt-Anchor" href="#kms-激活"></a> KMS 激活</h3>
-<p><code>Microsoft-Activation-Scripts</code></p>
-<p><a href="https://github.com/massgravel/Microsoft-Activation-Scripts">脚本地址</a></p>
-]]></content>
-      <categories>
-        <category>tach</category>
-      </categories>
-      <tags>
-        <tag>office</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wsl2访问代理通过clash</title>
-    <url>/wsl-proxy-by-clash/</url>
-    <content><![CDATA[<span id="more"></span>
-<div style="display: flex; justify-content: space-between;">
-  <img data-src="https://s2.loli.net/2023/08/20/X3Vog9PcLkZspwN.png" alt="clash-setting.png" width="55%">
-  <img data-src="https://s2.loli.net/2023/08/20/4ucTnsg3MLwFqtD.png" alt="clash-tun.png" width="55%">
-</div>
-]]></content>
-      <categories>
-        <category>tech</category>
-      </categories>
-      <tags>
-        <tag>wsl</tag>
-        <tag>clash</tag>
       </tags>
   </entry>
   <entry>
